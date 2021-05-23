@@ -1,0 +1,232 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Desktop/LaTeX/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №3}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Системное программное обеспечение}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра Математического обеспечения и стандартизации информационных технологий}
+% Тема работы в титуле
+\newcommand{\theme}{Docker}
+\newcommand{\rang}{ассистент}
+\newcommand{\teacherfio}{Ю.~А.~Вороноцов}
+
+
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+\author{Кирилл Денисов}
+\title{Практическая работа №3}
+\date{\today}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\begin{document}
+	\thispagestyle{empty}
+	
+	% Вставка первого титульного листа
+	\input{\pathToCommonFolder/titul}
+	
+	\newpage
+	\tableofcontents
+	\newpage
+
+\section{Ход работы}
+В ходе данной практической работы будет рассмотрена работа с пакетным менеджером \textit{apt} в операционной системе Ubuntu Linux.
+\subsection{Установка нового пакета}
+После выполнения команд в терминале
+\begin{lstlisting}
+	$ sudo apt-get install mc
+	$ sudo apt-get install htop
+	$ sudo apt-get install neofetch
+\end{lstlisting}
+на машину будут установлены соответствующие пакеты.
+\subsection{Удаление пакета}
+Для удаления пакета neofetch без удаления конфигурационных файлов следует использовать команду 
+\begin{lstlisting}
+$ sudo apt-get remove neofetch
+\end{lstlisting}
+
+При использовании такой команды в системе остаются конфигурационные файлы программы, а также дополнительные пакеты. Чтобы удалить конфигурационные файлы можно использовать опцию --purge или команду purge:
+\begin{lstlisting}
+$ sudo apt-get --purge remove neofetch
+\end{lstlisting}
+\subsection{ Поиск пакета и вывод информации о нем}
+Для поиска пакета \textit{sqlite} третьей версии в дереве репозиториев и вывода информации о нем, следует использовать нижеуказанные команды:
+\begin{lstlisting}
+$ sudo apt-cache pkgnames 
+$ sudo apt-cache show sqlite3
+\end{lstlisting}
+
+В результате выполнения этих команд мы получим подробную информацию о пакете. См рисунок \ref{img:apt-cache}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.9\linewidth]{apt-cache}
+	\caption{Поиск пакета в дереве репозиториев}
+	\label{img:apt-cache}
+\end{figure}
+
+\section{Добавление репозиториев}
+Ознакомимся с командами, необходимыми для добавления репозитория Postgresql:
+\begin{lstlisting}
+	$ sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+	$ wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
+	$ sudo apt-get update
+	$ sudo apt install postgresql postgresql-contrib
+\end{lstlisting}
+Что содержится в командах:
+\begin{enumerate}
+	\item Добавляется репозиторий в список репозиториев apt (добавление строчки в sources.list)
+	\item Загружается ключ репозитория и добавляется в пакетный менеджер
+	\item Обновляется список пакетов
+	\item Установка пакета
+\end{enumerate}
+В общем случае может быть более простой способ:
+\begin{lstlisting}
+	$ sudo add-apt repository ppa:repo/ppa
+\end{lstlisting}
+После ознакомления с примерами, установим docker, следуя рекомендациям, приведенным в официальной \href{https://docs.docker.com/engine/install/debian/}{документации}.
+\newpage
+\section{Сборка пакетов из исходных кодов}
+В общем случае сборка пакетов выглядит следующим образом:
+\begin{enumerate}
+	\item Загрузка архива с исходным кодом (чаще всего .tar.gz)
+	\item Разархивирование (либо в ui, либо см. tar и его использование)
+	\item  Переход в директорию
+	\item ./configure
+	\item make
+	\item sudo make install
+\end{enumerate}
+Загрузим архив с исходными кодами программы sqlite и установим ее в систему в соответствии с вышеуказанными действиями. См рисунки в \hyperref[A]{Приложении А}.
+\section{Создание собственного deb-пакета}
+\subsection{Подготовка окружения}
+\begin{enumerate}
+	\item В качестве скрипта, который будет помещен в пакет, выберем скрипт $parseawk.sh$, который был написан в ходе первой практической работы по дисциплине "Системное программное обеспечение".
+	\item Установим необходимые пакеты для сборки пакетов
+	\begin{lstlisting}
+	$ sudo apt-get install dpkg debconf debhelper lintian
+	\end{lstlisting}
+	\item Создадим такую структуру папок, содержащих файлы, необходимые для создания deb-пакета. См. рисунок \ref{img:struct}. Файлы в структуре выделены цветом.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.6\linewidth]{supersh-struct}
+		\caption{Структура директории supersh}
+		\label{img:struct}
+		\end{figure}
+\end{enumerate}
+\subsection{Описание пакетирования}
+Создадим файл $control$ --- цельный файл пакета, описывающий все основные свойства в виде пары <<Атрибут: Значение>>. Заполним необходимые атрибуты.
+%\begin{lstlisting}[~supersh/DEBIAN/control]
+\lstinputlisting{/home/denilai/supersh/DEBIAN/control}
+
+Этого файла достаточно для создания работоспособного пакета. После заполнения файла $control$ следует приступить к сборке пакета.
+\subsection{Сборка пакета}
+Первое, что нужно сделать --- это рекурсивно выставить всем файлам в корне пакета пользователя и
+группу root:root (или другие, если потребуется). Это нужно затем, что файлы пакета упаковываются в
+tar.gz архив который сохраняет и права доступа к файлам, и владельца. Выполним команду
+\begin{lstlisting}
+$ sudo chmod -R root:root
+\end{lstlisting}
+
+Как альтернативу данной команде следует упомянуть $fakeroot$. Данная утилита позволяет запускать программы в Linux с привилегиями суперпользователя для выполнения любых файловых операций. Изменения видны только для запущенной под fakeroot программы, реально в системе ничего не меняется, т.е. для программы создается некая виртуальная оболочка, в которой отражаются все действия.
+Выполним команду.
+\begin{lstlisting}
+$ fakeroot dpkg-deb --build supersh
+\end{lstlisting}
+
+Созданный пакет необходимо переименовать, чтобы он соответствовал порядку именования *.deb
+пакетов:\\<имя пакета><версия><архитектура>.deb.  См. рисунок \ref{img:parseawk-package}.
+\begin{lstlisting}
+$ mv supersh.deb supersh_1.0-1_all.deb
+\end{lstlisting}
+\begin{figure}[hpbt]
+	\centering
+	\includegraphics[width=0.8\linewidth]{parseawk-package}
+	\caption{Сборка пакета}
+	\label{img:parseawk-package}
+\end{figure}
+
+\subsection{Установка пакета}
+Установим в систему собранный пакет с помощью команды. См. рисунок \ref{img:parseawk-package}.
+\begin{lstlisting}
+$ sudo dpkg -i supersh_1.0-1_all.deb
+\end{lstlisting}
+
+Пользовательский deb-пакет успешно установлен в систему. Скрипт расположен по пути /usr/bin, в соответствии со структурой директорий, указанной при создании пакета.
+\section{Создание и настройка\\локального deb-репозитория}
+Теперь у нас есть собственный пакет. Когда их будет несколько, и тем более — с зависимостями,
+окажется, что намного удобнее быстренько поднять собственный локальный микро-репозиторий, и
+включить его в список источников менеджера пакетов. Сперва установим помощника командой 
+\begin{lstlisting}
+$ sudo apt-get install reprepro
+\end{lstlisting}
+
+Затем создадим директорию нашего локального репозитория. Она будет корневой. Создаем файл conf/distributions, который заполняем следующим образом.
+\lstinputlisting{/home/denilai/repomy/conf/distributions}
+Репозиторий описан. Необходимо создать шаблон репозитория по заданному описанию. Для этого воспользуемся следующими командами:
+\begin{lstlisting}
+$ reprepro export
+$ reprepro createsymlinks
+\end{lstlisting}
+
+Следующим шагом необходимо добавить репозиторий в /etc/apt/sources.list, указав такую строку
+
+\begin{lstlisting}
+	deb file:///home/denilai/repomy/ karmic soft games
+\end{lstlisting}
+
+Для управления пакетами в репозитории поместим *.deb файл в корневую папку репозитория, и добавляем их в компоненту soft дистрибутива karmic с помощью команды
+\begin{lstlisting}
+reprepro -C soft includedeb karmic *.deb
+\end{lstlisting}
+
+Удаление пакетов доступно с помощью команды
+\begin{lstlisting}
+reprepro -C soft remove karmic supersh
+\end{lstlisting}
+\begin{figure}[hpbt]
+	\centering
+	\includegraphics[width=0.9\linewidth]{repo}
+	\caption{Работа с репозиторием}
+	\label{img:repo}
+\end{figure}
+\newpage
+{\centering
+\anonsection{ПРИЛОЖЕНИЕ А}
+}
+\label{A}
+\begin{figure}[hptb]
+	\centering
+	\includegraphics[width=0.9\linewidth]{sqlite-unzip}
+	\caption{Разархивирование файла}
+	\label{img:sqlite-unzip}
+\end{figure}
+\begin{figure}[hpbt]
+	\centering
+	\includegraphics[width=0.9\linewidth]{sqlite-config}
+	\caption{Запуск файла config}
+	\label{img:sql-config}
+\end{figure}
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.9\linewidth]{sqlite-make}
+	\caption{Процесс сборки командой make}
+	\label{img:sqlite-make}
+\end{figure}
+
+
+\end{document}

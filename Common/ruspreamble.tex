@@ -58,6 +58,10 @@
 \usepackage{indentfirst}
 \frenchspacing
 
+%для изменения названия списка иллюстраций
+\usepackage{tocloft}
+
+
 \renewcommand{\epsilon}{\ensuremath{\varepsilon}}
 \renewcommand{\phi}{\ensuremath{\varphi}}
 \renewcommand{\kappa}{\ensuremath{\varkappa}}
@@ -66,6 +70,10 @@
 \renewcommand{\ge}{\ensuremath{\geqslant}}
 \renewcommand{\geq}{\ensuremath{\geqslant}}
 \renewcommand{\emptyset}{\varnothing}
+
+% Изменения параметров списка иллюстраций
+\renewcommand{\cftfigfont}{Рисунок } % добавляем везде "Рисунок" перед номером
+\addto\captionsrussian{\renewcommand\listfigurename{Список иллюстративного материала}}
 
 \newcommand{\tm}{\texttrademark\ }
 \newcommand{\reg}{\textregistered\ }

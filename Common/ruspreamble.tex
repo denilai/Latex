@@ -12,7 +12,7 @@
 % пакеты hyperref и настройки, связанные с ним, стоит загуржать
 % перед загрузкой пакета mathtext
 
-% для корректной установки полей вставлять преамбулу следует в последнюю очередь (но педе дерективой замены \rmdefault)
+
 
 % поддержка русских букв
 % кодировка шрифта
@@ -24,6 +24,7 @@
 \newcommand{\anonsection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
 \newcommand{\sectionunderl}[1]{\section*{\underline{#1}}}
 
+
 % настройка окружения enumerate
 \usepackage{enumitem}
 \setlist{noitemsep}
@@ -31,7 +32,8 @@
 
 \usepackage{hyperref}
 
-
+% сначала ставить \usepackage{extsizes} % Возможность сделать 14-й шрифт
+% для корректной установки полей вставлять преамбулу следует в последнюю очередь (но перед дерективой замены \rmdefault)
 \usepackage[top=25mm,bottom=30mm,left=35mm,right=20mm]{geometry} % Простой способ задавать поля
 
 \hypersetup{				% Гиперссылки
@@ -116,7 +118,11 @@
 \newtheorem{theorem}{Теорема}[section]
 \newtheorem{proposition}[theorem]{Утверждение}
 
+\theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
+\newtheorem{work}{Практическая работа}[part]
 
+
+ 
  
 \theoremstyle{definition} % "Определение"
 \newtheorem{corollary}{Следствие}[theorem]

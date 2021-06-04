@@ -34,7 +34,7 @@
 
 % сначала ставить \usepackage{extsizes} % Возможность сделать 14-й шрифт
 % для корректной установки полей вставлять преамбулу следует в последнюю очередь (но перед дерективой замены \rmdefault)
-\usepackage[top=20mm,bottom=20mm,left=35mm,right=20mm]{geometry} % Простой способ задавать поля
+\usepackage[top=20mm,bottom=25mm,left=35mm,right=20mm]{geometry} % Простой способ задавать поля
 
 \hypersetup{				% Гиперссылки
 	unicode=true,           % русские буквы в раздела PDF
@@ -176,6 +176,12 @@
 
 \usepackage{listings}
 \usepackage{color}
+
+
+% для поворота отдельной страницы. Использовать окружение \landscape
+\usepackage{pdflscape} 
+\usepackage{rotating} 
+
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
 \definecolor{mygray}{rgb}{0.5,0.5,0.5}

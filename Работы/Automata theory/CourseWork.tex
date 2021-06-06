@@ -334,6 +334,27 @@ M&=1.00000\\
 	\label{tab:signalsop1}
 \end{table}
 
+Приведем смысловую таблицу микрокоманд, в которой поясним, какие изменения происходят на каждом этапе. См. таблицу \ref{tab:coursedivmeaning}.
+\begin{table}[h!]
+		\small
+	\begin{tabular}{|r||l|l|}
+
+		\hline
+		\multicolumn{1}{|l||}{\textbf{A}} & \textbf{N} & \multicolumn{1}{c|}{\textbf{Назначение микрокоманд}} \\ \hline\hline
+		0 & m0 & Начальное состояние \\ \hline
+		1 & m1 & Начальная инициализация \\ \hline
+		2 & m01 & Промежуточное состояние перед проверкой на нулевой делитель \\ \hline
+		3 & m2 & Ошибка «Деление на ноль» \\ \hline
+		4 & m3 & Левый сдвиг регистра RG\_REM (остатка) \\ \hline
+		5 & m02 & Промежуточное состояние перед проверкой на знак остатка \\ \hline
+		6 & m6 & Готовность результата \\ \hline
+		7 & m5 & Очередное значение суммы (RG\_REM+RG\_B`) \\ \hline
+		8 & m4 & Очередное значение суммы (RG\_REM+RG\_B`) \\ \hline
+		9 & m03 & Псево-состояние для установления значений в элементах \\ \hline
+	\end{tabular}
+	\caption{Деление чисел. Смысловая таблица микрокоманд}
+	\label{tab:coursedivmeaning}
+\end{table}
 	
 
 \subsection{Сложение чисел в экспоненциальной форме}
@@ -364,6 +385,39 @@ M&=1.00000\\
 %\newpage
 
 
+Приведем смысловую таблицу микрокоманд, в которой поясним, какие изменения происходят на каждом этапе. См. таблицу \ref{tab:coursesummeaning}.
+\begin{table}[htbp]
+	\small
+	\centering
+	\begin{tabular}{|c||c|m{0.7\linewidth}|}
+		\hline
+		\textbf{A} & \textbf{N} & \textbf{Описание микрокоманды} \\ \hline \hline
+		0 & m1 & Начальное состояние \\ \hline
+		1 & m2 & Первоначальная инициализация \\ \hline
+		2 & m01 & Промежуточное состояние перед проверкой операндов \\ \hline
+		3 & m02 & Загрузка счетчика СT\_Pa \\ \hline
+		4 & m6 & Загрузка счетчиков CT\_Pa, CT\_dP \\ \hline
+		5 & m03 & Загрузка счетчика СT\_Pa \\ \hline
+		6 & m04 & Промежуточное состояние перед проверкой A\_IS\_ANSWER \\ \hline
+		7 & m8 & Загружка регистра Ma и счетчика CT\_pa \\ \hline
+		8 & m9 & Сдвиг RG\_Ma вправо, инкремент счетчика СT\_Pa \\ \hline
+		9 & m10 & Загрузка регистра RG\_Ma, CHANGE=2 \\ \hline
+		10 & m11 & Сдвиг RG\_Ma вправо, инкремент счетчика СT\_Pa, Загрузка признкака |ma+mb|>1 в регистр RG\_Ma \\ \hline
+		11 & m05 & Промежуточное состояние перед проверкой операндов \\ \hline
+		12 & m12 & Сдвиг RG\_Ma влево, декремент счетчика СT\_Pa \\ \hline
+		13 & m13 & Ошибка «Переполнение» \\ \hline
+		14 & m14 & Готовость результата \\ \hline
+		15 & m3 & Готовость результата \\ \hline
+		16 & m4 & Загружка регистра Ma и счетчика CT\_pa \\ \hline
+		17 & m5 & Готовость результата \\ \hline
+		18 & m7 & Готовость результата \\ \hline
+		19 & m15 & Декремент счетчика CT\_dP \\ \hline
+	\end{tabular}
+	\caption{Сложение чисел. Смысловая таблица микрокоманд}
+	\label{tab:coursesummeaning}
+\end{table}
+
+
 
 
 \section{Функциональная схема операционного автомата}
@@ -373,7 +427,7 @@ M&=1.00000\\
 % TODO: \usepackage{graphicx} required
 \begin{figure}[htp]
 	\centering
-	\includegraphics[width=0.8\linewidth]{images/course_operation_automat}
+	\includegraphics[width=0.8\linewidth]{coursedivoa}
 	\caption{Деление чисел. Операционный автомат}
 	\label{fig:courseoperationautomat}
 \end{figure}
@@ -688,7 +742,7 @@ M&=1.00000\\
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\linewidth]{images/course_operation_automat2}
+		\includegraphics[width=\linewidth]{coursesumoa}
 	\caption{Сложение чисел. Операционный автомат}
 	\label{fig:courseoperationautomat2}
 \end{figure}

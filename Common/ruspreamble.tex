@@ -81,6 +81,25 @@
 \newcommand{\reg}{\textregistered\ }
 
 
+
+
+%требования к спискам, возможно пригодится
+%---------------------------------------------------------
+%Требования на списки в стандарте следующие:
+%нумерованные списки на первом уровне помечаются как «а)», «б)», «в)»… На втором — как «1)», «2)», «3)». Да-да, я тоже не вижу тут ни капли логики.
+%ненумерованные списки помечаются дефисами.
+
+%\usepackage{enumitem}
+%\makeatletter
+%\AddEnumerateCounter{\asbuk}{\@asbuk}{м)}
+%\makeatother
+%\setlist{nolistsep}
+%\renewcommand{\labelitemi}{-}
+%\renewcommand{\labelenumi}{\asbuk{enumi})}
+%\renewcommand{\labelenumii}{\arabic{enumii})}
+%------------------------------------------------------
+
+
 %%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
 \usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление

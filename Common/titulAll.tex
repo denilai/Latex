@@ -1,42 +1,60 @@
+%\newcommand{\withouttheme}{} добавить эту переменную для определения, нужна ли тема
+%     {} - нужна
+%    {1} - не нужна
+
+%\newcommand{\withoutsubmissiondate}{} добавить эту переменную для определения, нужен ли срок предоставления отчета
+%     {} - нужен
+%    {1} - не нужен
+
+\renewcommand{\studentfio}{К.~Ю.~Денисов\\
+			%	& & \hfill И.~А.~Кремнев \\
+				& & \hfill А.~М.~Сосунов\\
+				& & \hfill Д.~Н.~Федосеев}
 
 \begin{center}
 	\begin{figure}[h!]
 		\begin{center}
-		%\vspace{10ex}
-		\includegraphics[width=0.2\linewidth]{\pathToCommonFolder/gerb}
-		%\caption{}\label{pic:first}
-		%	\vspace{5ex}
+			%\vspace{10ex}
+			\includegraphics[width=0.17\linewidth]{\pathToCommonFolder/gerb}
+			%\caption{}\label{pic:first}
+			%	\vspace{5ex}
 		\end{center}	
 	\end{figure}
- 	\small	МИНОБРНАУКИ РОССИИ \\
+	\small	МИНОБРНАУКИ РОССИИ \\
 	Федеральное государственное бюджетное образовательное учреждение\\
-						высшего образования\\
-\normalsize					
-\textbf{«МИРЭА – Российский технологический университет»\\
-						РТУ МИРЭА}\\
-						\noindent\rule{1\linewidth}{2pt}\\
-       Институт информационных технологий\\ %\vspace{2ex}
-					\kafedra\\
-		\vspace{5ex}
-			\large \textbf{\workname}  \\
-		\vspace{2ex}
-						по дисциплине\\ «\discipline» \\
-		\vspace{3ex}
-			%\textbf{Тема практической работы:}\\ <<\theme>>
-\vspace{6ex}
-\small
-\begin{table}[h!]
-\begin{tabular}{lp{0.5\linewidth}l}
-	\textbf{Выполнил} & студент группы ИВБО-02-19 & \\ 
-	& & К.~Ю.~Денисов\\
-	\textbf{Проверил} & \rang & \\
-	& & \teacherfio\\
-\end{tabular}
-\end{table}
-
-\normalsize
+	высшего образования\\
+	\normalsize					
+	\textbf{«МИРЭА – Российский технологический университет»\\
+		РТУ МИРЭА}\\
+	\noindent\rule{1\linewidth}{1pt}\\
+	Институт информационных технологий\\ %\vspace{2ex}
+	\kafedra\\
+	\vspace{3ex}
+	\large \textbf{\workname}  \\
+	%\vspace{1ex}
+	по дисциплине\\ «\discipline» \\
+	\vspace{3ex}
+	\if \withouttheme
+	\textbf{Тема работы:}\\ <<\theme>>
+	\fi
+	\vspace{6ex}
+	\small
+	\begin{table}[h!]
+		\begin{tabular}{lp{0.6\linewidth}l}
+			\textbf{Выполнили:} & студенты группы ИВБО-02-19 & \\ 
+			& & \hfill \studentfio \\%Д.~Н.~Федосеев\\%А.~М.~Сосунов\\%К.~Ю.~Денисов\\%И.~А.~Кремнев
+			\textbf{Принял:} & \rang & \\
+			& & \hfill \teacherfio\\
+		\end{tabular}
+	\end{table}
+	\if \withoutsubmissiondate
+	\begin{flushleft}
+		Отчет представлен <<\rule{3ex}{1pt}>>\rule{10ex}{1pt} 202\rule{1ex}{1pt} г.
+	\end{flushleft}
+	\fi
+	\normalsize
 	
-\vfill
-Москва 2021
-
+	\vfill
+	Москва 2021
+	
 \end{center}

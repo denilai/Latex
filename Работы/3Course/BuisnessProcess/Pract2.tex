@@ -1,0 +1,114 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №4}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Моделирование бизнес-процессов}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра практической и прикладной информатики (ППИ)}
+% Тема работы в титуле
+\newcommand{\theme}{}
+\newcommand{\dontneedtheme}{1}
+% Должность преподавателя в титуле
+\newcommand{\rang}{}
+% ФИО студента в титуле
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Х.~Г.~Ахмедова}
+
+
+\usepackage{tabularx}
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов}
+\title{Практическая работа №5}
+\date{\today}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+	\thispagestyle{empty}
+	% Вставка первого титульного листа
+	\input{\pathToCommonFolder/titul}
+	\newpage
+%	\tableofcontents
+	\newpage
+	%\listoftables
+	\section*{Ход работы}
+	
+	
+	\subsection*{Цель работы}
+	Построение функциональной диаграммы процесса		
+	
+	\subsection*{Постановка задачи}
+	Построить концептуальную модель и сделать декомпозицию концептуальной подпроцессов.
+	
+	\subsection*{Индивидуальный вариант 6}
+	На контекстной диаграмме представлен процесс <<Приготовление беляшей>> (см. рис. \ref{fig:ramusPr2.1}). На вход в этот процесс поступают:
+	\begin{itemize}
+		\item свинина
+		\item масло растительное
+		\item приправы
+		\item панировочные сухари
+		\item яйцо куриное
+		\item мука
+	\end{itemize}
+	 Этим процессом управляет рецепт и рекомендации техники безопасности (соответствующие стрелки тунеллированы). Процесс реализует повар с помощью кухонных приборов, посуды и бытовой техники (миска, нож, доска разделочная, сковорода, варочная поверхность, весы). Результатом процесса является приготовленное блюдо --- жареные беляши.
+	
+	Сам процесс разбит на 4 подпроцесса (см. рис. \ref{fig:ramusPr2.2}):
+	\begin{enumerate}
+		\item Приготовление теста
+		\item Приготовление начинки
+		\item Формирование беляшей
+		\item Обжаривание беляшей
+	\end{enumerate}
+	
+	
+% TODO: \usepackage{graphicx} required
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/ramusPr2.1}
+	\caption{Контекстная диаграмма}
+	\label{fig:ramusPr2.1}
+\end{figure}
+%\newpage
+% TODO: \usepackage{graphicx} required
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/ramusPr2.2}
+	\caption{Детализация контекстной диаграммы}
+	\label{fig:ramusPr2.2}
+\end{figure}
+
+	\newpage
+	\subsection*{Список использованных источников и литературы}
+	\begin{enumerate}
+		\item Репозиторий проекта Ramus \url{https://github.com/Vitaliy-Yakovchuk/ramus}
+		\item Информационные технологии. Анализ и проектирование информационных систем: учебное пособие / Рочев К.В. – Санкт-Петербург: Лань, 2019. – 128
+		\item Рецепт беляшей \url{https://www.russianfood.com/recipes/recipe.php?rid=153038}
+	\end{enumerate}
+
+\end{document}
+
+
+

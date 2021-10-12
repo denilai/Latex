@@ -13,7 +13,6 @@
 % перед загрузкой пакета mathtext
 
 
-
 % поддержка русских букв
 % кодировка шрифта
 %\usepackage[T2A]{fontenc} 
@@ -22,7 +21,12 @@
 % использование ненумеровонного абзаца с добавлением его в содержаниеl
 
 \newcommand{\anonsection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
+\newcommand{\anonsubsection}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
 \newcommand{\sectionunderl}[1]{\section*{\underline{#1}}}
+%если нужна тема работы в отчете, то указать в скобках что-либо, иначе оаставить пустым
+\newcommand{\withouttheme}{}
+%если нужна дата представления отчета, то указать в скобках что-либо
+\newcommand{\withoutsubmissiondate}{1}
 
 
 % настройка окружения enumerate
@@ -34,7 +38,7 @@
 
 % сначала ставить \usepackage{extsizes} % Возможность сделать 14-й шрифт
 % для корректной установки полей вставлять преамбулу следует в последнюю очередь (но перед дерективой замены \rmdefault)
-\usepackage[top=20mm,bottom=20mm,left=30mm,right=10mm]{geometry} % Простой способ задавать поля
+\usepackage[top=20mm,bottom=20mm,left=30mm,right=15mm]{geometry} % Простой способ задавать поля
 
 \hypersetup{				% Гиперссылки
 	unicode=true,           % русские буквы в раздела PDF
@@ -60,6 +64,9 @@
 \usepackage{indentfirst}
 \frenchspacing
 
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+
 %для изменения названия списка иллюстраций
 \usepackage{tocloft}
 
@@ -72,6 +79,11 @@
 \renewcommand{\ge}{\ensuremath{\geqslant}}
 \renewcommand{\geq}{\ensuremath{\geqslant}}
 \renewcommand{\emptyset}{\varnothing}
+%\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+
+
+
 
 % Изменения параметров списка иллюстраций
 \renewcommand{\cftfigfont}{Рисунок } % добавляем везде "Рисунок" перед номером
@@ -146,10 +158,11 @@
 \theoremstyle{definition} % "Определение"
 \newtheorem{corollary}{Следствие}[theorem]
 \newtheorem{problem}{Задача}[section]
+%\newtheorem{script}{Cценарий}
  
 \theoremstyle{remark} % "Примечание"
 \newtheorem*{nonum}{Решение}
-
+\newtheorem{script}{Cценарий}
 
 
 %%% Программирование

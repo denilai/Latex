@@ -1,0 +1,127 @@
+\documentclass[a5paper,11pt]{article}
+%Также можно указать системе снизить уровень правил командой \sloppy. В этом случае, все строки будут иметь одинаковую ширину за счет увеличения промежутков между словами и LaTeX выдаст предупреждение о разрежении горизонтального бокса (underfull box). Возвращение к стандартным правилам осуществляется командой \fussy.
+
+% переопределение нумерации
+
+\input{preamble}
+
+
+\usepackage{lipsum}
+\newcommand{\nn}{0.5pt}
+
+\begin{document}
+	\begin{flushright}
+		Денисов Егор 8<<М>> класс
+		\noindent\rule{0.8\textwidth}{1pt}\\
+		\textbf{Вариант II} \\
+	\end{flushright}
+\sloppy
+% так называемая "рыба" образец текста, для получения представления о том, как будет выглядеть текст
+%\lipsum[3-35]
+\fussy
+	\problem Какое из чисел $-5,08; 2\frac56; 0; 1,413$ \textbf{не является} решением неравенства $3x - 4,26 < 0$? Нужное подчеркните.
+	\problem Соедините стрелкой неравенство и рисунок, на котором изображено его решение.
+	\begin{enumerate}[label = \Roman*:]
+			\begin{multicols}{3}
+				\item $3x-2\geqslant 10$
+				\item $2-3x \geqslant 10$
+				\item $10-3x\leqslant2$
+		\end{multicols}
+	\end{enumerate}
+	\begin{figure}[h]
+		\begin{center}
+			\begin{minipage}[h]{0.45\linewidth}
+				1)\includegraphics[width=1\linewidth]{1}
+				\label{ris:experimoriginal} %% метка рисунка для ссылки на него
+			\end{minipage}
+			%\hfill
+			\begin{minipage}[h]{0.45\linewidth}
+				2)\includegraphics[width=1\linewidth]{2}
+				\label{ris:experimcoded}
+			\end{minipage}
+			\begin{minipage}[h]{0.4\linewidth}
+				3)\includegraphics[width=1\linewidth]{3}
+				\label{ris:experimcdfoded}
+			\end{minipage}
+		\end{center}
+	\end{figure}
+	\setlength{\columnsep}{10ex}
+	\problem Изобразите на координатной прямой множество решений данного неравенства и запишите ответ в виде условного обозначения этого множества:
+	\begin{enumerate}[label={\realasbuk*)}, ref=\realasbuk*]
+		\begin{multicols}{2}
+			\item 	$2(4x-5) > 5(x+4)$
+			\begin{minipage}[h]{\linewidth}
+				\vspace{2ex}
+				%\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\textit{Ответ:} \hfill \noindent\rule{0.6\linewidth}{\nn}\\
+				%\vspace{1ex}
+			\end{minipage}
+			\item $\displaystyle\frac{x}4-\frac{x-6}6 +2 \leqslant x$
+			\begin{minipage}[h]{1\linewidth}
+				\vspace{2ex}
+				%\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\textit{Ответ:} \hfill \noindent\rule{0.6\linewidth}{\nn}\\
+			\end{minipage}
+			\item $2x+4(2x-3)\geqslant\ 12x-11$
+			\begin{minipage}[h]{1\linewidth}
+				\vspace{2ex}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\textit{Ответ:} \hfill \noindent\rule{0.6\linewidth}{\nn}\\
+			\end{minipage}
+			\item $16x+20x < 10x -3(4-2x)$
+			\begin{minipage}[h]{1\linewidth}
+				\vspace{2ex}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\noindent\rule{1\linewidth}{\nn}
+				\textit{Ответ:} \hfill \noindent\rule{0.6\linewidth}{\nn}
+			\end{minipage}
+		\end{multicols}
+	\end{enumerate}
+	\problem
+	\begin{enumerate}[label={\realasbuk*)}, ref=\realasbuk*]
+		\item При каких значениях $a$ значение выражения $12-7a$ неотрицательно?\\
+		\noindent\rule{1\linewidth}{\nn} \\
+		\noindent\rule{1\linewidth}{\nn} \\
+		\textit{Ответ:} \hfill при $a \in \noindent\rule{0.7\linewidth}{\nn}$
+		\item При каких значениях $x$ значение выражения $2-\frac{x}3$
+		меньше $-4$?\\
+		\noindent\rule{1\linewidth}{\nn} \\
+		\noindent\rule{1\linewidth}{\nn} \\
+		\textit{Ответ:} \hfill при $a \in \noindent\rule{0.7\linewidth}{\nn}$
+		\nopagebreak[4]
+		%\newpage
+		\item При каких значениях $y$ значение выражения $3-5y$ не больше значения выражения $2(7-y)$?\\ \nopagebreak[4]
+		\noindent\rule{\linewidth}{\nn} \\ \nopagebreak[4]
+		\noindent\rule{1\linewidth}{\nn} \\ \nopagebreak[4]
+		\textit{Ответ:} \hfill при $a \in \noindent\rule{0.65\linewidth}{\nn}$
+	\end{enumerate}
+	\problem Сколько натуральных решений имеет неравенство:
+		\begin{align*}			
+			3(x+2)\hm{-}2(x\hm{-}1)\geqslant3x-4?\\
+		%\begin{minipage}[h]{\linewidth}
+			\vspace{1.8ex}
+			\noindent\rule{0.5\linewidth}{\nn}\\
+			\noindent\rule{0.5\linewidth}{\nn}\\
+			\noindent\rule{0.5\linewidth}{\nn}\\
+			\noindent\rule{0.5\linewidth}{\nn}\\
+			\noindent\rule{0.5\linewidth}{\nn}\\
+			\textit{Ответ:}\hfill \noindent\rule{0.37\linewidth}{\nn}
+		%\end{minipage}
+	\end{align*}
+\end{document}
+

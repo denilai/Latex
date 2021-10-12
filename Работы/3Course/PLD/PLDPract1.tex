@@ -1,0 +1,265 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по лабораторной работе №1}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Проектирование и разработка систем на базе ПЛИС}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра Вычислительной техники}
+% Тема работы в титуле
+\newcommand{\theme}{Проектирование синтезируемых моделей комбинационной
+	логической схемы и их верификация средствами САПР Xilinx}
+% Должность преподавателя в титуле
+\newcommand{\rang}{ассистент}
+
+% ФИО студента в титуле
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{А.~С.~Боронников}
+
+
+\usepackage{tabularx}
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов}
+\title{Лабораторная работа №1}
+\date{\today}
+
+%если не нужна тема работы в отчете, то указать в скобках что-либо, иначе оаставить пустым
+\renewcommand{\withouttheme}{fd}
+%если нужна дата представления отчета, то указать в скобках что-либо
+%\renewcommand{\withoutsubmissiondate}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+	\thispagestyle{empty}
+	% Вставка первого титульного листа
+	\input{\pathToCommonFolder/titul}
+	\newpage
+	\tableofcontents
+	\newpage
+	%\listoftables
+\section{Ход работы}	
+\subsection {Постановка задачи}
+Спроектировать синтезируемые модели комбинационной схемы 4х4, описанной
+таблицей истинности согласно варианту задания, тремя различными способами:
+\begin{enumerate}
+	\item На вентильном уровне, методом карт Карно в виде МДНФ, в схемотехническом
+	редакторе Schematic editor САПР Xilinx ISE Design Suite.
+	\item На вентильном уровне, методом карт Карно в виде МКНФ, на языке описания
+	аппаратуры Verilog.
+	\item На поведенческом уровне, на языке описания аппаратуры Verilog.
+	Реализовать на языке Verilog тестовое окружение и провести верификацию
+	спроектированных моделей при помощи симулятора iSim из состава
+	САПР Xilinx ISE Design Suite.
+\end{enumerate}
+
+Провести апробацию моделей при помощи отладочной платы Digilent Nexys 4 на
+ПЛИС Xilinx Artix 7 XC7A100T-1CSG324. Комбинации на входах комбинационных схем
+должны задаваться при помощи движковых переключателей отладочной платы,
+комбинации на выходах комбинационных схем должны отображаться светодиодами
+отладочной платы.
+\subsection {Индивидуальный вариант 149}
+Спроектировать синтезируемые модели комбинационной схемы 4х4 согласно данной таблице истинности и вектор-функции (см. таблицу \ref{tab:func-vector}).
+
+\begin{table}[htbp]
+	\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+		F & E & D & C & B & A & 9 & 8 & 7 & 6 & 5 & 4 & 3 & 2 & 1 & 0 \\ \hline\hline
+		0 & 4 & 4 & 8 & 3 & 0 & 7 & 2 & 2 & D & 7 & C & 5 & 2 & A & C \\ \hline
+	\end{tabular}
+	\caption{Вектор-функция}
+	\label{tab:func-vector}
+\end{center}
+\end{table}
+\subsection{Построение таблицы истинности}
+Построим таблицу истинности по заданному вектору. Входы обозначим $X_3, X_2, X_1, X_0$, а выходы $Q_3$,  $Q_2$, $Q_1$,  $Q_0$ соответственно (см. таблицу \ref{tab:func-table}).
+
+\newpage
+\begin{table}[htbp]
+	
+\begin{center}
+		\begin{tabular}{|c||c|c|c|c||c||c|c|c|c|}
+		\hline
+		№ & $X_3$ & $X_2$ & $X_1$ & $X_0$ & F & $Q_3$ & $Q_2$ & $Q_1$ & $Q_0$ \\ \hline \hline
+		0 & 0 & 0 & 0 & 0 & c & 1 & 1 & 0 & 0 \\ \hline
+		1 & 0 & 0 & 0 & 1 & a & 1 & 0 & 1 & 0 \\ \hline
+		2 & 0 & 0 & 1 & 0 & 2 & 0 & 0 & 1 & 0 \\ \hline
+		3 & 0 & 0 & 1 & 1 & 5 & 0 & 1 & 0 & 1 \\ \hline
+		4 & 0 & 1 & 0 & 0 & c & 1 & 1 & 0 & 0 \\ \hline
+		5 & 0 & 1 & 0 & 1 & 7 & 0 & 1 & 1 & 1 \\ \hline
+		6 & 0 & 1 & 1 & 0 & 0 & 1 & 1 & 0 & 1 \\ \hline
+		7 & 0 & 1 & 1 & 1 & 2 & 0 & 0 & 1 & 0 \\ \hline
+		8 & 1 & 0 & 0 & 0 & 2 & 0 & 0 & 1 & 0 \\ \hline
+		9 & 1 & 0 & 0 & 1 & 7 & 0 & 1 & 1 & 1 \\ \hline
+		10 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\ \hline
+		11 & 1 & 0 & 1 & 1 & 3 & 0 & 0 & 1 & 1 \\ \hline
+		12 & 1 & 1 & 0 & 0 & 8 & 1 & 0 & 0 & 0 \\ \hline
+		13 & 1 & 1 & 0 & 1 & 4 & 0 & 1 & 0 & 0 \\ \hline
+		14 & 1 & 1 & 1 & 0 & 4 & 0 & 1 & 0 & 0 \\ \hline
+		15 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\ \hline
+	\end{tabular}
+\end{center}
+	\caption{Таблица истинности}
+	\label{tab:func-table}
+\end{table}
+
+\subsection{Построение карт Карно}
+Построим карты Карно для 4 переменных $X_3, X_2, X_1, X_0$ для каждой из бинарных функций $Q_3$,  $Q_2$, $Q_1$,  $Q_0$ (см. рис. \ref{ris:karno-maps}).
+
+\begin{center}
+	\begin{figure}
+	\begin{minipage}[h]{0.47\linewidth}
+		\center{\includegraphics[width=1\linewidth]{images/y3}} а) \\
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.47\linewidth}
+		\center{\includegraphics[width=1\linewidth]{images/y2}} \\б)
+	\end{minipage}
+	\vfill
+	\begin{minipage}[h]{0.47\linewidth}
+		\center{\includegraphics[width=1\linewidth]{images/y1}} в) \\
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.47\linewidth}
+		\center{\includegraphics[width=1\linewidth]{images/y0}} г) \\
+	\end{minipage}
+	\caption{Карты Карно для 4-х переменных для функций а)$Q_3$, б)$Q_2$, в)$Q_2$, г)$Q_1$, д)$Q_0$}
+	\label{ris:karno-maps}
+\end{figure}
+\end{center}
+
+\subsection{Минимизация булевых функций}
+По построенным картам Карно опишем \textbf{МДНФ} для реализации данных функций на вентильном уровне в редакторе Schematic editor САПР Xilinx ISE Design Suite.
+
+\begin{align*}
+	Q_3 &= \bar{X_3}\bar{X_2}\bar{X_1} \vee  X_2 \bar{X_1}\bar{X_0}  \vee \bar{X_3} X_2\bar{X_0} \\
+	Q_2 &= \bar{X_3} \bar{X_1} \bar{X_0} \vee \bar{X_3} \bar{X_2} X_1 X_0 \vee X_2  \bar{X_1}  X_0 \vee X_2  X_1  \bar{X_0} \vee  X_3  \bar{X_1}  X_0 \\
+	Q_1 &=  \bar{X_3}\bar{X_1}X_0    \vee  \bar{X_3} \bar{X_2} X_1 \bar{X_0} \vee     \bar{X_3} X_2  X_0  \vee  X_3 \bar{X_2} \bar{X_1}   \vee  X_3 \bar{X_2} X_0 \\
+	Q_0 &= \bar{X_2} X_1 X_0 \vee \bar{X_3} X_2 \bar{X_1} X_0 \vee \bar{X_3} X_2 X_1 \bar{X_0} \vee X_3 \bar{X_2} X_0
+ \end{align*}
+
+Также опишем \textbf{МКНФ} для реализации булевых функций средствами VHDL в САПР Xilinx ISE Design Suite.
+\begin{align*}
+	Q_3 &=\left(
+	\bar{X_3}\vee \bar{X_1}
+	\right) 
+	\cdot 
+	\left(
+	 X_2\vee \bar{X_1}
+	 \right) 
+	  \cdot  
+	  \left(
+	  \bar{X_2}\vee \bar{X_0}
+	   \right) \\
+	Q_2 &= \left(
+	X_2 \vee X_2 \vee X_1 \vee \bar{X_0}
+	\right) 
+	\cdot 
+	\left( 
+	\bar{X_3} \vee X_2 \bar{X_1}
+	 \right) 
+	 \cdot 
+	 \left(
+	  X_2 \vee  \bar{X_1} \vee X_0
+	   \right)
+	    \cdot \\
+	    & \left(
+	    \bar{X_2}  \vee \bar{X_1} \vee \bar{X_0}
+	    \right)
+	     \cdot 
+	      \left(\bar{X_3} \vee X_1 \vee X_0
+	      \right)\\
+	  Q_1 & = \left( X_3 \vee X_1 \vee X_0 \right) \cdot
+	  \left( \bar{X_3} \vee \bar{X_1 X_0} \right) \cdot
+	  \left( \bar{X_3} \vee \bar{X_2} \right) \cdot \\
+	  & \left(X_3 \vee X_2 \vee \bar{X_1} \vee \bar{X_0}\right) \cdot
+	  \left(\bar{X_2} \vee X_0\right)\\
+	  Q_0 & = \left( X_3 \vee X_2 \vee X_1 \right) \cdot
+	  \left(  X_2 \vee X_0 \right) \cdot
+	  \left( X_1 \vee X_0  \right) \cdot
+	  \left( \bar{X_3} \vee \bar{X_2} \right) \cdot
+	  \left( \bar{X_2} \vee \bar{X_1} \vee \bar{X_0} \right)
+\end{align*}
+\subsection{Реализация функций в схемотехническом редакторе}
+Опишем функции $Q_3$,  $Q_2$, $Q_1$,  $Q_0$ на вентильном уровне в схемотехническом редакторе Schematic editor САПР Xilinx ISE Design Suite (см. рис. \ref{fig:sheme1}, \ref{fig:sheme2}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=\linewidth]{images/sheme1}
+	\caption{Схемотехнический редактор. Лист 1}
+	\label{fig:sheme1}
+\end{figure}
+%\newpage
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[p]
+	\centering
+	\includegraphics[width=\linewidth]{images/sheme2}
+	\caption{Схемотехнический редактор. Лист 2}
+	\label{fig:sheme2}
+\end{figure}
+
+\subsection{Реализация функций на вентильном уровне}
+На основании МКНФ опишем функции $Q_3$,  $Q_2$, $Q_1$,  $Q_0$ на вентильном уровне c помощью языка Verilog.
+
+\lstinputlisting{/home/denilai/Documents/repos/latex/scripts/mknf.v}
+
+\newpage
+\subsection{Реализация функций на поведенческом уровне}
+На основании построенной ранее таблицы истинности (см. таблицу \ref{tab:func-table}) опишем функции $Q_3$,  $Q_2$, $Q_1$,  $Q_0$ на поведенческом уровне c помощью языка Verilog.
+\lstinputlisting{/home/denilai/Documents/repos/latex/scripts/behaviour.v}
+
+\newpage
+\subsection{Создание проекта САПР Xilinx ISE}
+
+Опишем файл верхнего уровня проекта САПР Xilinx ISE Design Suite, в котором подключим все остальные модули, укажем входные и выходные сигналы. 
+\lstinputlisting{/home/denilai/Documents/repos/latex/scripts/top.v}
+
+
+\subsection{Тестирование и отладка средствами симулятора iSim}
+После компоновки проекта, подключения модуля верхнего уровня, проведем верификацию спроектированных моделей с помощью симулятора iSim из состава САПР Xilinx ISE Design Suite. Результаты тестирования можно видеть на рис. \ref{fig:test-result} и \ref{fig:isim}.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\linewidth]{images/test-result}
+	\caption{Проверка синтаксиса}
+	\label{fig:test-result}
+\end{figure}
+% TODO: \usepackage{graphicx} required
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\linewidth]{images/isim}
+	\caption{Вывод iSim }
+	\label{fig:isim}
+\end{figure}
+
+\newpage
+\section{Вывод}
+В ходе данной практической работы нами были получены общие навыки работы с программным обеспечением Xilinx ISE Design Suite, изучены основы языка Verilog. С помощью полученных знаний была спроектированы синтезируемые модели комбинационной схемы 4х4, описанной тремя различными способами.
+
+\end{document}

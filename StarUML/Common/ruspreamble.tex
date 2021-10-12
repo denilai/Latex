@@ -1,0 +1,228 @@
+% Этот шаблон документа разработан в 2014 году
+% Данилом Фёдоровых (danil@fedorovykh.ru) 
+% для использования в курсе 
+% <<Документы и презентации в \LaTeX>>, записанном НИУ ВШЭ
+% для Coursera.org: http://coursera.org/course/latex .
+% Исходная версия шаблона --- 
+% https://www.writelatex.com/coursera/latex/5.3
+
+% В этом документе преамбула
+
+% Для корректного использования русских символов в формулах
+% пакеты hyperref и настройки, связанные с ним, стоит загуржать
+% перед загрузкой пакета mathtext
+
+
+
+% поддержка русских букв
+% кодировка шрифта
+%\usepackage[T2A]{fontenc} 
+\usepackage{pscyr}
+
+% использование ненумеровонного абзаца с добавлением его в содержаниеl
+
+\newcommand{\anonsection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
+\newcommand{\sectionunderl}[1]{\section*{\underline{#1}}}
+
+
+% настройка окружения enumerate
+\usepackage{enumitem}
+\setlist{noitemsep}
+\setlist[enumerate]{labelsep=*, leftmargin=1.5pc}
+
+\usepackage{hyperref}
+
+% сначала ставить \usepackage{extsizes} % Возможность сделать 14-й шрифт
+% для корректной установки полей вставлять преамбулу следует в последнюю очередь (но перед дерективой замены \rmdefault)
+\usepackage[top=20mm,bottom=20mm,left=30mm,right=10mm]{geometry} % Простой способ задавать поля
+
+\hypersetup{				% Гиперссылки
+	unicode=true,           % русские буквы в раздела PDF
+	pdftitle={Заголовок},   % Заголовок
+	pdfauthor={Автор},      % Автор
+	pdfsubject={Тема},      % Тема
+	pdfcreator={Создатель}, % Создатель
+	pdfproducer={Производитель}, % Производитель
+	pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
+	colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
+	linkcolor=red,          % внутренние ссылки
+	citecolor=black,        % на библиографию
+	filecolor=magenta,      % на файлы
+	urlcolor=blue           % на URL
+}
+
+%%% Работа с русским языком
+\usepackage{cmap}					% поиск в PDF
+\usepackage{mathtext} 				% русские буквы в формулах
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+\usepackage{indentfirst}
+\frenchspacing
+
+%для изменения названия списка иллюстраций
+\usepackage{tocloft}
+
+
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\kappa}{\ensuremath{\varkappa}}
+\renewcommand{\le}{\ensuremath{\leqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\ge}{\ensuremath{\geqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+\renewcommand{\emptyset}{\varnothing}
+
+% Изменения параметров списка иллюстраций
+\renewcommand{\cftfigfont}{Рисунок } % добавляем везде "Рисунок" перед номером
+\addto\captionsrussian{\renewcommand\listfigurename{Список иллюстративного материала}}
+
+\newcommand{\tm}{\texttrademark\ }
+\newcommand{\reg}{\textregistered\ }
+
+
+
+
+%требования к спискам, возможно пригодится
+%---------------------------------------------------------
+%Требования на списки в стандарте следующие:
+%нумерованные списки на первом уровне помечаются как «а)», «б)», «в)»… На втором — как «1)», «2)», «3)». Да-да, я тоже не вижу тут ни капли логики.
+%ненумерованные списки помечаются дефисами.
+
+%\usepackage{enumitem}
+%\makeatletter
+%\AddEnumerateCounter{\asbuk}{\@asbuk}{м)}
+%\makeatother
+%\setlist{nolistsep}
+%\renewcommand{\labelitemi}{-}
+%\renewcommand{\labelenumi}{\asbuk{enumi})}
+%\renewcommand{\labelenumii}{\arabic{enumii})}
+%------------------------------------------------------
+
+
+%%% Дополнительная работа с математикой
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
+\usepackage{icomma} % "Умная" запятая: $0,2$ --- число, $0, 2$ --- перечисление
+
+%% Номера формул
+%\mathtoolsset{showonlyrefs=true} % Показывать номера только у тех формул, на которые есть \eqref{} в тексте.
+%\usepackage{leqno} % Нумереация формул слева
+
+%% Свои команды
+\DeclareMathOperator{\sgn}{\mathop{sgn}}
+
+%% Перенос знаков в формулах (по Львовскому)
+\newcommand*{\hm}[1]{#1\nobreak\discretionary{}
+{\hbox{$\mathsurround=0pt #1$}}{}}
+
+
+% отступ для первого абзаца главы или параграфа
+%\usepackage{indentfirst}
+
+%%% Работа с картинками
+\usepackage{graphicx}  % Для вставки рисунков
+\graphicspath{{images/}{screnshots/}}  % папки с картинками
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
+\setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}
+\usepackage{wrapfig} % Обтекание рисунков текстом
+
+%%% Работа с таблицами
+\usepackage{array,tabularx,tabulary,booktabs} % Дополнительная работа с таблицами
+\usepackage{longtable}  % Длинные таблицы
+\usepackage{multirow} % Слияние строк в таблице
+
+%%% Теоремы
+\theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{proposition}[theorem]{Утверждение}
+
+\theoremstyle{plain} % Это стиль по умолчанию, его можно не переопределять.
+\newtheorem{work}{Практическая работа}[part]
+
+
+ 
+ 
+\theoremstyle{definition} % "Определение"
+\newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{problem}{Задача}[section]
+ 
+\theoremstyle{remark} % "Примечание"
+\newtheorem*{nonum}{Решение}
+
+
+
+%%% Программирование
+\usepackage{etoolbox} % логические операторы
+
+%%% Страница
+
+%	\usepackage{fancyhdr} % Колонтитулы
+% 	\pagestyle{fancy}
+%   \renewcommand{\headrulewidth}{0pt}  % Толщина линейки, отчеркивающей верхний колонтитул
+% 	\lfoot{Нижний левый}
+% 	\rfoot{Нижний правый}
+% 	\rhead{Верхний правый}
+% 	\chead{Верхний в центре}
+% 	\lhead{Верхний левый}
+%	\cfoot{Нижний в центре} % По умолчанию здесь номер страницы
+
+\usepackage{setspace} % Интерлиньяж
+\onehalfspacing % Интерлиньяж 1.5
+%\doublespacing % Интерлиньяж 2
+%\singlespacing % Интерлиньяж 1
+
+\usepackage{lastpage} % Узнать, сколько всего страниц в документе.
+
+\usepackage{soul} % Модификаторы начертания
+
+
+\usepackage[usenames,dvipsnames,svgnames,table,rgb]{xcolor}
+
+
+\usepackage{csquotes} % Еще инструменты для ссылок
+
+%\usepackage[style=authoryear,maxcitenames=2,backend=biber,sorting=nty]{biblatex}
+
+\usepackage{multicol} % Несколько колонок
+
+\usepackage{tikz} % Работа с графикой
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+
+% модуль для вставки рыбы
+\usepackage{blindtext}
+
+\usepackage{listings}
+\usepackage{color}
+
+
+% для поворота отдельной страницы. Использовать окружение \landscape
+\usepackage{pdflscape} 
+\usepackage{rotating} 
+
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+
+% пример импорта файла
+%\lstinputlisting{/home/denilai/repomy/conf/distributions}
+
+\lstset{
+	language=Python,
+	basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+	numbersep=5pt,                   % how far the line-numbers are from the code
+	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+	stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+	% Tab - 2 пробела
+	tabsize=2,    
+	% Автоматический перенос строк
+	breaklines=true,
+	frame=single,
+	breakatwhitespace=true,
+	title=\lstname 
+}
+

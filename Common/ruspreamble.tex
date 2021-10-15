@@ -20,6 +20,11 @@
 
 % использование ненумеровонного абзаца с добавлением его в содержаниеl
 
+
+% объявляем новую команду для переноса строки внутри ячейки таблицы
+\newcommand{\specialcell}[2][c]{%
+	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
 \newcommand{\anonsection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
 \newcommand{\anonsubsection}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
 \newcommand{\sectionunderl}[1]{\section*{\underline{#1}}}

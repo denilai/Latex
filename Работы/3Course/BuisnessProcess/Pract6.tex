@@ -1,0 +1,183 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №6}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Моделирование бизнес-процессов}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра практической и прикладной информатики (ППИ)}
+% Тема работы в титуле
+\newcommand{\theme}{}
+\newcommand{\dontneedtheme}{1}
+% Должность преподавателя в титуле
+\newcommand{\rang}{}
+% ФИО студента в титуле
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Х.~Г.~Ахмедова}
+
+
+\usepackage{tabularx}
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов}
+\title{Практическая работа №4}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+	\thispagestyle{empty}
+	% Вставка первого титульного листа
+	\input{\pathToCommonFolder/titul}
+	\newpage
+%	\tableofcontents
+	\newpage
+	%\listoftables
+\section{Ход работы}
+
+\subsection*{Цель работы}
+Формирование навыка проведения декомпозиции
+процесса в методологии IDEF0.
+
+\subsection*{Постановка задачи}
+
+На основе ранее выданного преподавателем
+варианта в практической работе 4:
+\begin{enumerate}
+	\item Поверить построенную функциональную диаграмму процесса на
+	семантические
+	ошибки.
+	В
+	случае
+	обнаружения
+	ошибок
+	в
+	использовании принципов построения моделей внести исправления
+	в функциональную диаграмму и сформировать текстовый файл, в
+	котором отразить все внесенные изменения.
+	\item Выбрать любой подпроцесс в декомпозиции бизнес-процесса и
+	построить следующий уровень детализации, руководствуясь тем, что
+	входные и выходные потоки, а также механизм управления и
+	исполнения уже заданы на более высоком уровне. Количество
+	операций в детализируемом подпроцессе не может быть меньше 3 и
+	ограничено 6.
+	\item Сформировать
+	табличное
+	описание
+	всех
+	декомпозированных
+	подпроцессов в файле текстового формата.
+	На основе выданного преподавателем варианта
+	построить контекстную диаграмму, детализацию контекстной диаграммы,
+	детализацию одного из подпроцессов.
+\end{enumerate}
+
+\subsection*{Индивидуальный вариант 6}
+
+\subsubsection*{Результат работы}
+
+Переименуем следующие процессы:
+\begin{itemize}
+	\item <<Поддержать текущую деятельность по разработке WEB-сайтов для ООО "КЛИК">> в <<Контроль над процессом разработки WEB-сайтов для ООО "КЛИК">>
+	\item <<Вести контроль выполнения этапов разработки>> в <<Контроль за соблюдением плана разработки>>
+	\item <<Сводный счет по доходам компании>> в <<Сводный отчет о деятельности компании>>
+\end{itemize}
+Добавим Сотрудника коммерческого отдела как входной механизм процесса <<Учет результатов деятельности для расчета премиального вознаграждения>>.
+
+После внесения изменений в диаграмму, составим табличное описание бизнес-процесса <<Контроль над процессом разработки WEB-сайтов для ООО "КЛИК">>:
+
+	
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\linewidth]{images/table1Pr6}
+	\caption{Табличное описание бизнес-процесса. Ч1}
+	\label{fig:table1pr6}
+\end{figure}
+
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/table2Pr6}
+	\caption{Табличное описание бизнес-процесса. Ч2}
+	\label{fig:table2pr6}
+\end{figure}
+
+Приведем диаграммы в нотации IDEF0.
+
+\begin{center}
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/ramusPr6-1}
+	\caption{Контекстная диаграмма}
+	\label{fig:ramuspr6-1}
+\end{figure}
+% TODO: \usepackage{graphicx} required
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/ramusPr6-2}
+	\caption{Декомпозиция контекстной диаграммы}
+	\label{fig:ramuspr6-2}
+\end{figure}
+% TODO: \usepackage{graphicx} required
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/ramusPr6-3}
+	\caption{Декомпозиция процесса <<Контроль за соблюдением плана разработки>>}
+	\label{fig:ramuspr6-3}
+\end{figure}
+% TODO: \usepackage{graphicx} required
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.9\linewidth]{images/ramusPr6-4}
+	\caption{Декомпозиция процесса <<Учет результатов деятельности для расчета премиального вознаграждения>>}
+	\label{fig:ramuspr6-4}
+\end{figure}
+\end{center}
+\newpage
+
+% TODO: \usepackage{graphicx} required
+
+\anonsection{Список использованных\\источников и литературы}
+\begin{enumerate}
+	\item https://github.com/Vitaliy-Yakovchuk/ramus
+	\item Информационные технологии. Анализ и проектирование информационных систем: учебное пособие / Рочев К.В. --- Санкт-Петербург: Лань, 2019. --- 128
+\end{enumerate}
+
+
+%\newpage
+%{\centering
+%	\anonsection{ПРИЛОЖЕНИЕ А}
+%}
+%\label{A}
+
+\end{document}
+
+
+

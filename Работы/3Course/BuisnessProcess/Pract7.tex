@@ -1,0 +1,361 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №7}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Моделирование бизнес-процессов}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра практической и прикладной информатики (ППИ)}
+% Тема работы в титуле
+\newcommand{\theme}{}
+\newcommand{\dontneedtheme}{1}
+% Должность преподавателя в титуле
+\newcommand{\rang}{}
+% ФИО студента в титуле
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Х.~Г.~Ахмедова}
+
+
+\usepackage{tabularx}
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов}
+\title{Практическая работа №4}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+\renewcommand{\withoutsubmissiondate}{}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+	\thispagestyle{empty}
+	% Вставка первого титульного листа
+	\input{\pathToCommonFolder/titul}
+	\newpage
+%	\tableofcontents
+	\newpage
+	%\listoftables
+\anonsection{Ход работы}
+
+\subsection*{Цель работы}
+Задание предназначено для самостоятельного выполнения студентами с
+целью закрепления навыка правильной формулировки названия выходов каждого
+этапа и работы выполняемого бизнес-процесса.
+
+\subsection*{Постановка задачи}
+Сформировать описания процессов.
+
+\subsection*{Индивидуальный вариант 6}
+
+\subsubsection*{Результат работы}
+\problem{Построить схему бизнес-процесса на уровне предприятия и на уровне процессов
+	«Получение чистой прибыли по разработке ПО»:}
+\task{Построить схему бизнес-процесса на уровне предприятия и на уровне процессов «Заключить договор»}
+
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|l|l|l|}
+			\hline
+			\textbf{Название процесса} & Заключить договор &  \\ \hline
+			\textbf{Владелец} & Менеджер по работе с клиентами &  \\ \hline
+			\textbf{Вход} & Заявка на заключение договора &  \\ \hline
+			\textbf{Выход} & Заключенный договор (с  условиями) &  \\ \hline
+			\multicolumn{ 1}{|l|}{\textbf{Ресурсы}} & Человеческий ресурс &  \\ \cline{ 2- 3}
+			\multicolumn{ 1}{|l|}{} & Материальные ресурсы &  \\ \cline{ 2- 3}
+			\multicolumn{ 1}{|l|}{} & Информационные ресурсы &  \\ \hline
+			\textbf{Поставщик} & Заказчик & Внешний \\ \hline
+			\textbf{Получатель} & Менеджер & Внутренний \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{}
+\end{table}
+
+\if
+
+\begin{table}[h!]
+	\small
+	\begin{tabular}{|p{0.22\linewidth}|p{0.54\linewidth}|p{0.15\linewidth}|}
+		\hline
+		\centerboldcell{Название процесса} & {Получение чистой прибыли от разработки ПО} &  \\ \hline
+		\textbf{Владелец} & Бухгалтер &  \\ \hline
+		\textbf{Вход} & Договор с указанием денежных средств &  \\ \hline
+		\textbf{Выход} & Сумма чистой прибыли &  \\ \hline
+		\textbf{Ресурсы} & Человеческие и материальные ресурсы &  \\ \hline
+		\textbf{Поставщик} & Заказчик & Внешний \\ \hline
+		\textbf{Получатель} & Генеральный директор & Внутренний \\ \hline
+	\end{tabular}
+	\label{}
+\end{table}
+\normalsize
+\fi
+\newpage
+\task{Построить схему бизнес-процесса на уровне предприятия и на уровне процессов
+	«Разработка ПО»}
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|l|l|l|}
+			\hline
+			\textbf{Название процесса} & Разработка ПО &  \\ \hline
+			\textbf{Владелец} & Менеджер проекта &  \\ \hline
+			\textbf{Вход} & Договор &  \\ \hline
+			\textbf{Выход} & Разработанное ПО &  \\ \hline
+			\multicolumn{ 1}{|l|}{\textbf{Ресурсы}} & Человеческий ресурс &  \\ \cline{ 2- 3}
+			\multicolumn{ 1}{|l|}{} & Материальные ресурсы &  \\ \cline{ 2- 3}
+			\multicolumn{ 1}{|l|}{} & Информационные ресурсы &  \\ \hline
+			\textbf{Поставщик} & Отдел по работе с клиентами & Внутренний \\ \hline
+			\textbf{Получатель} & Заказчик & Внешний \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{}
+\end{table}
+
+\if
+
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|l|l|l|}
+			\hline
+			\textbf{Название процесса} & Заключить договор &  \\ \hline
+			\textbf{Владелец} & Менеджер по работе с клиентами &  \\ \hline
+			\textbf{Вход} & Заявка на договор &  \\ \hline
+			\textbf{Выход} & Заключенный договор &  \\ \hline
+			\textbf{Ресурсы} & Человеческие и материальные ресурсы & \textbf{} \\ \hline
+			\textbf{Поставщик} & Создатель ПО & Внешний \\ \hline
+			\textbf{Получатель} & Менеджер проекта & Внутренний \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{}
+\end{table}
+\newpage
+\fi
+
+\newpage
+\problem{Сформировать таблицу подпроцесса «Внедрение ПО», определить внешних и
+	внутренних поставщиков и пользователей:}
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|l|p{0.4\linewidth}|l|}
+			\hline
+			\textbf{Название процесса} & Внедрение ПО &  \\ \hline
+			\textbf{Владелец} & {Менеджер   отдела по работе с клиентами} &  \\ \hline
+			\multicolumn{ 1}{|l|}{\textbf{Вход}} & Договор &  \\ \cline{ 2- 3}
+			\multicolumn{ 1}{|l|}{} & Необученный персонал &  \\ \cline{ 2- 3}
+			\multicolumn{ 1}{|l|}{} & Разработанное ПО &  \\ \hline
+			\multicolumn{ 1}{|l|}{\textbf{Выход}} & Обученный персонал &  \\ \cline{ 2- 3}
+			\multicolumn{ 1}{|l|}{} & Внедренное ПО &  \\ \hline
+			\multicolumn{ 1}{|l|}{\textbf{Ресурсы}} & Человеческий ресурс &  \\ \cline{ 2- 3}
+			\multicolumn{ 1}{|l|}{} & Материальные ресурсы &  \\ \cline{ 2- 3}
+			\multicolumn{ 1}{|l|}{} & Информационные ресурсы &  \\ \hline
+			\multicolumn{ 1}{|l|}{\textbf{Поставщик}} & Менеджер проекта & Внутренний \\ \hline
+			\textbf{Получатель} & Заказчик & Внешний \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{}
+\end{table}
+
+
+\if
+\newpage
+
+\begin{table}[htbp]
+	\begin{center}
+		\begin{tabular}{|l|l|l|}
+			\hline
+			\textbf{Название процесса} & Разработка ПО &  \\ \hline
+			\textbf{Владелец} & Менеджерпроекта &  \\ \hline
+			\textbf{Вход} & Договор &  \\ \hline
+			\textbf{Выход} & Разработанное ПО &  \\ \hline
+			\textbf{Ресурсы} & Человеческие и материальные ресурсы &  \\ \hline
+			\textbf{Поставщик} & Менеджер по работе с клиентами & Внутренний \\ \hline
+			\textbf{Получатель} & Заказчик & Внешний \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{}
+\end{table}
+\fi
+
+\problem{Описание процесса по каскадной модели по разработке ПО:}
+
+\vspace{3ex}
+\begin{longtable}{|l|l|}
+
+	\endfirsthead
+	
+	\hline
+	\multicolumn{2}{|c|}{\textit{Продолжение таблицы}}\\
+	\hline
+	\endhead
+	
+	\hline
+	\endfoot
+	
+	
+	\hline
+	\multicolumn{2}{| c |}{\textit{Конец таблицы}}\\
+	\hline\hline
+	\endlastfoot
+
+	\hline
+	\textbf{Название процесса} & Планирование \\ \hline
+	\textbf{Цель процесса} & Формирование плана работы \\ \hline
+	\textbf{Владелец процесса} & Менеджер проекта \\ \hline
+	\multicolumn{ 1}{|c|}{\textbf{Участники процесса}} & Технолог разработки ПО \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & Заказчик \\ \hline
+	\textbf{Вход} & Заключенный договор \\ \hline
+	\textbf{Выход} & План \\ \hline
+	\textbf{Название процесса} & Формирование требований \\ \hline
+	\textbf{Цель процесса} & Формирование спецификации \\ \hline
+	\textbf{Владелец процесса} & Менеджер проекта \\ \hline
+	\multicolumn{ 1}{|c|}{\textbf{Участники процесса}} & Технолог разработки ПО \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & Бизнес-аналитик \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & Заказчик ПО \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & Будущие пользователи \\ \hline
+	\textbf{Вход} & План \\ \hline
+	\textbf{Выход} & Спецификация \\ \hline
+	\textbf{Название процесса} & Анализ и проектирование \\ \hline
+	\textbf{Цель процесса} & Создание дизайна \\ \hline
+	\textbf{Владелец процесса} & Менеджер проекта \\ \hline
+	\multicolumn{ 1}{|c|}{\textbf{Участники процесса}} & Проектировщик \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & бизнес-аналитик \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & разработчик \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & будущие пользователи \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & заказчик ПО \\ \hline
+	\textbf{Вход} & Спецификация \\ \hline
+	\textbf{Выход} & Дизайн \\ \hline
+	\textbf{Название процесса} & Конструирование \\ \hline
+	\textbf{Цель процесса} & Разработка кода \\ \hline
+	\textbf{Владелец процесса} & Менеджер проекта \\ \hline
+	\textbf{Участники процесса} & разработчик, \\ \hline
+	\textbf{} & инженер по качеству, \\ \hline
+	\textbf{} & технолог разработки ПО \\ \hline
+	\textbf{Вход} & Дизайн \\ \hline
+	\textbf{Выход} & Код \\ \hline
+	\textbf{Название процесса} & Интеграция и тестирование \\ \hline
+	\textbf{Цель процесса} & Интеграция и тестирование продукта \\ \hline
+	\textbf{Владелец процесса} & Менеджер проекта \\ \hline
+	\multicolumn{ 1}{|c|}{\textbf{Участники процесса}} & Разработчик \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & инженер по качеству \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & тестировщик и техническим писателем \\ \hline
+	\textbf{Вход} & Код \\ \hline
+	\textbf{Выход} & Продукт \\ \hline
+	\textbf{Название процесса} & Поддержка и эксплуатация \\ \hline
+	\textbf{Цель процесса} & Поддержка и эксплуатация готового продукта \\ \hline
+	\textbf{Владелец процесса} & Менеджер проекта \\ \hline
+	\multicolumn{ 1}{|c|}{\textbf{Участники процесса}} & заказчик ПО \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & менеджер по работе с клиентами \\ \cline{ 2- 2}
+	\multicolumn{ 1}{|l|}{} & сотрудник сервисного отдела \\ \hline
+	\textbf{Вход} & Продукт \\ \hline
+	\textbf{Выход} & Готовое ПО 
+	\label{long}
+\end{longtable}
+
+\problem{Формирование выходов по каскадной модели:}
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|l|p{0.47\linewidth}|}
+			\hline
+			\textbf{Процесс} & Выход \\ \hline
+			\textbf{Исследование концепции} & Исследованная концепция \\ \hline
+			\textbf{Выработка требований} & Выработанные требования \\ \hline
+			\textbf{Проектирование} & Создание проекта \\ \hline
+			\textbf{Реализация компонент} & Код \\ \hline
+			\textbf{Интеграция компонент} & Готовая программа \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{}
+\end{table}
+
+\newpage
+
+\problem{На основе основных этапов и работ, выполняемых при разработке экономической информационной системы, определить выходы каждого основного этапа бизнес-процесса «Разработка ЭИС»:}
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|l|l|}
+			\hline
+			\textbf{Процесс} & Выход \\ \hline
+			\textbf{Техническое задание} & Разработанное техническое задание \\ \hline
+			\textbf{Эскизный проект} & Созданный эскиз \\ \hline
+			\textbf{Технический проект} & Разработанный технический процесс \\ \hline
+			\textbf{Рабочий проект} & Созданный  рабочий проект \\ \hline
+			\textbf{Тестирование программы} & Протестированная программа \\ \hline
+			\textbf{Внедрение} & Готовая программная документация по ЭИС \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{}
+\end{table}
+
+
+
+\problem{На основе основных этапов и работ, выполняемых при разработке ЭИС, определить выходы каждой стадии бизнес-процесса «Разработка ЭИС»:}
+
+\begin{table}[h!]
+	\begin{center}
+		\begin{tabular}{|l|p{0.47\linewidth}|}
+			\hline
+			\textbf{Процесс} & Выход \\ \hline
+			\textbf{Предпроектная стадия разработки} & Разработанное техническое задание \\ \hline
+			\textbf{Проектирование ЭИС} &{Описание  технологии  работы  с макетом ЭИС} \\ \hline
+			\textbf{Разработка ЭИС} & Готовый ЭИС \\ \hline
+			\textbf{Внедрение} & Внедренные  ЭИС  в  компании- заказчика \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{}
+\end{table}
+
+
+
+\newpage
+
+% TODO: \usepackage{graphicx} required
+
+\anonsection{Список использованных\\источников и литературы}
+\begin{enumerate}
+	\item https://github.com/Vitaliy-Yakovchuk/ramus
+	\item Информационные технологии. Анализ и проектирование информационных систем: учебное пособие / Рочев К.В. --- Санкт-Петербург: Лань, 2019. --- 128
+
+	
+	\item Войнов И.В., Пудовкина С.Г., Телегин А.И. Моделирование экономических систем и процессов. Опыт построения ARIS-моделей: Монография. --- Челябинск: Изд. ЮУрГУ, 2002. --- 392 с.
+	
+	
+	\item Григорьев Д. Моделирование бизнес-процессов предприятия. Режим доступа: http://www.valex.net/articles/process.html. --- Загл. с экрана.
+	
+	\item Калянов Г.Н. Моделирование, анализ, реорганизация и автоматизация бизнес-процессов // М.: Финансы и статистика, 2006.
+\end{enumerate}
+
+
+%\newpage
+%{\centering
+%	\anonsection{ПРИЛОЖЕНИЕ А}
+%}
+%\label{A}
+
+\end{document}
+
+
+

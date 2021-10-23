@@ -32,6 +32,7 @@
 \newcommand{\withouttheme}{}
 %если нужна дата представления отчета, то указать в скобках что-либо
 \newcommand{\withoutsubmissiondate}{1}
+\newcommand{\centerboldcell}[1]{\multicolumn{1}{|c|}{\textbf{#1}}}
 
 
 % настройка окружения enumerate
@@ -43,7 +44,7 @@
 
 % сначала ставить \usepackage{extsizes} % Возможность сделать 14-й шрифт
 % для корректной установки полей вставлять преамбулу следует в последнюю очередь (но перед дерективой замены \rmdefault)
-\usepackage[top=20mm,bottom=20mm,left=30mm,right=15mm]{geometry} % Простой способ задавать поля
+%\usepackage[top=20mm,bottom=20mm,left=30mm,right=15mm]{geometry} % Простой способ задавать поля
 
 \hypersetup{				% Гиперссылки
 	unicode=true,           % русские буквы в раздела PDF
@@ -54,7 +55,7 @@
 	pdfproducer={Производитель}, % Производитель
 	pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
 	colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
-	linkcolor=red,          % внутренние ссылки
+	linkcolor=black,          % внутренние ссылки
 	citecolor=black,        % на библиографию
 	filecolor=magenta,      % на файлы
 	urlcolor=blue           % на URL
@@ -84,6 +85,7 @@
 \renewcommand{\ge}{\ensuremath{\geqslant}}
 \renewcommand{\geq}{\ensuremath{\geqslant}}
 \renewcommand{\emptyset}{\varnothing}
+\renewcommand{\ref}[1]{~\ref{#1}}
 %\renewcommand{\thefigure}{\thesection.\arabic{figure}}
 
 
@@ -162,7 +164,8 @@
  
 \theoremstyle{definition} % "Определение"
 \newtheorem{corollary}{Следствие}[theorem]
-\newtheorem{problem}{Задача}[section]
+\newtheorem{problem}{Задание}
+\newtheorem{task}{Подзадание}[problem]
 %\newtheorem{script}{Cценарий}
  
 \theoremstyle{remark} % "Примечание"

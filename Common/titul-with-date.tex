@@ -5,14 +5,15 @@
 %\newcommand{\withoutsubmissiondate}{} добавить эту переменную для определения, нужен ли срок предоставления отчета
 %     {} - нужен
 %    {1} - не нужен
+
 \begin{center}
 	\begin{figure}[h!]
 		\begin{center}
-		\vspace{-10ex}
+			\vspace{-10ex}
 		\includegraphics[width=0.17\linewidth]{\pathToCommonFolder/gerb}
 		%\caption{}\label{pic:first}
 		%	\vspace{5ex}
-		\end{center}	
+		\end{center}
 	\end{figure}
  	\small	МИНОБРНАУКИ РОССИИ \\
 	Федеральное государственное бюджетное образовательное учреждение\\
@@ -34,17 +35,22 @@
 \vspace{6ex}
 \small
 \begin{table}[h!]
-\begin{tabular}{lp{0.6\linewidth}l}
+\begin{tabular}{lp{0.43\linewidth}p{0.2\linewidth}l}
 	\textbf{Выполнил:} & студент группы ИВБО-02-19 & \\ 
-	& & \studentfio \\%Д.~Н.~Федосеев\\%А.~М.~Сосунов\\%К.~Ю.~Денисов\\%И.~А.~Кремнев
+	& & % TODO: \usepackage{graphicx} required
+		\hfill \includegraphics[width=\linewidth]{\pathToCommonFolder/signature} &
+
+	 \studentfio \\%Д.~Н.~Федосеев\\%А.~М.~Сосунов\\%К.~Ю.~Денисов\\%И.~А.~Кремнев
 	\textbf{Принял:} & \rang & \\
-	& & \hfill \teacherfio\\
+	& & & \hfill \teacherfio\\
 \end{tabular}
 \end{table}
 \end{center}
-
+\begin{flushleft}
+Работа представлена к защите <<\rule{3ex}{1pt}>>\rule{10ex}{1pt} 202\rule{1ex}{1pt} г.\hfill
+\end{flushleft}
 \normalsize
-\begin{center}	
-\vfill
+\begin{center}
+	\vfill
 Москва 2021
 \end{center}

@@ -31,7 +31,7 @@
 %если нужна тема работы в отчете, то указать в скобках что-либо, иначе оаставить пустым
 \newcommand{\withouttheme}{}
 %если нужна дата представления отчета, то указать в скобках что-либо
-\newcommand{\withoutsubmissiondate}{1}
+\newcommand{\withoutsubmission}{1}
 \newcommand{\centerboldcell}[1]{\multicolumn{1}{|c|}{\textbf{#1}}}
 
 
@@ -44,7 +44,7 @@
 
 % сначала ставить \usepackage{extsizes} % Возможность сделать 14-й шрифт
 % для корректной установки полей вставлять преамбулу следует в последнюю очередь (но перед дерективой замены \rmdefault)
-%\usepackage[top=20mm,bottom=20mm,left=30mm,right=15mm]{geometry} % Простой способ задавать поля
+\usepackage[top=20mm,bottom=20mm,left=30mm,right=20mm]{geometry} % Простой способ задавать поля
 
 \hypersetup{				% Гиперссылки
 	unicode=true,           % русские буквы в раздела PDF

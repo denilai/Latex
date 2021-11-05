@@ -1,0 +1,236 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по лабораторной работе №3}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Архитектура процессоров и микропроцессоров}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра вычислительной техники}
+% Тема работы в титуле
+\newcommand{\theme}{Стадии выполнения команд процессором КР580ВМ80}
+% Должность преподавателя в титуле
+\newcommand{\rang}{cтарший преподаватель кафедры ВТ}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Ю.~М.Скрябин}
+\newcommand{\studentfio}{К.~Ю.~Денисов}%Д.~Н.~Федосеев\\%А.~М.~Сосунов\\%К.~Ю.~Денисов\\
+
+\usepackage{tabularx}
+
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов}
+\title{Лабораторная работа №1}
+\date{\today}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+\renewcommand{\withouttheme}{1}
+
+\begin{document}
+	\thispagestyle{empty}
+	% Вставка первого титульного листа
+	\input{\pathToCommonFolder/fedoseev-titul-with-signature}
+	\newpage
+%	\tableofcontents
+%	\newpage
+	%\listoftables
+	
+
+	
+\section{Цель работы}
+Изучить структуру эмулятора, систему команд, режимы работы. Для
+программы построить временную диаграмму работы
+конвейера. Пояснить, что происходит в конвейере в каждом
+такте, какие возникают конфликты, указать причину конфликта.
+\section {Индивидуальный вариант № 9}
+
+\begin{problem}
+	Изучить работу команд условных переходов данной программы:
+	
+	0000 MOV 00, 0003
+	
+	0001 DECR 00
+	
+	0002 JP 0001
+	
+	0003 JMP 0001
+	
+	\nonum{} Приведем временную диаграмму (см. таблицу~\ref{tab:time-1}).
+\end{problem}
+
+
+\begin{problem}
+	Разработать программу для вычисления суммы первых десяти членов натурального ряда ($n=10$),
+	ввести в эмулятор, исследовать ее выполнение, выявить конфликты по
+	данным. Построить временную диаграмму работы конвейера. Пояснить
+	возникающие конфликты, указав № такта.
+
+	\nonum Опишем программу, реализующую алгоритм нахождения суммы членов натурального ряда (см. таблицу~\ref{tab:prog-2}).
+	\newpage
+	\begin{table}[htbp]
+
+		\begin{tabular}{|l|p{0.7\linewidth}|}
+			\hline
+			\centerboldcell{Команда} & \centerboldcell{Описание} \\ \hline\hline
+			MOV 00, \#000A & Запись в РОН 00 числа 10 \\ \hline
+			ADD 01, 00, 01 & К РОН 01 прибавляем содержимое регистра 00 \\ \hline
+			DECR 00 & Вычитаем 1 из РОН 00 \\ \hline
+			JP 0001 & Если содеримое РОН 00 положительное, то повторяем цикл \\ \hline
+		\end{tabular}
+		\caption{Программа для нахождения суммы ряда}
+		\label{tab:prog-2}
+	\end{table}
+
+
+\textbf{Описание алгоритма:}
+\begin{enumerate}
+	\item В РОН 00 записываем длину арифметической последовательности, т.е. 10.
+	\item К РОН-аккумулятору, в котором будет накапливаться сумма последовательности прибавляем текущее значение РОН 00
+	\item Уменьшаем значение РОН текущего индекса в арифметической последовательности на 1.
+	\item Если результат положительный, повторяем цикл, иначе конец алгоритма.
+\end{enumerate}
+
+Построим временную диаграмму данной программы (см. таблицу~\ref{tab:time-2}).
+
+\textbf{Опишем конфликты, возникающие при выполнении данной программы конвейером:}
+\begin{enumerate}
+	\item На 4 такте мы наблюдаем \textit{структурный конфликт}, так как команда ADD использует тот же РОН что и команда MOV, но команда MOV ещё не закончила своё выполнение, поэтому мы  не можем обратиться к одному и тому же РОН и для чтения и для записи
+	
+
+	\item На 9 такте мы наблюдаем\textit{ конфликт по данным}, так как команды ADD и DECR используют один и тот же операнд из РОН 00, но команада DECR ещё не закончила своё выполнение.
+
+	
+\end{enumerate}
+
+\textbf{Опишем варианты избежания конфликтов:}
+\begin{enumerate}
+	\item Можно избежать конфликта, на такте 4 если поменять местами команды, чтобы чтение происходило в другом такте, но в данном случае это невозможно из-за небольшого количества команд в программе.
+	
+	\item Можно избежать конфликта на такте 9, если использовать обходную цепь, но так как между командами есть ещё команда JP, обходную цепь использовать не представляется возможности.
+\end{enumerate}
+
+
+\end{problem}
+
+
+
+\begin{problem}
+	Разработать программу для организации инкремента содержимого
+	регистра РОН от 0 до 10.
+	\nonum
+	Опишем программу, реализующую алгоритм организации инкремента содержимого
+	регистра РОН от 0 до 10. (см. таблицу~\ref{tab:prog-3}).	
+	
+	\begin{table}[htbp]
+		\begin{tabular}{|l|p{0.7\linewidth}|}
+			\hline
+			\centerboldcell{Команда} & \centerboldcell{Описание} \\ \hline\hline
+			MOV 00, \#000A & Записываем значение 10 в регистр 00 \\ \hline
+			INCR 01 & Инкрементируем значение регистра 01 \\ \hline
+			SUB 02, 01, 00 & Вычитаем из значения РОН 00 значение РОН 01 и результат записываем в РОН 02 \\ \hline
+			JP 0001 & Если результат предыдущей операции положительный, то переходим на первый шаг \\ \hline
+		\end{tabular}
+		\caption{Программа для инкрементирования значения регистра}
+		\label{tab:prog-3}
+	\end{table}
+
+\textbf{Описание алгоритма:}
+\begin{enumerate}
+	\item В РОН 00 записываем значение до которого происходит инкрементирование переменной, т.е. 10. Сама переменная будет находиться в РОН 01.
+	\item На каждой итерации цикла увеличиваем значение РОН переменной на один.
+	\item Вычитаем это значение из 10.
+	\item Если результат положительный, повторяем цикл, иначе конец алгоритма.
+\end{enumerate}
+
+Построим временную диаграмму данной программы (см. таблицу~\ref{tab:time-3}).
+
+\textbf{Опишем конфликты, возникающие при выполнении данной программы конвейером:}
+
+На 4 такте мы наблюдаем\textit{ структурный конфликт}, так как команда INCR использует тот же РОН что и команда MOV, но команда MOV ещё не закончила своё выполнение, поэтому мы  не можем обратиться к одному и тому же РОН и для чтения и для записи.
+
+\textbf{Опишем варианты избежания конфликта:}
+
+ Можно избежать конфликта, на такте 4 если поменять местами команды, чтобы чтение происходило в другом такте, но в данном случае это невозможно из-за небольшого количества команд в программе.
+
+\end{problem}	
+
+\begin{landscape}
+
+\begin{table}[htbp]
+	\small
+	\begin{tabular}{|r|l|l||l|l|l|l|l|l|l|l|l|l|l|}
+		\hline
+		\multicolumn{1}{|l|}{Ст/Т} & \multicolumn{1}{r|}{1} & \multicolumn{1}{r|}{2} & \multicolumn{1}{r|}{3} & \multicolumn{1}{r|}{4} & \multicolumn{1}{r|}{5} & \multicolumn{1}{r|}{6} & \multicolumn{1}{r|}{7} & \multicolumn{1}{r|}{8} & \multicolumn{1}{r|}{9} & \multicolumn{1}{r|}{10} & \multicolumn{1}{r|}{11} & \multicolumn{1}{r|}{12} & \multicolumn{1}{r|}{13} \\ \hline
+		1 & MOV & DECR & JP & JP & JP & DECR & JP & JP & DECR & JP & JP & DECR & JP \\ \hline
+		2 &  & MOV & DECR & DECR & DECR & JP & DECR & DECR & JP & DECR & DECR & JP & DECR \\ \hline
+		3 &  &  & MOV &  &  & DECR & JP &  & DECR & JP &  & DECR & JP \\ \hline
+		4 &  &  &  & MOV &  &  & DECR & JP &  & DECR & JP &  & DECR \\ \hline
+		5 &  &  &  &  & MOV &  &  & DECR & JP &  & DECR & JP &  \\ \hline\hline
+		\multicolumn{1}{|l|}{Ст/Т} & \multicolumn{1}{r|}{14} & \multicolumn{1}{r||}{15} & \multicolumn{1}{r|}{16} & \multicolumn{1}{r|}{17} & \multicolumn{1}{r|}{18} & \multicolumn{1}{r|}{19} & \multicolumn{1}{r|}{20} & \multicolumn{1}{r|}{21} & \multicolumn{1}{r|}{22} & \multicolumn{1}{r|}{23} & \multicolumn{1}{r|}{24} & \multicolumn{1}{r|}{25} & \multicolumn{1}{r|}{26} \\ \hline
+		1 &  & JMP & DECR & JP & JMP & DECR &  & DECR & JP & DECR & JP & JP & DECR \\ \hline
+		2 &  &  & JMP & DECR & JP & JMP &  &  & DECR & JP & DECR & DECR & JP \\ \hline
+		3 &  &  &  & JMP & DECR & JP &  &  &  & DECR & JP &  & DECR \\ \hline
+		4 & JP &  &  &  & JMP & DECR & JP &  &  &  & DECR & JP &  \\ \hline
+		5 & DECR & JP &  &  &  & JMP & DECR & JP &  &  &  & DECR & JP \\ \hline
+	\end{tabular}
+	\caption{Задние 1. Временная диаграмма}
+	\label{tab:time-1}
+\end{table}
+\newpage
+
+\begin{table}[htbp]
+	\begin{tabular}{|r|l|l|l|l|l|l|l|l|l|l|l|l|}
+		\hline
+		\multicolumn{1}{|l|}{Ст/Т} & \multicolumn{1}{r|}{1} & \multicolumn{1}{r|}{2} & \multicolumn{1}{r|}{3} & \multicolumn{1}{r|}{4} & \multicolumn{1}{r|}{5} & \multicolumn{1}{r|}{6} & \multicolumn{1}{r|}{7} & \multicolumn{1}{r|}{8} & \multicolumn{1}{r|}{9} & \multicolumn{1}{r|}{10} & \multicolumn{1}{r|}{11} & \multicolumn{1}{r|}{12} \\ \hline
+		1 & MOV & ADD & DECR & DECR & DECR & JP & ADD & DECR & DECR & JP & ADD & DECR \\ \hline
+		2 &  & MOV & ADD & ADD & ADD & DECR & JP & ADD & ADD & DECR & JP & ADD \\ \hline
+		3 &  &  & MOV &  &  & ADD & DECR & JP &  & ADD & DECR & JP \\ \hline
+		4 &  &  &  & MOV &  &  & ADD & DECR & JP &  & ADD & DECR \\ \hline
+		5 &  &  &  &  & MOV &  &  & ADD & DECR & JP &  & ADD \\ \hline
+	\end{tabular}
+	\caption{Задание 2. Временная диаграмма}
+	\label{tab:time-2}
+\end{table}
+
+\begin{table}[htbp]
+	\begin{tabular}{|r|l|l|l|l|l|l|l|l|l|l|l|}
+		\hline
+		\multicolumn{1}{|l|}{Ст/Т} & \multicolumn{1}{r|}{1} & \multicolumn{1}{r|}{2} & \multicolumn{1}{r|}{3} & \multicolumn{1}{r|}{4} & \multicolumn{1}{r|}{5} & \multicolumn{1}{r|}{6} & \multicolumn{1}{r|}{7} & \multicolumn{1}{r|}{8} & \multicolumn{1}{r|}{9} & \multicolumn{1}{r|}{10} & \multicolumn{1}{r|}{11} \\ \hline
+		1 & MOV & INCR & SUB & SUB & SUB & JP & INCR & SUB & JP & INCR & SUB \\ \hline
+		2 &  & MOV & INCR & INCR & INCR & SUB & JP & INCR & SUB & JP & INCR \\ \hline
+		3 &  &  & MOV &  &  & INCR & SUB & JP & INCR & SUB & JP \\ \hline
+		4 &  &  &  & MOV &  &  & INCR & SUB & JP & INCR & SUB \\ \hline
+		5 &  &  &  &  & MOV &  &  & INCR & SUB & JP & INCR \\ \hline
+	\end{tabular}
+	\caption{Задание 3. Временная диаграмма}
+	\label{tab:time-3}
+\end{table}
+
+\end{landscape}
+
+
+\anonsection{Вывод}
+
+В ходе данной лабораторной работы мы ознакомились со структурой эмулятора RISC конвейера, изучили его систему команд, режимы работы, описали алгоритмы и реализовали программы согласно варианту, построили временные диаграммы работы конвейера, идентифицировали конфликты и указали способы их устранения.
+
+\end{document}
+
+

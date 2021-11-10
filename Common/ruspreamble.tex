@@ -18,13 +18,13 @@
 %\usepackage[T2A]{fontenc} 
 \usepackage{pscyr}
 
-% использование ненумеровонного абзаца с добавлением его в содержаниеl
+
 
 
 % объявляем новую команду для переноса строки внутри ячейки таблицы
 \newcommand{\specialcell}[2][c]{%
 	\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-
+% использование ненумеровонного абзаца с добавлением его в содержание
 \newcommand{\anonsection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
 \newcommand{\anonsubsection}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
 \newcommand{\sectionunderl}[1]{\section*{\underline{#1}}}
@@ -44,7 +44,7 @@
 
 % сначала ставить \usepackage{extsizes} % Возможность сделать 14-й шрифт
 % для корректной установки полей вставлять преамбулу следует в последнюю очередь (но перед дерективой замены \rmdefault)
-\usepackage[top=20mm,bottom=20mm,left=30mm,right=20mm]{geometry} % Простой способ задавать поля
+\usepackage[top=20mm,bottom=20mm,left=30mm,right=10mm]{geometry} % Простой способ задавать поля
 
 \hypersetup{				% Гиперссылки
 	unicode=true,           % русские буквы в раздела PDF
@@ -61,6 +61,11 @@
 	urlcolor=blue           % на URL
 }
 
+
+
+
+%\captionsetup{figurename=SDsdsd}
+
 %%% Работа с русским языком
 \usepackage{cmap}					% поиск в PDF
 \usepackage{mathtext} 				% русские буквы в формулах
@@ -69,6 +74,23 @@
 \usepackage[english,russian]{babel}	% локализация и переносы
 \usepackage{indentfirst}
 \frenchspacing
+
+% Работа с подписями рисунков и фигур
+% Необходимо ставить после настройки работы с русским языком, так как иначе русские буквы в формулах не воспринимаются
+\usepackage{caption}
+\captionsetup{
+		margin=10pt,
+		font=small,
+		figurename={Рисунок},
+		figurewithin=section,
+		tablewithin=section,
+		labelfont={bf},
+		labelsep=endash
+}
+
+
+
+
 
 \usepackage[usenames]{color}
 \usepackage{colortbl}
@@ -246,4 +268,5 @@
 	breakatwhitespace=true,
 	title=\lstname 
 }
+
 

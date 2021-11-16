@@ -1,50 +1,3 @@
-\documentclass[a4paper,14pt]{extarticle}
-
-% Путь до папки с общими шаблонами
-\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
-% Название работы в титуле
-\newcommand{\workname}{Отчет по практической работе №4}
-% Название дисциплины в титуле
-\newcommand{\discipline}{Архитектура процессоров и микропроцессоров}
-% Название кафедры в титуле
-\newcommand{\kafedra}{Кафедра вычислительной техники}
-% Тема работы в титуле
-\newcommand{\theme}{Стадии выполнения команд процессором КР580ВМ80}
-% Должность преподавателя в титуле
-\newcommand{\rang}{cтарший преподаватель кафедры ВТ}
-% ФИО преподавателя в титуле
-\newcommand{\teacherfio}{Ю.~М.Скрябин}
-\newcommand{\studentfio}{К.~Ю.~Денисов}
-\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
-
-\usepackage{tabularx}
-
-
-
-\usepackage{booktabs}
-\newcolumntype{b}{X}
-\newcolumntype{s}{>{\hsize=.5\hsize}X}
-\newcommand{\heading}[1]{\multicolumn{1}{|c|}{#1}}
-
-% установка размера шрифта для всего документа
-%\fontsize{20pt}{18pt}\selectfont
-\usepackage{extsizes} % Возможность сделать 14-й шрифт
-
-% Вставка заготовки преамбулы
-\input{\pathToCommonFolder/ruspreamble}
-
-\author{Кирилл Денисов}
-\title{Лабораторная работа №1}
-\date{\today}
-
-\renewcommand{\withouttheme}{1}
-
-% установка полуторного интервала
-% \usepackage{setspace}  
-% \onehalfspacing
-
-% использовать Times New Roman
-\renewcommand{\rmdefault}{ftm}
 
 
 \begin{document}
@@ -393,7 +346,7 @@
 		Разр. & 0 & 1:2 & \multicolumn{ 3}{c|}{3:6} \\ \hline\hline
 		1 & 0 & <y1> & \multicolumn{ 3}{c|}{<y3>} \\ \hline
 		2 & 0 & <y4> & <y2> & - & 0 \\ \hline
-		3 & 1 & NX1 &  \multicolumn{ 3}{c|}{9}  \\ \hline
+		3 & 1 & NX1 & \multicolumn{ 3}{c|}{9}  \\ \hline
 		4 & - & - & \multicolumn{ 3}{c|}{<y6>} \\ \hline
 		5 & 1 & NX3 & 2 &  &  \\ \hline
 		6 & 0 & 00 & \multicolumn{ 3}{c|}{00} \\ \hline
@@ -437,4 +390,3 @@
 	
 	
 \end{document}
-

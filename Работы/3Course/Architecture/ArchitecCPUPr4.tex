@@ -215,6 +215,7 @@
 
 \begin{table}[htbp]
 	\scriptsize
+		\caption{Таблица состояний}
 	\begin{tabularx}\linewidth{|X|X|X|X|X|X|X|}
 		%{|p{0.1\linewidth}|p{0.1\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|p{0.2\linewidth}|}
 		\hline
@@ -229,7 +230,7 @@
 		\multicolumn{ 1}{|c|}{a5} & \multicolumn{ 1}{c|}{100} & y3, y5 & x2 & a1 & 000 & \heading{R3} \\ \cline{ 3- 7}
 		\multicolumn{ 1}{|c|}{} & \multicolumn{ 1}{c|}{} & -- & !x2 & a1 & 000 & \heading{R3} \\ \hline
 	\end{tabularx}
-	\caption{Таблица состояний}
+
 	\label{tab:states}
 \end{table}
 
@@ -381,7 +382,10 @@
 \end{figure}
 
 
-В Таблице \ref{tab:manage-algorithm2} представлена МКП, описывающая рассматриваемый алгоритм управления
+В Таблице \ref{tab:manage-algorithm2} представлена МКП, описывающая рассматриваемый алгоритм управления. 
+
+6 команда  - пустая команда
+Для очистки автомата от признаков прошлого условного перехода
 
 \begin{table}[htbp]
 	\centering
@@ -390,20 +394,19 @@
 		Адр. МКОП & R & NY1 & NY2 & NY3 & доп \\ \hline
 		Разр. & 0 & 1:2 & 3:4 & 5 & 6 \\ \hline
 		Адр. МКОП & R & NX & B &  &  \\ \hline
-		Разр. & 0 & 1:2 & \multicolumn{ 3}{c|}{3:6} \\ \hline\hline
-		1 & 0 & <y1> & \multicolumn{ 3}{c|}{<y3>} \\ \hline
+		Разр. & 0 & 1:2 & \multicolumn{ 3}{c|}{3:6} \\ \hline
+		1 & 0 & <y1> & <y3> & - & 0 \\ \hline
 		2 & 0 & <y4> & <y2> & - & 0 \\ \hline
-		3 & 1 & NX1 &  \multicolumn{ 3}{c|}{9}  \\ \hline
-		4 & - & - & \multicolumn{ 3}{c|}{<y6>} \\ \hline
-		5 & 1 & NX3 & 2 &  &  \\ \hline
-		6 & 0 & 00 & \multicolumn{ 3}{c|}{00} \\ \hline
-		7 & 1 & NX2 & 12 &  &  \\ \hline
-		8 & 0 & <yк> & \multicolumn{ 3}{c|}{-} \\ \hline
-		9 & 0 & <y1> & <y6> & <y5> & 0 \\ \hline
-		10 & 1 & NX2 & 12 &  &  \\ \hline
-		11 & 0 & <yк> & \multicolumn{ 3}{c|}{-} \\ \hline
-		12 & 0 & - & <y3> & <y5> & 0 \\ \hline
-		13 & 0 & <yк> & - & - & 0 \\ \hline
+		3 & 1 & NX1 &  \multicolumn{ 3}{c|}{7}  \\ \hline
+		4 & - & - & {<y6>}& - & 0 \\ \hline
+		5 & 1 & 00 &  \multicolumn{ 3}{c|}{2}  \\ \hline
+		6 & 1 & NX3 & \multicolumn{ 3}{c|}{8}  \\ \hline
+		7 & 0 & <yк> & \multicolumn{ 3}{c|}{-} \\ \hline
+		8 & 0 & <y1> & <y6> & <y5> & 0 \\ \hline
+		9 & 1 & NX2 &  \multicolumn{ 3}{c|}{10} \\ \hline
+		10 & 0 & <yк> & -& -& 0 \\ \hline
+		11 & 0 & - & <y3> & <y5> & 0 \\ \hline
+		12 & 0 & <yк> & - & - & 0 \\ \hline
 	\end{tabular}
 	\caption{Алгоритм управления. Естественная адресация }
 	\label{tab:manage-algorithm2}
@@ -430,9 +433,8 @@
 \end{figure}
 %\newpage
 %\vspace{42ex}
-	\anonsection{Вывод}
+	\paragraph{Вывод:}
 	В ходе данной практической работы мы ознакомились, разработали три МПА Мили на жесткой логике, УАПЛ с принудительной адресацией с 2-я адресными полями, УАПЛ с естественной адресацией.
-	
 	Полученные знания применили на практике.
 	
 	

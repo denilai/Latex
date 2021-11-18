@@ -1,0 +1,461 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №4}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Архитектура процессоров и микропроцессоров}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра вычислительной техники}
+% Тема работы в титуле
+\newcommand{\theme}{Стадии выполнения команд процессором КР580ВМ80}
+% Должность преподавателя в титуле
+\newcommand{\rang}{cтарший преподаватель кафедры ВТ}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Ю.~М.Скрябин}
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+
+\newcommand{\pt}{PacketTracer\copyright}
+
+\usepackage{tabularx}
+
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{|c|}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов ИВБО-02-19}
+\title{Практическая работа №4\\Вариант 6}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+	%\thispagestyle{empty}
+	% Вставка первого титульного листа
+	%\input{\pathToCommonFolder/titul-with-signature}
+	\newpage
+	%\tableofcontents
+	\newpage
+	%\listoftables
+\maketitle
+
+\begin{table}[htbp]
+\begin{center}
+		\caption{Таблица адресации}
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		Устройство  & Интерфейс & IP-адрес & Маска подсети \\ \hline
+		S1 & VLAN 1 & 192.168.6.11 & 255.255.255.0 \\ \hline
+		S2\_DENISOV & VLAN 1 & 192.168.6.12 & 255.255.255.0 \\ \hline
+		PC-A & NIC & 192.168.6.3 & 255.255.255.0 \\ \hline
+		PC-B & NIC & 192.168.6.2 & 255.255.255.0 \\ \hline
+	\end{tabular}
+	\label{tab:adress}
+\end{center}
+\end{table}
+
+\mypart{Создание и настройка сети}
+\step{Подключите все устройства в соответствии с топологией}
+Построим топологию сети в соответствии с заданием (см. рис. \ref{fig:topology4}).
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/topology4}
+	\caption{Топология сети}
+	\label{fig:topology4}
+\end{figure}
+
+\step{Настройте узлы ПК}
+\step{Настройте базовые параметры каждого коммутатора}
+\begin{enumerate}
+	\item Настроим имена устройств в соответствии с топологией.
+	\item Настроим IP-адреса, как указано в таблице адресации.
+	\item Назначим cisco в качестве паролей консоли и VTY.
+	\item Назначим class в качестве пароля привилегированного режима EXEC
+\end{enumerate}
+Приведем running configuration коммутаторов S1 и S2\_DENISOV, после проведения вышеописанных шагов.
+Switch S1:
+\begin{lstlisting}
+	Building configuration...
+	
+	Current configuration : 1221 bytes
+	!
+	version 15.0
+	no service timestamps log datetime msec
+	no service timestamps debug datetime msec
+	service password-encryption
+	!
+	hostname Switch
+	!
+	enable secret 5 $1$mERr$9cTjUIEqNGurQiFU.ZeCi1
+	!
+	!
+	!
+	!
+	!
+	!
+	spanning-tree mode pvst
+	spanning-tree extend system-id
+	!
+	interface FastEthernet0/1
+	!
+	interface FastEthernet0/2
+	!
+	interface FastEthernet0/3
+	!
+	interface FastEthernet0/4
+	!
+	interface FastEthernet0/5
+	!
+	interface FastEthernet0/6
+	!
+	interface FastEthernet0/7
+	!
+	interface FastEthernet0/8
+	!
+	interface FastEthernet0/9
+	!
+	interface FastEthernet0/10
+	!
+	interface FastEthernet0/11
+	!
+	interface FastEthernet0/12
+	!
+	interface FastEthernet0/13
+	!
+	interface FastEthernet0/14
+	!
+	interface FastEthernet0/15
+	!
+	interface FastEthernet0/16
+	!
+	interface FastEthernet0/17
+	!
+	interface FastEthernet0/18
+	!
+	interface FastEthernet0/19
+	!
+	interface FastEthernet0/20
+	!
+	interface FastEthernet0/21
+	!
+	interface FastEthernet0/22
+	!
+	interface FastEthernet0/23
+	!
+	interface FastEthernet0/24
+	!
+	interface GigabitEthernet0/1
+	!
+	interface GigabitEthernet0/2
+	!
+	interface Vlan1
+	ip address 192.168.6.11 255.255.255.0
+	!
+	!
+	!
+	!
+	line con 0
+	password 7 0822455D0A16
+	login
+	!
+	line vty 0 4
+	password 7 0822455D0A16
+	login
+	transport input telnet
+	line vty 5 15
+	login
+	!
+	!
+	!
+	!
+	end
+	
+	
+	Switch#
+\end{lstlisting}
+Switch S2\_DENISOV:
+\begin{lstlisting}
+	Building configuration...
+	
+	Current configuration : 1241 bytes
+	!
+	version 15.0
+	no service timestamps log datetime msec
+	no service timestamps debug datetime msec
+	service password-encryption
+	!
+	hostname Switch
+	!
+	enable secret 5 $1$mERr$9cTjUIEqNGurQiFU.ZeCi1
+	!
+	!
+	!
+	no ip domain-lookup
+	!
+	!
+	!
+	spanning-tree mode pvst
+	spanning-tree extend system-id
+	!
+	interface FastEthernet0/1
+	!
+	interface FastEthernet0/2
+	!
+	interface FastEthernet0/3
+	!
+	interface FastEthernet0/4
+	!
+	interface FastEthernet0/5
+	!
+	interface FastEthernet0/6
+	!
+	interface FastEthernet0/7
+	!
+	interface FastEthernet0/8
+	!
+	interface FastEthernet0/9
+	!
+	interface FastEthernet0/10
+	!
+	interface FastEthernet0/11
+	!
+	interface FastEthernet0/12
+	!
+	interface FastEthernet0/13
+	!
+	interface FastEthernet0/14
+	!
+	interface FastEthernet0/15
+	!
+	interface FastEthernet0/16
+	!
+	interface FastEthernet0/17
+	!
+	interface FastEthernet0/18
+	!
+	interface FastEthernet0/19
+	!
+	interface FastEthernet0/20
+	!
+	interface FastEthernet0/21
+	!
+	interface FastEthernet0/22
+	!
+	interface FastEthernet0/23
+	!
+	interface FastEthernet0/24
+	!
+	interface GigabitEthernet0/1
+	!
+	interface GigabitEthernet0/2
+	!
+	interface Vlan1
+	ip address 192.168.6.12 255.255.255.0
+	!
+	!
+	!
+	!
+	line con 0
+	password 7 0822455D0A16
+	login
+	!
+	line vty 0 4
+	password 7 0822455D0A16
+	login
+	transport input telnet
+	line vty 5 15
+	login
+	!
+	!
+	!
+	!
+	end
+\end{lstlisting}
+
+
+\mypart{Изучение таблицы МАС-адресов коммутатора}
+Как только между сетевыми устройствами начинается передача данных, коммутатор выясняет МАС-
+адреса и строит таблицу.
+\step{Запишите МАС-адреса сетевых устройств}
+Откроем командную строку на PC-A и PC-B и введем команду \textit{ipconfig /all}. Приведем физические
+адреса адаптера Ethernet. (см. рис. \ref{fig:mac-pac-a},\ref{fig:mac-pac-b}).
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/mac-pac-a}
+	\caption{Физический адрес компьютера PC-A}
+	\label{fig:mac-pac-a}
+\end{figure}
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/mac-pac-b}
+	\caption{Физический адрес компьютера PC-B}
+	\label{fig:mac-pac-b}
+\end{figure}
+
+\begin{align*}
+PC-A:& 0050.0F42.E358\\
+PC-B:& 0030.F25B.6B35
+\end{align*}
+
+Какая часть MAC-адреса этого устройства соответствует OUI?
+
+\begin{align*}
+PC-A:& 0050.0F\\
+PC-B:& 0030.F2
+\end{align*}
+
+
+
+Какая часть MAC-адреса этого устройства соответствует серийному номеру?
+
+\begin{align*}
+PC-A:& 42.E358\\
+PC-B:& 5B.6B35
+\end{align*}
+
+Подключимся коммутаторам S1 и S2\_DENISOV через консоль и введем команду для
+отображения MAC-адресов интерфейсов, задействованных в нашей топологии, на каждом
+коммутаторе. 
+
+Назовите адреса оборудования (или зашитый адрес — bia). Необходимо указать
+адреса интерфейсов, с помощью которых соединяются 2 коммутатора
+Коммутаторы соединяются с помощью интерфейсов FastEthernet 0/2
+\begin{align*}
+S1 &F0/2~bia: 0001.c798.5c02\\
+S2\_DENISOV &F0/2~bia: 0090.2ba1.9702
+\end{align*}
+
+\step{Просмотрите таблицу МАС-адресов коммутатора}
+Подключимся к коммутатору S2\_DENISOV через консоль и просмотрим таблицу МАС-адресов с помощью команды \textit{show mas-address-table} до и
+после тестирования сетевой связи с помощью эхо-запросов. Ответим на вопросы:
+\begin{enumerate}
+	\item Записаны ли в таблице МАС-адресов какие-либо МАС-адреса? \\\textbf{Ответ} --- \textit{Да}
+	\item Какие МАС-адреса записаны в таблице? С какими портами коммутатора они сопоставлены и каким
+	устройствам принадлежат? Игнорируйте МАС-адреса, сопоставленные с центральным
+	процессором.\\\textbf{Ответ} --- \textit{В таблице представлена одна запись. Она сопоставлена с портом F0/2 и принадлежит коммутатору S1}
+	\item Если вы не записали МАС-адреса сетевых устройств в шаге 1, как можно определить, каким
+	устройствам принадлежат МАС-адреса, используя только выходные данные команды для
+	отображения таблицы MAC-адресов? Работает ли это решение в любой ситуации?\\
+	\textbf{Ответ} --- \textit{сделать вывод о том, каким устройствам принадлежан MAC-адреса можно по столбцу "Ports" в выводе команды show mac-address-table. Этот способ работает, если мы имеем представление о строении логической топологии сети}
+\end{enumerate}
+
+
+\step{Очистите таблицу МАС-адресов коммутатора S2\_ФАМИЛИЯ и снова отобразите таблицу МАС-адресов}
+
+В привилегированном режиме EXEC введем команду\textit{ clear mac address-table dynamic}.
+\begin{lstlisting}
+	S2# clear mac address-table dynamic
+\end{lstlisting}
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/clear-mac-s2}
+	\caption{Очистка mac-address-table в S2\_DENISOV}
+	\label{fig:clear-mac-s2}
+\end{figure}
+Снова быстро отобразим содержимой таблицы коммутации. 
+Указаны ли в ней МАС-адрес для
+VLAN 1? Указаны ли другие МАС-адреса?
+
+\textbf{Ответ} --- \textit{нет, не указаны}
+
+Через 10 секунд снова введите команду для отображения таблицы MAC-адресов и нажмите
+клавишу ввода. Появились ли в ней новые адреса?
+
+\textbf{Ответ} --- \textit{В таблице появились MAC-адреса, содержащиеся в ней до удаления}
+
+
+\step{С компьютера PC-B отправьте эхо-запросы устройствам в сети и просмотрите
+	таблицу МАС-адресов коммутатора}
+\begin{enumerate}
+	\item На компьютере PC-B откройте командную строку и введите команду для отображения ARP-кэша
+	узла. Не считая адресов многоадресной и широковещательной рассылки, сколько пар IP- и МАС-адресов устройств было получено через протокол ARP?\\
+	\textbf{Ответ} --- \textit{Две пары адресов. Для двух коммутаторов (см. рис. \ref{fig:arp-pc-b}).}
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.5\linewidth]{images/arp-pc-b}
+		\caption{Результат команды \textit{arp -a} на PC-B}
+		\label{fig:arp-pc-b}
+	\end{figure}
+	
+	\item Из командной строки PC-B отправьте эхо-запросы на компьютер PC-A, а также коммутаторы S1 и
+	S2\_DENISOV. От всех ли устройств получены ответы?
+	\\ \textbf{Ответ} --- \textit{Да, ответы получены от всех устройств в сети}
+	\item Подключившись через консоль к коммутатору S2\_DENISOV, введите команду для отображения
+	таблицы MAC-адресов. Добавил ли коммутатор в эту таблицу дополнительные МАС-адреса? Если
+	да, то какие адреса и устройства?
+	\\ \textbf{Ответ} --- \textit{Да, коммутатор добавил в таблицу два дополнительных MAC-адреса. Данные адреса принадлежат PC-A и PC-B (см. рис. \ref{fig:test-mac-b2}). }
+	\item На компьютере PC-A откройте командную строку и еще раз введите команду из пункта «а».
+	Появились ли в ARP-кэше компьютера PC-A дополнительные записи для всех сетевых устройств,
+	которым были отправлены эхо-запросы?\\
+	\textbf{Ответ} --- \textit{Да, появились сведения о всех остальных устройствах в сети (см. рис. \ref{fig:arp-pc-a}).}
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.5\linewidth]{images/arp-pc-a}
+			\caption{Результат работы команды \textit{arp -a} на PC-A}
+			\label{fig:arp-pc-a}
+		\end{figure}
+		
+\end{enumerate}
+
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/test-mac-b2}
+	\caption{}
+	\label{fig:test-mac-b2}
+\end{figure}
+
+
+
+\mypart{Защита лабораторной работы (ответ на контрольные вопросы и вопросы
+	преподавателя)}
+\begin{enumerate}
+	\item В сетях Ethernet данные передаются на устройства по соответствующим МАС-адресам. Для
+	этого коммутаторы и компьютеры динамически создают ARP-кэш и таблицы МАС-адресов.
+	Если компьютеров в сети немного, эта процедура выглядит достаточно простой. Какие
+	сложности могут возникнуть в крупных сетях? 
+	\\\textbf{Ответ} --- \textit{При большом количестве устройств в сети таблица MAC-адресов может переполнится, что приведет к выходу коммутатора из строя на некоторое время. Когда таблица МАС-адресов наполняется фиктивными МАС-адресами, коммутатор входит в так называемый режим с пропусканием трафика. В этом режиме коммутатор отправляет все кадры по широковещательной рассылке всем устройствам в сети. На данной уязвимости основана т.н. лавинная атака.}
+	\item Можете ли вы использовать широковещательную рассылку на уровне 2? Если да, то каким
+	будет ее MAC-адрес?
+	\\ \textbf{Ответ} --- \textit{Да, можем. Адрес широковещательной рассылки на уровне 2 модели OSI --- FF-FF-FF-FF-FF-FF}
+	\item Зачем нужно знать MAC-адрес устройства?
+	\\ \textbf{Ответ} --- \textit{Если нужно организовать фильтрацию по MAC-адресам. Для получения информации о изготовителе прибора, номере его серии}
+	\item Для чего нужен протокол ARP?
+	\\ \textbf{Ответ} --- \textit{Протокол ARP позволяет автоматически определить МАК-адрес компьютера по его IP-адресу. Протокол работает в режиме запрос-ответ.}
+\end{enumerate}
+
+
+
+
+\end{document}
+
+
+

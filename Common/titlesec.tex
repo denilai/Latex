@@ -1,0 +1,23 @@
+% arara: pdflatex
+\documentclass{book}
+\usepackage{titlesec}
+% from the titlesec package
+%\titleformat{ command }
+%             [ shape ]
+%             { format }{ label }{ sep }{ before-code }[ after-code ]
+% \section*
+\titleformat{name=\section,numberless}
+{\filcenter\Large\bfseries}
+{}
+{.5em}
+{}
+
+\begin{document}
+\tableofcontents
+
+\chapter{Overview}
+    \section*{Introduction}
+    \section{Model}
+    \section{Discussion}
+\noindent\hrulefill
+\end{document}

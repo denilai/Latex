@@ -15,6 +15,7 @@
 % ФИО преподавателя в титуле
 \newcommand{\teacherfio}{Ю.~М.Скрябин}
 \newcommand{\studentfio}{К.~Ю.~Денисов}%Д.~Н.~Федосеев\\%А.~М.~Сосунов\\%К.~Ю.~Денисов\\
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
 
 \usepackage{tabularx}
 
@@ -55,14 +56,14 @@
 	
 
 	
-\section{Цель работы}
-Изучить структуру эмулятора, систему команд, режимы работы. Для
-программы построить временную диаграмму работы
+\section*{Цель работы}
+Целью работы является изучение структуры эмулятора, системы команд. Необходимо
+построить для программы  временную диаграмму работы
 конвейера. Пояснить, что происходит в конвейере в каждом
 такте, какие возникают конфликты, указать причину конфликта.
-\section {Индивидуальный вариант № 9}
+\section*{Индивидуальное задание. Вариант № 9}
 
-\begin{problem}
+\begin{problem*}
 	Изучить работу команд условных переходов данной программы:
 	
 	0000 MOV 00, 0003
@@ -74,18 +75,17 @@
 	0003 JMP 0001
 	
 	\nonum{} Приведем временную диаграмму (см. таблицу~\ref{tab:time-1}).
-\end{problem}
+\end{problem*}
 
 
-\begin{problem}
+\begin{problem*}
 	Разработать программу для вычисления суммы первых десяти членов натурального ряда ($n=10$),
 	ввести в эмулятор, исследовать ее выполнение, выявить конфликты по
 	данным. Построить временную диаграмму работы конвейера. Пояснить
 	возникающие конфликты, указав № такта.
 
 	\nonum Опишем программу, реализующую алгоритм нахождения суммы членов натурального ряда (см. таблицу~\ref{tab:prog-2}).
-	\newpage
-	\begin{table}[htbp]
+		\begin{table}[htbp]
 
 		\begin{tabular}{|l|p{0.7\linewidth}|}
 			\hline
@@ -128,11 +128,11 @@
 \end{enumerate}
 
 
-\end{problem}
+\end{problem*}
 
 
 
-\begin{problem}
+\begin{problem*}
 	Разработать программу для организации инкремента содержимого
 	регистра РОН от 0 до 10.
 	\nonum
@@ -170,11 +170,12 @@
 
  Можно избежать конфликта, на такте 4 если поменять местами команды, чтобы чтение происходило в другом такте, но в данном случае это невозможно из-за небольшого количества команд в программе.
 
-\end{problem}	
+\end{problem*}	
 
 \begin{landscape}
 
 \begin{table}[htbp]
+	\centering
 	\small
 	\begin{tabular}{|r|l|l||l|l|l|l|l|l|l|l|l|l|l|}
 		\hline
@@ -197,6 +198,7 @@
 \newpage
 
 \begin{table}[htbp]
+	\centering
 	\begin{tabular}{|r|l|l|l|l|l|l|l|l|l|l|l|l|}
 		\hline
 		\multicolumn{1}{|l|}{Ст/Т} & \multicolumn{1}{r|}{1} & \multicolumn{1}{r|}{2} & \multicolumn{1}{r|}{3} & \multicolumn{1}{r|}{4} & \multicolumn{1}{r|}{5} & \multicolumn{1}{r|}{6} & \multicolumn{1}{r|}{7} & \multicolumn{1}{r|}{8} & \multicolumn{1}{r|}{9} & \multicolumn{1}{r|}{10} & \multicolumn{1}{r|}{11} & \multicolumn{1}{r|}{12} \\ \hline
@@ -211,6 +213,7 @@
 \end{table}
 
 \begin{table}[htbp]
+	\centering
 	\begin{tabular}{|r|l|l|l|l|l|l|l|l|l|l|l|}
 		\hline
 		\multicolumn{1}{|l|}{Ст/Т} & \multicolumn{1}{r|}{1} & \multicolumn{1}{r|}{2} & \multicolumn{1}{r|}{3} & \multicolumn{1}{r|}{4} & \multicolumn{1}{r|}{5} & \multicolumn{1}{r|}{6} & \multicolumn{1}{r|}{7} & \multicolumn{1}{r|}{8} & \multicolumn{1}{r|}{9} & \multicolumn{1}{r|}{10} & \multicolumn{1}{r|}{11} \\ \hline
@@ -227,7 +230,7 @@
 \end{landscape}
 
 
-\anonsection{Вывод}
+\paragraph{Вывод}
 
 В ходе данной лабораторной работы мы ознакомились со структурой эмулятора RISC конвейера, изучили его систему команд, режимы работы, описали алгоритмы и реализовали программы согласно варианту, построили временные диаграммы работы конвейера, идентифицировали конфликты и указали способы их устранения.
 

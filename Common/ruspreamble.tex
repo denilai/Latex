@@ -8,6 +8,9 @@
 
 % В этом документе преамбула
 
+
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
 % Для корректного использования русских символов в формулах
 % пакеты hyperref и настройки, связанные с ним, стоит загуржать
 % перед загрузкой пакета mathtext
@@ -85,7 +88,9 @@
 		figurewithin=section,
 		tablewithin=section,
 		labelfont={bf},
-		labelsep=endash
+		labelsep=endash,
+	    justification = raggedleft,
+     	singlelinecheck = false
 }
 
 
@@ -182,10 +187,15 @@
 \newtheorem{work}{Практическая работа}[part]
 
 
+
+\theoremstyle{definition} % Это стиль по умолчанию, его можно не переопределять.
+\newtheorem{mypart}{Часть}
+\newtheorem{step}{Шаг}[mypart]
  
  
 \theoremstyle{definition} % "Определение"
 \newtheorem{corollary}{Следствие}[theorem]
+\newtheorem{problem*}{Задание}
 \newtheorem{problem}{Задание}[section]
 \newtheorem{task}{Подзадание}[problem]
 %\newtheorem{script}{Cценарий}
@@ -269,4 +279,5 @@
 	title=\lstname 
 }
 
+\usepackage{tabularx}
 

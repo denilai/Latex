@@ -10,6 +10,7 @@
 
 
 \usepackage{extsizes} % Возможность сделать 14-й шрифт
+\def\myformat#1{\hfil #1\hfil}
 
 % Для корректного использования русских символов в формулах
 % пакеты hyperref и настройки, связанные с ним, стоит загуржать
@@ -20,9 +21,36 @@
 % кодировка шрифта
 %\usepackage[T2A]{fontenc} 
 \usepackage{pscyr}
+\usepackage{indentfirst} % отделять первую строку раздела абзацным отступом
 
 
+\usepackage{adjustbox}
 
+
+\usepackage{titlesec}
+
+\titleformat{\chapter}[block]
+{\filcenter}
+{\thechapter}
+{1em}
+{\MakeUppercase}{}
+
+\titlespacing*{\chapter}{0pt}{<s>30pt}{*4} 
+
+%\titleformat{\section}
+%{}%{\sloppy\righthyphenmin62}
+%{\thesection}
+%{1ex}{}
+
+%\titleformat*{\section}{\sloppy\righthyphenmin62}
+\titlespacing*{\section}{\parindent}{*4}{*4}
+
+	
+	
+	
+\usepackage{titletoc}
+
+\dottedcontents{chapter}[1.6em]{}{1.6em}{1pc}
 
 % объявляем новую команду для переноса строки внутри ячейки таблицы
 \newcommand{\specialcell}[2][c]{%
@@ -77,11 +105,65 @@
 \usepackage[english,russian]{babel}	% локализация и переносы
 \usepackage{indentfirst}
 \frenchspacing
+\usepackage{multirow}    % улучшенное форматирование таблиц
 
 % Работа с подписями рисунков и фигур
 % Необходимо ставить после настройки работы с русским языком, так как иначе русские буквы в формулах не воспринимаются
+
+\usepackage[tableposition=top,singlelinecheck=false]{caption}
+\usepackage{subcaption}
+
+\DeclareCaptionLabelFormat{gostfigure}{Рисунок #2}
+\DeclareCaptionLabelFormat{gostfigureappendix}{Рисунок A.#2}
+\DeclareCaptionLabelFormat{gosttable}{Таблица #2}
+\DeclareCaptionLabelSeparator{gost}{~---~}
+% Можно разбивать длинные таблицы вручную, оформляя каждую как table. В этом случае для продолжений таблицы нужно создать отдельный стиль заголовка
+\DeclareCaptionLabelFormat{continued}{Продолжение таблицы~#2}
+\captionsetup*[ContinuedFloat]{labelformat=continued}
+\captionsetup{labelsep=gost}
+\captionsetup*[figure]{labelformat=gostfigure, justification=centering}  % выравнивание по центру
+\captionsetup*[table]{labelformat=gosttable,justification=raggedright}
+
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}
+
+
+%  нумерованные списки
+%\renewcommand{\labelenumi}{\asbuk{enumi})}
+\renewcommand{\labelenumii}{\arabic{enumii})}
+
+%Опция leftmargin устанавливает левую границу текста списка равной отступу в начале абзаца.
+
+\usepackage{enumitem}
+\makeatletter
+\AddEnumerateCounter{\asbuk}{\@asbuk}{ю)}
+\makeatother
+\setlist{nosep, leftmargin=\parindent}
+
+
+% Кроме того, мне не нравится использование дефисов в качестве маркеров, и я заменяю их на "минус":
+\renewcommand{\labelitemi}{--}
+\renewcommand{\labelitemii}{--}
+
+
+
+
+
+%%Создадим стиль раздела приложения и назовем его \append
+%Текст приложения включается в документ после библиографических ссылок при помощи окружения appendices
+\newcommand{\empline}{\mbox{}\newline} % пустая строка
+\newcommand{\appendddd}[1]{ 
+	\clearpage
+	\stepcounter{section}
+	\begin{center}
+		\chaptertitlename~\Asbuk{chapter}
+	\end{center}
+	\begin{center}{#1}\end{center}
+	\empline
+	\addcontentsline{toc}{chapter}{\Asbuk{chapter}\hspace{0.6em}~#1}}
+
+\if 
 \usepackage{caption}
-\captionsetup{
+\captionsetup[figure]{
 		margin=10pt,
 		font=small,
 		figurename={Рисунок},
@@ -89,9 +171,20 @@
 		tablewithin=section,
 		labelfont={bf},
 		labelsep=endash,
-	    justification = raggedleft,
+	    justification = raggedright,
      	singlelinecheck = false
+}[table]{
+	margin=10pt,
+	font=small,
+	%figurename={Рисунок},
+	%figurewithin=section,
+	tablewithin=section,
+	labelfont={bf},
+	labelsep=endash,
+	justification = raggedright,
+	singlelinecheck = false
 }
+\fi
 
 
 
@@ -116,11 +209,16 @@
 %\renewcommand{\thefigure}{\thesection.\arabic{figure}}
 
 
-
+\if
+%Полное отключние переносов
+\pretolerance=10000
+\tolerance=2000 
+\emergencystretch=10pt
+\fi
 
 
 % Изменения параметров списка иллюстраций
-\renewcommand{\cftfigfont}{Рисунок } % добавляем везде "Рисунок" перед номером
+%\renewcommand{\cftfigfont}{Рисунок } % добавляем везде "Рисунок" перед номером
 \addto\captionsrussian{\renewcommand\listfigurename{Список иллюстративного материала}}
 
 \newcommand{\tm}{\texttrademark\ }
@@ -167,7 +265,7 @@
 
 %%% Работа с картинками
 \usepackage{graphicx}  % Для вставки рисунков
-\graphicspath{{images/}{screnshots/}}  % папки с картинками
+\graphicspath{{images/}{screnshots/}{../images/}}  % папки с картинками
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 \setlength\fboxsep{3pt} % Отступ рамки \fbox{} от рисунка
 \setlength\fboxrule{1pt} % Толщина линий рамки \fbox{}

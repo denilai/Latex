@@ -1,4 +1,5 @@
 \documentclass[a4paper,14pt]{extarticle}
+\usepackage[title,titletoc]{appendix}
 
 % Путь до папки с общими шаблонами
 \newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
@@ -13,17 +14,10 @@
 % Должность преподавателя в титуле
 \newcommand{\rang}{cтарший преподаватель кафедры ВТ}
 % ФИО преподавателя в титуле
-\newcommand{\teacherfio}{Ю.~М.Скрябин}
+\newcommand{\teacherfio}{Ю.~М.~Скрябин}
 \newcommand{\studentfio}{К.~Ю.~Денисов}%Д.~Н.~Федосеев\\%А.~М.~Сосунов\\%К.~Ю.~Денисов\\
 \newcommand{\signature}{\pathToCommonFolder/denisov-signature}
 
-\usepackage{tabularx}
-
-
-
-\usepackage{booktabs}
-\newcolumntype{b}{X}
-\newcolumntype{s}{>{\hsize=.5\hsize}X}
 \newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
 
 % установка размера шрифта для всего документа
@@ -37,29 +31,30 @@
 \title{Лабораторная работа №1}
 \date{\today}
 
+
+
 % установка полуторного интервала
 % \usepackage{setspace}  
 % \onehalfspacing
 
 % использовать Times New Roman
 \renewcommand{\rmdefault}{ftm}
-
+\renewcommand{\withouttheme}{1}
 
 \begin{document}
-	\thispagestyle{empty}
+	%\thispagestyle{empty}
 	% Вставка первого титульного листа
-	\input{\pathToCommonFolder/titul-with-signature}
-	\newpage
+	%\input{\pathToCommonFolder/titul-with-signature}
+	\setcounter{page}{2}
 %	\tableofcontents
 %	\newpage
 	%\listoftables
-	
 \section*{Цель работы}
 Целью работы является исследование
 работы процессора при выполнении команд пересылок и
 арифметических операций.
-\section*{Индивидуальное задание. Вариант № 9}
-В ходе данной лабораторной работы нам были предложены две программы, которые необходимо было занести в память эмулируемого процессора КР580ВМ80. В таблице \ref{tab:progs} данные программы приведены побайтово.
+\section*{Описание работы}
+В ходе данной лабораторной работы нам были предложены две программы, которые необходимо было занести в память эмулируемого процессора КР580ВМ80. В таблице \ref{tab:progs} данные программы приведены побайтово, на рисунках A.\ref{fig:lab1-table-1} и A.\ref{fig:lab1-table-2} приведены состояния регистров и флагов во время выполнения данных программ.
 \begin{table}[htbp]
 		\caption{Программы к выполнению}
 	\begin{center}
@@ -103,7 +98,29 @@
 последовательность всех процедур выполнения команды.
 \end{enumerate}
 
-\paragraph{Вывод}В ходе данной лабораторной работы мы ознакомились со структурной схемой процессора КР580ВМ80, регистрами общего назначения данного процессора КР580ВМ80, научились заносить программу в память процессора, исследовали работу процессора при выполнении данных программ.
+\paragraph{Вывод:}
+в ходе данной лабораторной работы мы ознакомились со структурной схемой процессора КР580ВМ80, регистрами общего назначения данного процессора КР580ВМ80, научились заносить программу в память процессора, исследовали работу процессора при выполнении данных программ.
+
+\newpage
+
+\captionsetup*[figure]{labelformat=gostfigureappendix, justification=centering}  % выравнивание по центру
+\section*{\myformat{ПРИЛОЖЕНИЕ А}}
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[height=1\linewidth,angle=90]{images/lab1-table-1}
+	\caption{Таблица состояний процессора. Первая программа}
+	\label{fig:lab1-table-1}
+\end{figure}
+\newpage
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[height=0.75\linewidth, angle=90]{images/lab1-table-2}
+	\caption{Таблица состояний процессора. Вторая программа}
+	\label{fig:lab1-table-2}
+\end{figure}
+
 
 
 \end{document}

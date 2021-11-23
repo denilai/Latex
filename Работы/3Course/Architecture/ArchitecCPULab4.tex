@@ -1,0 +1,177 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по лабораторной работе №4}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Архитектура процессоров и микропроцессоров}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра вычислительной техники}
+% Тема работы в титуле
+\newcommand{\theme}{Стадии выполнения команд процессором КР580ВМ80}
+% Должность преподавателя в титуле
+\newcommand{\rang}{cтарший преподаватель кафедры ВТ}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Ю.~М.~Скрябин}
+\newcommand{\studentfio}{К.~Ю.~Денисов}%Д.~Н.~Федосеев\\%А.~М.~Сосунов\\%К.~Ю.~Денисов\\
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+
+\usepackage{tabularx}
+
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов}
+\title{Лабораторная работа №4}
+\date{\today}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+\renewcommand{\withouttheme}{1}
+
+\begin{document}
+%	\thispagestyle{empty}
+% Вставка первого титульного листа
+%	\input{\pathToCommonFolder/titul-with-signature}
+\setcounter{page}{2}
+%	\tableofcontents
+%	\newpage
+%\listoftables
+	
+
+	
+\section*{Цель работы}
+Изучить структуру эмулятора, режимы работы при различных алгоритмах
+определения пассивной строки КЭШ, систему команд, инструкцию
+пользователя.
+
+
+
+\begin{problem*}{~}
+	
+Для программы, представленной в качестве тестового примера (пример 1),
+задать количество строк КЭШ (2 и 4) и определить на интервале выполнения
+программы пассивные строки для каждого из алгоритмов.
+\nonum
+При попытке записи по адресу 0х26 четырех бит, длины строки не хватает и
+последние два бита, переходят на новую строку с адресом 0x28. В КЭШе уже
+записаны строки 0х10 и 0х20, поэтому одна из них будет выбрана пассивной и
+заменена на 0х28 на рисунке 1.
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.6\linewidth]{images/lab4-one}
+		\caption{Состояние КЭШ перед выбором пассивной строки}
+		\label{fig:lab4-one}
+	\end{figure}
+
+\textbf{Случайный метод:}
+
+Пассивной выбрана вторая строка на рисунке \ref{fig:lab4-two}.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/lab4-two}
+	\caption{Выбор пассивной строки}
+	\label{fig:lab4-two}
+\end{figure}
+
+\textbf{По счетчикам:}
+
+Была выбрана первая строка на рисунке \ref{fig:lab4-three}.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/lab4-three}
+	\caption{Выбор пассивной строки по счетчику}
+	\label{fig:lab4-three}
+\end{figure}
+
+\textbf{По очереди:}
+
+Была удалена первая строка, так как она раньше попала в КЭШ. Рисунок 4 – состояние до удаления пассивной строки. Рисунок 5 – состояние после удаления.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/lab4-four}
+	\caption{Выбор пассивной строки по очереди}
+	\label{fig:lab4-four}
+	
+\end{figure}
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]	\centering
+	\includegraphics[width=0.6\linewidth]{images/lab4-four1}
+	\caption{Состояние КЭШ после удаления}
+	\label{fig:lab4-four1}
+\end{figure}
+
+
+\textbf{При использовании четырех строк:}
+
+При использовании четырех строк пассивных строк не появляется, потому что этого количества хватает чтобы держать в КЭШе все необходимые значения: строку 0х10, 0х20, 0х28 (для записи по адресу 0x26) и 0хE0 (для записи в стек). 
+
+Работа программы в этом случае показана на рисунке 6.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/lab4-6}
+	\caption{Четырех строчный КЭШ}
+	\label{fig:lab4-6}
+\end{figure}
+
+\newpage	
+\end{problem*}
+\begin{problem*}{~}
+
+	\begin{enumerate}
+		\item Разработать программу сложения нечетных чисел натурального ряда;
+		\item Задать количество строк КЭШ (2 и 4) и определить на интервале выполнения программы пассивные строки для каждого из алгоритмов.
+	\end{enumerate}
+
+\nonum 
+
+\begin{lstlisting}
+	//запись константы 13 mov A, $0D
+	mov @00, A
+	
+	//обнуление переменной для суммы mov A, $00
+	mov @04, A
+	
+	//основной цикл while:
+	mov A, @04 add A, @00 mov @04, A
+	mov A, @00 dec A
+	jz end dec A jz end
+	mov @00, A
+	jmp 
+\end{lstlisting}
+
+\end{problem*}
+
+\paragraph{Вывод:}
+
+в ходе данной лабораторной работы мы ознакомились со структурой эмулятора RISC конвейера, изучили его систему команд, режимы работы, описали алгоритмы и реализовали программы согласно варианту, построили временные диаграммы работы конвейера, идентифицировали конфликты и указали способы их устранения.
+
+\end{document}
+
+

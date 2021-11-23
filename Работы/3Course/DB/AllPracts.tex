@@ -20,6 +20,7 @@
 \newcommand{\studentfio}{К.~Ю.~Денисов}%\\Д.~Н.~Федосеев\\А.~М.~Сосунов}\\%К.~Ю.~Денисов\\%И.~А.~Кремнев
 % ФИО преподавателя в титуле
 \newcommand{\teacherfio}{Д.~С.~Киселев}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
 
 
 \usepackage{tabularx}
@@ -43,9 +44,10 @@
 
 \renewcommand{\withouttheme}{1}
 
-\newcommand{\erassistant}{\textit{ErAssistant}}
-\newcommand{\erdatamodaler}{\textit{ERwin Data Modeler}}
+\newcommand{\erassistant}{\texttt{ErAssistant}}
+\newcommand{\erdatamodaler}{\texttt{ERwin Data Modeler}}
 \newcommand{\methodsection}{Работа по методическим указаниям}
+\newcommand{\individual}{Индивидуальный вариант}
 
 %если нужна тема работы в отчете, то указать в скобках что-либо, иначе оаставить пустым
 %\renewcommand{\withouttheme}{}
@@ -83,7 +85,7 @@
 
 \normalsize
 
-\section{Практическая работа № 1. \\Построение модели данных}
+\section{Построение модели данных}
 \subsection{\methodsection}
 \subsubsection*{Описание предметной области}
 Компания занимается производством и продажей небольших статуэток,
@@ -153,20 +155,35 @@
 \subsubsection*{Построение модели}
 По приведенному описанию предметной области построим ее модель в среде \erassistant. Укажем линии связей, назначим им имена, укажем типы и кратность связей. В результате работы, модель примет вид, приведенный на Рисунке \ref{fig:1-metod}.
 
-\newpage 
-
 % TODO: \usepackage{graphicx} required
-\begin{figure}[hpbt]
+\begin{figure}[h!]
 	\centering
-	\includegraphics[width=\linewidth]{images/1-metod}
+	\includegraphics[width=0.7\linewidth]{images/1-metod}
 	\caption{Модель данных Производства со связями}
 	\label{fig:1-metod}
 \end{figure}
-Сформируем отчет по данной модели средствами \erassistant. Перед формированием отчета убедимся в отсутствии ошибок в построенной модели. Проверка наличия ошибок осуществляется нажатием кнопки "Check~Diagram" на панели инструментов в верхней части экрана (см. Рисунок ...).
+%Сформируем отчет по данной модели средствами \erassistant. Перед формированием отчета убедимся в отсутствии ошибок в построенной модели. Проверка наличия ошибок осуществляется нажатием кнопки "Check~Diagram" на панели инструментов в верхней части экрана (см. рисунки \ref{fig:1-report}, \ref{fig:1-report2}).
 
-Отчет по построенной модели приведен на Рисунке ... .
 
-\subsection{Индивидуальное задание}
+%% TODO: \usepackage{graphicx} required
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=0.7\linewidth]{images/1-report}
+%	\caption{Отчет разработанной модели данных производства часть 1}
+%	\label{fig:1-report}
+%\end{figure}
+%
+%% TODO: \usepackage{graphicx} required
+%\begin{figure}[h!]
+%	\centering
+%	\includegraphics[width=0.7\linewidth]{images/1-report2}
+%	\caption{Отчет разработанной модели данных производства часть 2}
+%	\label{fig:1-report2}
+%\end{figure}
+
+%Отчет по построенной модели приведен на Рисунке ... .
+\newpage
+\subsection{\individual}
 \subsubsection*{Описание предметной области}
 В качестве индивидуального задания была выбрана реализация модели информационной системы по хранению и анализу данных  предприятия, занимающегося сборкой и поставкой спортивных велосипедов для конечных потребителей по индивидуальному заказу.
 
@@ -211,7 +228,7 @@
 \begin{figure}[hpbt]
 	\centering
 	\includegraphics[width=1\linewidth]{images/1-cycle}
-	\caption{Модель данных велосипедного предприятия}
+	\caption{Модель данных вело-предприятия}
 	\label{fig:1-cycle}
 \end{figure}
 
@@ -219,10 +236,10 @@
 
 На данном этапе выполнения работы мы реализовали модель данных будущего хранилища данных, планируемого к применению в компании, занимающейся сборкой и поставкой велосипедов по индивидуальному заказу.
 
-\section{Практическая работа № 2. \\Создание логической и физической модели данных}
+\section{Создание логической\\и физической модели данных}
 \subsection{\methodsection}
 \subsection*{Теоретический материал}
-На этапе \textit{инфологического} проектирования базы данных должна быть построена
+На этапе \texttt{инфологического} проектирования базы данных должна быть построена
 модель предметной области, не привязанная к конкретной СУБД, понятная не только
 разработчикам информационной системы, но и экономистам, менеджерам и другим
 специалистам. В то же время модель предметной области должна максимально точно
@@ -235,7 +252,7 @@
 ориентируясь на продукт CA ERwin Data Modeler. ERwin имеет два уровня
 представления модели:
 
-\textbf{Логический уровень} --- это уровень, соответствующий \textit{инфологическому} этапу проектирования
+\textbf{Логический уровень} --- это уровень, соответствующий \texttt{инфологическому} этапу проектирования
 и не привязанный к конкретной СУБД. Модели логического уровня оперируют с
 понятиями сущностей, атрибутов и связей, которые на этом уровне именуются на
 естественном языке (в нашем случае – на русском) так, как они называются в
@@ -247,7 +264,7 @@
 данных) позволяет автоматизировать отображение логической модели на физическую.
 
 Модель <<сущность-связь>> строится в виде диаграммы <<сущность-связь>>,
-основными компонентами которой являются сущности (Entity) и связи (Relationship).
+основными компонентами которой являются сущности (Entity) и связи\\(Relationship).
 Отсюда происходят часто используемые названия модели (ER-модель) и диаграммы
 (ER-диаграмма).
 
@@ -262,42 +279,164 @@
 должна представлять состав сущностей предметной области с перечнем атрибутов и
 отношений между ними.
 
-В зависимости от глубины представления информации о данных различают 3
-подуровня логического уровня модели данных:
-\begin{itemize}
-	\item  диаграмма сущность – связь \textit{(Entity Relationship Diagram, ERD)};
-	\item модель данных, основанная на ключах (\textit{Key Based model, KB)}; --- полная атрибутивная модель данных \textit{(Fully Attributed model, FA)}.
-\end{itemize}
-
-\textit{Диаграмма сущность-связь} включает сущности и взаимосвязи, отражающие
-основные бизнес-правила предметной области.
-
-\textit{Модель данных, основанная на ключах} --- более подробное представление данных.
-Данная модель включает описание всех сущностей и первичных ключей,
-необходимых для подробного описания предметной области.
-
-\textit{Полная атрибутивная модель данных} --- наиболее детальное представление
-структуры данных предметной области. Данная модель представляет данные в третьей
-нормальной форме и включает все сущности, атрибуты и связи.
-
-Логическим соотношением между сущностями является \textbf{связь}. Каждому виду
-связи соответствует определенная кнопка, расположенная на палитре инструментов.
-Имя связи выражает некоторое ограничение или правило и облегчает чтение
-диаграммы. Каждая связь должна именоваться глаголом или глагольной фразой.
+%В зависимости от глубины представления информации о данных различают 3
+%подуровня логического уровня модели данных:
+%\begin{itemize}
+%	\item  диаграмма сущность – связь \texttt{(Entity Relationship Diagram, ERD)};
+%	\item модель данных, основанная на ключах (\texttt{Key Based model, KB)}; --- полная атрибутивная модель данных \texttt{(Fully Attributed model, FA)}.
+%\end{itemize}
+%
+%\texttt{Диаграмма сущность-связь} включает сущности и взаимосвязи, отражающие
+%основные бизнес-правила предметной области.
+%
+%\texttt{Модель данных, основанная на ключах} --- более подробное представление данных.
+%Данная модель включает описание всех сущностей и первичных ключей,
+%необходимых для подробного описания предметной области.
+%
+%\texttt{Полная атрибутивная модель данных} --- наиболее детальное представление
+%структуры данных предметной области. Данная модель представляет данные в третьей
+%нормальной форме и включает все сущности, атрибуты и связи.
+%
+%Логическим соотношением между сущностями является \textbf{связь}. Каждому виду
+%связи соответствует определенная кнопка, расположенная на палитре инструментов.
+%Имя связи выражает некоторое ограничение или правило и облегчает чтение
+%диаграммы. Каждая связь должна именоваться глаголом или глагольной фразой.
 
 Результат разработки логической модели данных системы <<Реализация средств
 вычислительной техники>>, предназначенной для учета продаж настольных
-компьютеров по заказам клиентов приведен на Рисунке \ref{fig:2-method}.
+компьютеров по заказам клиентов приведен на Рисунке \ref{fig:2-logical-model-method}.
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[htpb]
 	\centering
-	\includegraphics[width=1\linewidth]{images/2-method}
+	\includegraphics[width=0.7\linewidth]{images/2-method}
 	\caption{Логическая модель данных системы <<Реализация средств вычислительной техники>>}
-	\label{fig:2-method}
+	\label{fig:2-logical-model-method}
 \end{figure}
 
+Для построения физической модели данных системы, следует определиться с СУБД, в которой будет реализована модель. При построении физической модели данных следует учитывать формальную теория представления и обработки данных в конкретной системе управления базами данных (СУБД).
 
+В данной практической работе в качестве СУБД выбрана MySQL.
+
+Приступим к построению физической модели данных системы <<Реализация средств вычислительной техники>>. Результат работы можно видеть на рисунке \ref{fig:2-phisical-model}.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/2-phisical-model}
+	\caption{Физическая модель данных системы <<Реализация средств вычислительной техники>>}
+	\label{fig:2-phisical-model}
+\end{figure}
+
+\section{\individual}
+Приступим к построению логической модели данных системы <<Велосипедное предприятие>>. 
+В соответствии с моделью, реализованной в ходе первой практической работы, добавим в рабочую область следующие сущности:
+\begin{itemize}
+	\item Component;
+	\item FrameInfo;
+	\item Frame;
+	\item Frameset;
+	\item FrameSize;
+	\item Fork;
+	\item ComponentType;
+	\item Wheelset;
+	\item Groupset;
+	\item Brake;
+	\item FctCycleBuild;
+	\item CycleType;
+	\item Bar;
+	\item Setup.
+\end{itemize}
+Добавим связи между сущностями в соответствии с ранее построенной моделью. Логическая модель системы <<Велосипедное предприятие>> приведена на рисунке \ref{fig:2-cycle-logical}.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/2-cycle-logical}
+	\caption{Логическая модель данных системы <<Велосипедное предприятие>>}
+	\label{fig:2-cycle-logical}
+\end{figure}
+
+После уточнения типов данных, выбранных в соответствии с предметной областью и спецификой СУБД MySQL, построим физическую модель данных (см. рисунок \ref{fig:2-cycle-phisical}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/2-cycle-phisical}
+	\caption{Физическая модель данных системы <<Велосипедное предприятие>>}
+	\label{fig:2-cycle-phisical}
+\end{figure}
+
+После реализации физической и логической модели можно приступать к реализации модели данной системы в СУБД MySQL.
+
+
+\section{Создание базы данных}
+\subsection{\methodsection}
+В ходе данной практической работы была создана база данных \texttt{forum}, которая хранит в себе сведения о пользователях форума и размещенных ими темах.
+
+Помимо суперпользователя root, был создан пользователь denilai, под которым производятся все манипуляции с данными.
+
+Создадим базу данных \texttt{forum} с помощью команды \texttt{create database forum;}
+
+
+Создадим таблицу \texttt{users} с помощью данных команд (см. рисунок \ref{fig:create-users}):
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/create-users}
+	\caption{}
+	\label{fig:create-users}
+\end{figure}
+
+%\begin{lstlisting}
+%create table users (
+%	id_user int (10) AUTO_INCREMENT,
+%	name varchar(20) NOT NULL,
+%	email varchar(50) NOT NULL,
+%	password varchar(15) NOT NULL,
+%	PRIMARY KEY (id_user)
+%);
+%\end{lstlisting}
+
+Создадим таблицу \texttt{topics} с помощью данных команд (см. рисунок \ref{fig:create-topics}):
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/create-topics}
+	\caption{}
+	\label{fig:create-topics}
+\end{figure}
+
+%\begin{lstlisting}
+%create table topics (
+%	id_topic int (10) AUTO_INCREMENT,
+%	topic_name varchar(100) NOT NULL,
+%	id_author int (10) NOT NULL,
+%	PRIMARY KEY (id_topic),
+%	FOREIGN KEY (id_author) REFERENCES users (id_user)
+%);
+%\end{lstlisting}
+Создадим таблицу \texttt{posts} с помощью данных команд (см. рисунок \ref{fig:create-posts}):
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/create-posts}
+	\caption{}
+	\label{fig:create-posts}
+\end{figure}
+%\begin{lstlisting}
+%create table posts (
+%	id_post int (10) AUTO_INCREMENT,
+%	message text NOT NULL,
+%	id_author int (10) NOT NULL,
+%	id_topic int (10) NOT NULL,
+%	PRIMARY KEY (id_post),
+%	FOREIGN KEY (id_author) REFERENCES users (id_user),
+%	FOREIGN KEY (id_topic) REFERENCES topics (id_topic)
+%);
+%\end{lstlisting}
 
 
 \end{document}

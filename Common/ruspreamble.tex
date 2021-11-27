@@ -8,6 +8,9 @@
 
 % В этом документе преамбула
 
+\newcommand{\q}{\textbf{Вопрос: }}
+\newcommand{\ans}{\textbf{Ответ: }}
+
 
 \usepackage{extsizes} % Возможность сделать 14-й шрифт
 \def\myformat#1{\hfil #1\hfil}
@@ -24,6 +27,12 @@
 \usepackage{indentfirst} % отделять первую строку раздела абзацным отступом
 
 
+
+%\titlespacing*{\chapter}{0pt}{<s>30pt}{*4} 
+
+%\titleformat{\section}
+%{}%{\sloppy\righthyphenmin62}
+%{\thesection}
 \usepackage{adjustbox}
 
 
@@ -34,12 +43,6 @@
 {\thechapter}
 {1em}
 {\MakeUppercase}{}
-
-\titlespacing*{\chapter}{0pt}{<s>30pt}{*4} 
-
-%\titleformat{\section}
-%{}%{\sloppy\righthyphenmin62}
-%{\thesection}
 %{1ex}{}
 
 %\titleformat*{\section}{\sloppy\righthyphenmin62}
@@ -75,7 +78,7 @@
 
 % сначала ставить \usepackage{extsizes} % Возможность сделать 14-й шрифт
 % для корректной установки полей вставлять преамбулу следует в последнюю очередь (но перед дерективой замены \rmdefault)
-\usepackage[top=20mm,bottom=20mm,left=30mm,right=10mm]{geometry} % Простой способ задавать поля
+\usepackage[top=20mm,bottom=20mm,left=30mm,right=15mm]{geometry} % Простой способ задавать поля
 
 \hypersetup{				% Гиперссылки
 	unicode=true,           % русские буквы в раздела PDF

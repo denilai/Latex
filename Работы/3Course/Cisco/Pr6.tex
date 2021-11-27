@@ -1,0 +1,474 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №4}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Архитектура процессоров и микропроцессоров}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра вычислительной техники}
+% Тема работы в титуле
+\newcommand{\theme}{Стадии выполнения команд процессором КР580ВМ80}
+% Должность преподавателя в титуле
+\newcommand{\rang}{cтарший преподаватель кафедры ВТ}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Ю.~М.Скрябин}
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+
+\newcommand{\pt}{PacketTracer\copyright}
+
+\usepackage{tabularx}
+
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{|c|}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов ИВБО-02-19}
+\title{Практическая работа №6\\Вариант 6}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+	%\thispagestyle{empty}
+	% Вставка первого титульного листа
+	%\input{\pathToCommonFolder/titul-with-signature}
+	\newpage
+	%\tableofcontents
+	\newpage
+	%\listoftables
+\maketitle
+
+
+\begin{mypart}{Преобразование IPv4-адресов из десятичной системы счисления с точкой -разделителем в двоичный формат}
+
+	\begin{step}{Перевод числа из десятичной в двоичную систему счисления}
+		\begin{table}[h!]
+			\caption{Перевод чисел в двоичную систему}
+			\centering
+			\begin{tabular}{|c|c|}
+				\hline
+				\heading{\textbf{Десятичные}} &\heading{\textbf{Двоичные}}\\\hline
+					192 & 11000000 \\ \hline
+					168 & 10101000 \\\hline
+					10 &      1010 \\\hline
+					255 & 11111111 \\\hline
+					2 &         10 \\\hline
+			\end{tabular}
+		\label{tab:ten2two}
+		\end{table}
+	\end{step}
+
+	\begin{step}{Преобразование IPv4-адреса в двоичный формат}
+		\begin{table}[h!]
+			\caption{Преобразование IPv4-адреса в двоичный формат}
+			\centering
+			\begin{tabular}{|c|r|}
+				\hline
+				\heading{\textbf{Десятичные}} &\heading{\textbf{Двоичные}}\\\hline
+				192.168.10.10   & 11000000.10101000.00001010.00001010 \\\hline
+				209.165.200.229 & 11010001.10100101.11001000.11100101 \\\hline
+				172.16.18.183   & 10101100.00010000.00010010.10110111 \\\hline
+				10.86.252.17    & 00001010.01010110.11111100.00010001 \\\hline
+				255.255.255.128 & 11111111.11111111.11111111.10000000 \\\hline
+				255.255.192.0   & 11111111.11111111.11000000.00000000 \\\hline
+			\end{tabular}
+			\label{tab:ip-42two}
+		\end{table}
+	\end{step}
+\end{mypart}
+
+\begin{mypart}{Использование побитовой операции И для определения
+		сетевых адресов}
+	\begin{step}{Определение разрядности сетевого адреса}
+		
+		\begin{table}[h!]
+			\caption{Преобразование IPv4-адреса в двоичный формат}
+			\centering
+			\begin{tabular}{|c|c|c|}
+				\hline
+				\textbf{Описание }&\textbf{Десятичные} &\textbf{Двоичные}\\\hline
+				IP-адрес &      192.168.10.131  & 11000000.10101000.00001010.10000011\\\hline
+				Маска подсети & 255.255.255.192 & 11111111.11111111.11111111.11000000\\\hline
+				Сетевой адрес & 192.168.10.128  & 11000000.10101000.00001010.10000000\\\hline
+			\end{tabular}
+			\label{tab:web1}
+		\end{table}
+	
+	\q Как определить, сколько бит нужно использовать для расчета сетевого адреса?
+	
+	\ans \textit{Перевести маску подсети в двоичный вид и посчитать количество единиц}
+	
+	\q Сколько бит в приведенном выше примере используется для расчета сетевого адреса?
+	
+	\ans \textit{26}			
+	\end{step}
+
+%\renewcommand{\labelenumi}{\asbuk{enumi})}
+	\begin{step}{Определение сетевого адреса}
+		
+		\begin{enumerate}[label=\alph{enumi}) ]
+			\item Введите отсутствующую информацию в таблицу ниже:
+			
+			\begin{table}[h!]
+				\caption{Преобразование IPv4-адреса в двоичный формат. 1}
+				\centering
+				\begin{tabular}{|l|c|c|}
+					\hline
+					\textbf{Описание }&\textbf{Десятичные} &\textbf{Двоичные}\\\hline
+					IP-адрес &      172.16.145.29  & 10101100.00010000.10010001.00011101\\\hline
+					Маска подсети & 255.255.0.0    & 11111111.11111111.00000000.00000000\\\hline
+					Сетевой адрес & 172.16.0.0     & 10101100.00010000.00000000.00000000\\\hline
+				\end{tabular}
+				\label{tab:web2}
+			\end{table}
+	
+			\item Введите отсутствующую информацию в таблицу ниже:
+			
+			\begin{table}[h!]
+				\caption{Преобразование IPv4-адреса в двоичный формат. 2}
+				\centering
+				\begin{tabular}{|l|c|c|}
+					\hline
+					\textbf{Описание }&\textbf{Десятичные} &\textbf{Двоичные}\\\hline
+					IP-адрес &      192.168.10.10  & 11000000.10101000.00001010.00001010\\\hline
+					Маска подсети & 255.255.255.0  & 11111111.11111111.11111111.00000000\\\hline
+					Сетевой адрес & 172.16.0.0     & 11000000.10101000.00001010.00000000\\\hline
+				\end{tabular}
+				\label{tab:web3}
+			\end{table}
+				\newpage
+			\item Введите отсутствующую информацию в таблицу ниже:
+			
+			\begin{table}[h!]
+				\caption{Преобразование IPv4-адреса в двоичный формат. 3}
+				\centering
+				\begin{tabular}{|l|c|c|}
+					\hline
+					\textbf{Описание }&\textbf{Десятичные} &\textbf{Двоичные}\\\hline
+					IP-адрес &      192.168.68.210  & 111000000.10101000.01000100.11010010\\\hline
+					Маска подсети & 255.255.255.128  & 11111111.11111111.11111111.10000000\\\hline
+					Сетевой адрес & 192.168.68.128     & 11000000.10101000.01000100.10000000\\\hline
+				\end{tabular}
+				\label{tab:web4}
+			\end{table}
+
+			\item Введите отсутствующую информацию в таблицу ниже:
+			
+			\begin{table}[h!]
+				\caption{Преобразование IPv4-адреса в двоичный формат. 4}
+				\centering
+				\begin{tabular}{|l|c|c|}
+					\hline
+					\textbf{Описание }&\textbf{Десятичные} &\textbf{Двоичные}\\\hline
+					IP-адрес &      172.16.188.15   & 10101100.00010000.10111100.00001111\\\hline
+					Маска подсети & 255.255.240.0   & 11111111.11111111.11110000.00000000\\\hline
+					Сетевой адрес & 172.16.176.0     & 10101100.00010000.10110000.00000000\\\hline
+				\end{tabular}
+				\label{tab:web5}
+			\end{table}
+		
+			\item Введите отсутствующую информацию в таблицу ниже:
+			
+			\begin{table}[h!]
+				\caption{Преобразование IPv4-адреса в двоичный формат. 5}
+				\centering
+				\begin{tabular}{|l|c|c|}
+					\hline
+					\textbf{Описание }&\textbf{Десятичные} &\textbf{Двоичные}\\\hline
+					IP-адрес &      10.172.2.8   & 00001010.10101100.00000010.00001000\\\hline
+					Маска подсети & 255.224.0.0   & 00001010.10101100.00000010.00001000\\\hline
+					Сетевой адрес & 172.16.176.0     & 00001010.10100000.00000000.00000000\\\hline
+				\end{tabular}
+				\label{tab:web6}
+			\end{table}
+		
+		\end{enumerate}
+	\end{step}
+\end{mypart}
+
+\begin{mypart}{Применение расчетов сетевых адресов}
+	\begin{step}{Определение подсетей по IP-v4}
+		
+		\begin{enumerate}[label=\alph{enumi})]
+			\item 
+			Вы настраиваете два ПК для своей сети. 
+			
+			Компьютеру PC-A присвоен IP-адрес \textit{192.168.1.18}.
+			
+			Компьютеру PC-B — IP-адрес \textit{192.168.1.33}. 
+			
+			Маска подсети обоих компьютеров — \textit{255.255.255.240}
+			
+			\q Какой сетевой адрес у PC-A? 
+			
+			\ans \textit{192.168.1.16}
+			
+			\q Какой сетевой адрес у PC-B? 
+			
+			\ans \textit{192.168.1.32}
+			
+			\q Смогут ли эти ПК взаимодействовать друг с другом напрямую? 
+			
+			\ans \textit{Нет, они находятся в разных подсетях}.
+			
+			\q Какой наибольший адрес, присвоенный компьютеру PC-B, позволит ему находиться в одной сети с
+			PC-A?
+			
+			\ans \textit{192.168.1.224}
+			
+			\item 
+			Вы настраиваете два ПК для своей сети. 
+			
+			Компьютеру PC-A присвоен IP-адрес \textit{10.0.0.16}.
+			
+			Компьютеру PC-B — IP-адрес \textit{10.1.14.68}. 
+			
+			Маска подсети обоих компьютеров — \textit{255.254.0.0}.
+			
+			\q Какой сетевой адрес у PC-A? 
+			
+			\ans \textit{10.0.0.0}
+			
+			\q Какой сетевой адрес у PC-B? 
+			
+			\ans \textit{10.0.0.0}
+			
+			\q Смогут ли эти ПК взаимодействовать друг с другом напрямую? 
+			
+			\ans \textit{Да, они находятся в одной подсети}.
+			
+			\q Какой наибольший адрес, присвоенный компьютеру PC-B, позволит ему находиться в одной сети с
+			PC-A?
+			
+			\ans \textit{10.0.0.1}
+		\end{enumerate}
+	\end{step}
+
+	\begin{step}{Установка адреса шлюза по умолчанию}
+		\begin{enumerate}[label=\alph{enumi}) ]
+			\item 
+			В вашей компании действует политика использования первого IP-адреса в сети в качестве адреса
+			шлюза по умолчанию. 
+			
+			Узел в локальной сети (LAN) имеет IP-адрес \textit{172.16.140.24} и маску подсети
+			\textit{255.255.192.0}.
+			
+			\q Какой у этой сети сетевой адрес?
+			
+			\ans \textit{172.16.128.0}
+			
+			\q Какой адрес имеет шлюз по умолчанию для этого узла?
+			
+			\ans \textit{172.16.128.1}
+			
+			\item 
+			В вашей компании действует политика использования первого IP-адреса в сети в качестве адреса
+			шлюза по умолчанию. 
+			
+			Узел в локальной сети (LAN) имеет IP-адрес \textit{192.168.184.227} и маску подсети
+			\textit{255.255.255.248}.
+			
+			\q Какой у этой сети сетевой адрес?
+			
+			\ans \textit{192.168.184.224}
+			
+			\q Какой адрес имеет шлюз по умолчанию для этого узла?
+			
+			\ans \textit{192.168.184.225}
+		\end{enumerate}
+	\end{step}
+\end{mypart}
+
+\begin{mypart}{Определение подсетей по IPv4-адресу}
+	
+	\begin{table}[htbp]
+		\small
+		\centering
+		\caption{Определение подсетей по IPv4-адресу}
+		\begin{tabular}{|c|c|p{0.24\linewidth}|p{0.13\linewidth}|p{0.13\linewidth}|}
+			\hline
+			
+			\textbf{IPv4-
+			адрес/префикс} & 
+			
+			\textbf{Сетевой адрес} & 
+			\textbf{Широковещательный адрес} & \textbf{Общее количество бит узлов}& \textbf{Общее количество узлов} \\ \hline
+			192.168.100.25/28 & 192.168.100.16 & 192.168.100.31 & 4 & 14 \\ \hline
+			172.30.10.130/30 & 172.30.10.128 & 172.30.10.132 & 2 & 2 \\ \hline
+			10.1.113.75/19 & 10.1.128.0 & 10.1.193.255 & 13 & 8190 \\ \hline
+			198.133.219.250/24 & 198.133.219.0 & 198.133.219.255 & 8 & 254 \\ \hline
+			128.107.14.191/22 & 128.107.12.0 & 128.107.15.255 & 10 & 1022 \\ \hline
+			172.16.104.99/27 & 172.16.104.96 & 172.15.104.127 & 5 & 30 \\ \hline
+		\end{tabular}
+		\label{tab:subnets}
+	\end{table}
+	
+\end{mypart}
+
+\begin{mypart}{Расчет подсетей по IPv4-адресу}
+	
+	\begin{step}{Заполните приведенные ниже таблицы, зная заданный IPv4-адрес, исходную и
+			новую маску подсети}
+		
+\begin{table}[h!]
+		\caption{Расчет подсетей. 1}
+		\centering
+		\begin{tabular}{|l|l|}
+			\hline
+			\multicolumn{2}{|c|}{\textbf{Дано:}}  \\ \hline
+			\multicolumn{ 1}{|l|}{\textbf{IP-адрес узла:}} & 192.168.200.139 \\ \hline
+			\textbf{Исходная маска подсети:} & 255.255.255.0 \\ \hline
+			\textbf{Новая маска подсети:} & 255.255.255.224 \\ \hline
+			\multicolumn{2}{|c|}{\textbf{Найти:}}  \\ \hline
+			\multicolumn{ 1}{|l|}{\textbf{Количество бит подсети}} & \multicolumn{1}{c|}{3}\\  \hline
+			\textbf{Количество созданных подсетей} & \multicolumn{1}{c|}{8} \\ \hline
+			\textbf{Количество бит узлов в подсети} & \multicolumn{1}{c|}{5} \\ \hline
+			\textbf{Количество узлов в подсети} & \multicolumn{1}{c|}{30} \\ \hline
+			\textbf{Сетевой адрес этой подсети} & 192.168.200.128 \\ \hline
+			\textbf{IPv4-адрес первого узла в этой подсети} & 192.168.200.129 \\ \hline
+			\textbf{IPv4-адрес последнего узла в этой подсети} & 192.168.200.158 \\ \hline
+			\textbf{Широковещательный IPv4-адрес в этой подсети} & 192.168.200.159 \\ \hline
+		\end{tabular}
+		\label{}
+	\end{table}
+
+
+\begin{table}[h!]
+		\centering
+		\caption{Расчет подсетей. 2}
+	\begin{tabular}{|l|l|}
+		\hline
+			\multicolumn{2}{|c|}{\textbf{Дано:}}  \\ \hline
+		\textbf{IP-адрес узла:} & 10.101.99.228 \\ \hline
+		\textbf{Исходная маска подсети:} & 255.0.0.0 \\ \hline
+		\textbf{Новая маска подсети:} & 255.255.128.0 \\ \hline
+			\multicolumn{2}{|c|}{\textbf{Найти:}}  \\ \hline
+		\textbf{Количество бит подсети} & \multicolumn{1}{c|}{9} \\ \hline
+		\textbf{Количество созданных подсетей} & \multicolumn{1}{c|}{512} \\ \hline
+		\textbf{Количество бит узлов в подсети} & \multicolumn{1}{c|}{15} \\ \hline
+		\textbf{Количество узлов в подсети} & \multicolumn{1}{c|}{32766} \\ \hline
+		\textbf{Сетевой адрес этой подсети} & 10.101.0.0 \\ \hline
+		\textbf{IPv4-адрес первого узла в этой подсети} & 10.101.0.1 \\ \hline
+		\textbf{IPv4-адрес последнего узла в этой подсети} & 10.101.127.254 \\ \hline
+		\textbf{Широковещательный IPv4-адрес в этой подсети} & 10.101.127.255 \\ \hline
+	\end{tabular}
+	\label{}
+\end{table}
+
+\begin{table}[h!]
+		\centering
+		\caption{Расчет подсетей. 3}
+	\begin{tabular}{|l|l|}
+		\hline
+			\multicolumn{2}{|c|}{\textbf{Дано:}}  \\ \hline
+		\textbf{IP-адрес узла:} & 172.22.32.12 \\ \hline
+		\textbf{Исходная маска подсети:} & 255.255.0.0 \\ \hline
+		\textbf{Новая маска подсети:} & 255.255.224.0 \\ \hline
+			\multicolumn{2}{|c|}{\textbf{Найти:}}  \\ \hline
+		\textbf{Количество бит подсети} & \multicolumn{1}{c|}{3} \\ \hline
+		\textbf{Количество созданных подсетей} & \multicolumn{1}{c|}{8} \\ \hline
+		\textbf{Количество бит узлов в подсети} & \multicolumn{1}{c|}{13} \\ \hline
+		\textbf{Количество узлов в подсети} & \multicolumn{1}{c|}{8190} \\ \hline
+		\textbf{Сетевой адрес этой подсети} & 172.22.0.0 \\ \hline
+		\textbf{IPv4-адрес первого узла в этой подсети} & 172.22.0.1 \\ \hline
+		\textbf{IPv4-адрес последнего узла в этой подсети} & 172.22.31.254 \\ \hline
+		\textbf{Широковещательный IPv4-адрес в этой подсети} & 172.22.31.255 \\ \hline
+	\end{tabular}
+	\label{}
+\end{table}
+
+
+\begin{table}[h!]
+	\centering
+	\caption{Расчет подсетей. 4}
+	\begin{tabular}{|l|l|}
+		\hline
+			\multicolumn{2}{|c|}{\textbf{Дано:}}  \\ \hline
+		\textbf{IP-адрес узла:} & 192.168.1.245 \\ \hline
+		\textbf{Исходная маска подсети:} & 255.255.255.0 \\ \hline
+		\textbf{Новая маска подсети:} & 255.255.255.252 \\ \hline
+			\multicolumn{2}{|c|}{\textbf{Найти:}}  \\ \hline
+		\textbf{Количество бит подсети} & \multicolumn{1}{c|}{6} \\ \hline
+		\textbf{Количество созданных подсетей} & \multicolumn{1}{c|}{64} \\ \hline
+		\textbf{Количество бит узлов в подсети} & \multicolumn{1}{c|}{2} \\ \hline
+		\textbf{Количество узлов в подсети} & \multicolumn{1}{c|}{2} \\ \hline
+		\textbf{Сетевой адрес этой подсети} & 192.168.1.244 \\ \hline
+		\textbf{IPv4-адрес первого узла в этой подсети} & 192.168.1.245 \\ \hline
+		\textbf{IPv4-адрес последнего узла в этой подсети} & 192.168.1.246 \\ \hline
+		\textbf{Широковещательный IPv4-адрес в этой подсети} & 192.168.1.247 \\ \hline
+	\end{tabular}
+	\label{}
+\end{table}
+
+
+\begin{table}[h!]
+	\centering
+	\caption{Расчет подсетей. 5}
+	\begin{tabular}{|l|l|}
+		\hline
+			\multicolumn{2}{|c|}{\textbf{Дано:}}  \\ \hline
+		\textbf{IP-адрес узла:} & 128.107.0.55 \\ \hline
+		\textbf{Исходная маска подсети:} & 255.255.0.0 \\ \hline
+		\textbf{Новая маска подсети:} & 255.255.255.0 \\ \hline
+			\multicolumn{2}{|c|}{\textbf{Найти:}}  \\ \hline
+		\textbf{Количество бит подсети} & \multicolumn{1}{c|}{8} \\ \hline
+		\textbf{Количество созданных подсетей} & \multicolumn{1}{c|}{256} \\ \hline
+		\textbf{Количество бит узлов в подсети} & \multicolumn{1}{c|}{8} \\ \hline
+		\textbf{Количество узлов в подсети} & \multicolumn{1}{c|}{254} \\ \hline
+		\textbf{Сетевой адрес этой подсети} & 128.107.0.0 \\ \hline
+		\textbf{IPv4-адрес первого узла в этой подсети} & 128.107.0.1 \\ \hline
+		\textbf{IPv4-адрес последнего узла в этой подсети} & 128.107.0.254 \\ \hline
+		\textbf{Широковещательный IPv4-адрес в этой подсети} & 128.107.0.255 \\ \hline
+	\end{tabular}
+	\label{}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Расчет подсетей. 6}
+	\begin{tabular}{|l|l|}
+		\hline
+			\multicolumn{2}{|c|}{\textbf{Дано:}}  \\ \hline
+		\textbf{IP-адрес узла:} & 192.135.250.180 \\ \hline
+		\textbf{Исходная маска подсети:} & 255.255.255.0 \\ \hline
+		\textbf{Новая маска подсети:} & 255.255.255.248 \\ \hline
+			\multicolumn{2}{|c|}{\textbf{Найти:}}  \\ \hline
+		\textbf{Количество бит подсети} & \multicolumn{1}{c|}{5} \\ \hline
+		\textbf{Количество созданных подсетей} & \multicolumn{1}{c|}{32} \\ \hline
+		\textbf{Количество бит узлов в подсети} & \multicolumn{1}{c|}{3} \\ \hline
+		\textbf{Количество узлов в подсети} & \multicolumn{1}{c|}{6} \\ \hline
+		\textbf{Сетевой адрес этой подсети} & 192.135.250.176 \\ \hline
+		\textbf{IPv4-адрес первого узла в этой подсети} & 192.135.250.177 \\ \hline
+		\textbf{IPv4-адрес последнего узла в этой подсети} & 192.135.250.183 \\ \hline
+		\textbf{Широковещательный IPv4-адрес в этой подсети} & 192.135.250.184 \\ \hline
+	\end{tabular}
+	\label{}
+	\end{table}
+	\end{step}
+\end{mypart}
+
+\end{document}
+
+
+

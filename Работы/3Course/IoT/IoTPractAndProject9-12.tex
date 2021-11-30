@@ -1,0 +1,400 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+\newcommand{\stend}{\textbf{Wb-demo-kit v.2}}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практическим работам 9-12}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Технологические основы Интернета вещей}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра Математического обеспечения и стандартизации информационных технологий}
+% Тема работы в титуле
+\newcommand{\theme}{}
+% Должность преподавателя в титуле
+\newcommand{\rang}{ассистент}
+
+% ФИО студента в титуле
+\newcommand{\studentfio}{К.~Ю.~Денисов}%\\Д.~Н.~Федосеев\\А.~М.~Сосунов}\\%К.~Ю.~Денисов\\%И.~А.~Кремнев
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Ю.~А.~Воронцов}
+
+
+\usepackage{tabularx}
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов}
+\title{Лабораторная работа №1}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+
+%если нужна тема работы в отчете, то указать в скобках что-либо, иначе оаставить пустым
+%\renewcommand{\withouttheme}{}
+%если нужна дата представления отчета, то указать в скобках что-либо
+%\renewcommand{\withoutsubmissiondate}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\newcommand{\tb}{ThingsBoard~}
+
+\begin{document}
+	\thispagestyle{empty}
+	% Вставка первого титульного листа
+	% Есть две версии титульного листа - одиночный (titul) и групповой (titulAll)
+	\input{\pathToCommonFolder/iot-titulAll}
+	\newpage
+	\tableofcontents
+	\newpage
+	%\listoftables
+
+\normalsize
+
+\section{Практическая работа №9.\\Знакомство с облачными платформами IoT}
+\subsection{Регистрация на платформе \tb}
+
+\tb имеет тестовый сервер в сборке Community Edition для проверки доступных
+функций платформы и тестирования своих приложений. Для регистрации на платформе
+необходимо перейти по данной  \href{https://demo.\tb.io/signup}{ссылке}.
+
+Зарегистрируемся на платформе \tb для выполнения данных практических работ.
+
+\subsection{Создание виртуальных устройств в облаке}
+
+Создадим в облаке следующие виртуальные устройства для получения данных:
+
+
+\begin{enumerate}
+	\item Датчик качества воздуха;
+	\item Датчик освещенности;
+	\item Датчик напряжения.
+\end{enumerate}
+
+Создадим для каждого устройства свой профиль (виртуальное устройство), соответствующий передаваемым на
+устройство данным. В качестве протокола для профилей устройств используем \textbf{MQTT} (см. рисунок \ref{fig:task9-create},\ref{fig:task9-create2}).
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/task9-create}
+	\caption{Создание устройства на платформе \tb}
+	\label{fig:task9-create}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/task9-create2}
+	\caption{Настройка устройства на платформе \tb}
+	\label{fig:task9-create2}
+\end{figure}
+
+\subsection{Отправка данных в облако}
+
+Выполним передачу тестовых данных в каждое из созданных устройств, список которых приведен на рисунке \ref{fig:devices}.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/devices}
+	\caption{Список зарегистрированных устройств}
+	\label{fig:devices}
+\end{figure}
+
+Приведем команду, с помощью которой осуществляется процесс ответа на сообщение с телеметрией в топик устройства с параметром "motion" (см. рисунок (см. рисунок \ref{fig:send}).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/send}
+	\caption{Отправка данных на устройства}
+	\label{fig:send}
+\end{figure}
+
+После отправки, тестовые данные отображаются в веб-интерфейсе платформы \tb в виде представленном на рисунках \ref{fig:voltagedata}--\ref{fig:airqualitydata}. 
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/VoltageData}
+	\caption{Данные с датчика напряжения}
+	\label{fig:voltagedata}
+\end{figure}
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/IlluminationData}
+	\caption{Данные с датчика освещения}
+	\label{fig:illuminationdata}
+\end{figure}
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/airQualityData}
+	\caption{Данные с датчика качества воздуха}
+	\label{fig:airqualitydata}
+\end{figure}
+
+
+Данные соответствуют типу устройства и передаются при помощи утилиты \texttt{mosquito\_pub}.
+
+\newpage
+
+\section{Дополнительное задание практической работы №9}
+\subsection{Выбор облачного решения}
+
+В качестве облачного решения была выбрана платформа ThingsBoard. Данный выбор был сделан по следующим причинам:
+\begin{itemize}
+	\item Понятный пользовательский интерфейс;
+	\item Популярность платформы;
+	\item Возможность установить платформу локально или использовать готовую облачную среду.
+\end{itemize}
+
+
+\subsection{Реализация отправки данных}
+
+Реализуем отправку данных с программного эмулятора реального физического устройства в облачную платформу ThingsBoard. Приведем листинг скрипта на языке программирования Python:
+
+\lstinputlisting{\pathToScriptsFolder/dop9-publish.py}
+
+В результате запуска данного скрипта происходит соединение с MQTT-брокером, создание экземпляра класса Client для MQTT-брокера, с последнующей передачей данных в облако (см. рисунки \ref{fig:dop9-send},  \ref{fig:dop9-recieve}).
+
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/dop9-send}
+	\caption{Оправка телеметрических данных с устройств }
+	\label{fig:dop9-send}
+\end{figure}
+
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/dop9-recieve}
+	\caption{Прием телеметрических данных облачной платформой}
+	\label{fig:dop9-recieve}
+\end{figure}
+\hfill\newpage\hfill\newpage
+
+\section{Практическая работа №10. \\Управление устройствами при помощи \\платформ Интернета вещей}
+
+Реализуем следующие сценарии из практической работы №3 при помощи цепочек правил ThingsBoard.
+
+\begin{enumerate}
+	\item Включение и выключение вентилятора по датчику движения;
+	\item Включение и выключения индикации зеленым и красным светом комбинированного датчика по кнопкам.
+\end{enumerate}
+
+\subsubsection*{Реализация сценария управления вентилятором}
+На платформе \tb создадим виртуальное устройство, которое будет прообразом реального вентилятора (см. рисунок \ref{fig:dev}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/dev}
+	\caption{Виртуальный вентилятор}
+	\label{fig:dev}
+\end{figure}
+
+Создадим цепочку правил для контроля за состоянием вентилятора. Когда значения, передаваемые датчиком движения превышают 700 условных единиц, вентилятор должен включаться. При уменьшении значения ниже 700, вентилятор должен выключаться. Приведенная на рисунке \ref{fig:chains} цепочка правил описывает данный сценарий управления устройством.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/chains}
+	\caption{Цепочка правил для управления вентилятором}
+	\label{fig:chains}
+\end{figure}
+
+
+\textbf{Узел формирования параметров вентилятора}
+
+Узел трансформации данных при помощи скрипта позволяет переформировать объект,
+содержащий в себе данные приходящего сообщения: его основную полезную нагрузку,
+метаданные, а также тип сообщения.
+
+Поведение узла описывается при помощи Java Script. Изначально в приходящей телеметрии
+предполагается наличие параметра \texttt{motion}. На основании этого параметра
+вычисляет новое состояние увлажнителя и формируется новый объект сообщения с этим
+состоянием. 
+
+Данный объект содержит в себе несколько свойств: \textit{method} --- это наименование
+метода, при помощи которого можно будет идентифицировать необходимое действие на
+устройстве, а также свойство \textit{params}, содержащее как раз состояние устройства, в которое
+его необходимо привести. 
+
+В дальнейшем этот объект будет отправлен на конечное
+устройство для смены его состояния. Изменим тип события на событие загрузки
+атрибутов устройства --- POST\_ATTRUBUTE\_REQUEST. Узел возвращает объект, содержащий в себе основное
+сообщение, метаданные, а также тип сообщения. Полный код приведен ниже.
+
+
+\lstinputlisting{\pathToScriptsFolder/fan_chain.js}
+
+После реализации узла формирования параметров можно приступать к тестированию созданной цепочки. 
+
+Подпишемся на топик запросов (v1/devices/me/rpc/request/+) созданного для данного
+виртуального вентилятора. Воспользуемся для этого следующую командой:
+\newpage
+\begin{lstlisting}
+	mosquitto_sub -v -h "demo.thingsboard.io" -t "v1/devices/me/rpc/request/+" -u "nS83gBMMgHxwPq4yXVW9"
+\end{lstlisting}
+
+После чего опубликуем сообщение с телеметрией в топик устройства с параметром
+\texttt{motion}:
+
+\begin{lstlisting}
+mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/telemetry" -u "nS83gBMMgHxwPq4yXVW9" -m "{"motion": 800}"
+\end{lstlisting}
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/t1-sender}
+	\caption{Публикация сообщения с телеметрией вентилятора}
+	\label{fig:t1-sender}
+\end{figure}
+
+Чтобы отправить ответ на опубликованный запрос на смену состояния, воспользуемся
+также утилитой \texttt{mosquito\_pub}.
+
+Для отправки ответа на созданный запрос необходимо послать сообщение в топик
+\textit{v1/devices/me/rpc/response/2}. Воспользуемся для этого следующей командой:
+
+\begin{lstlisting}
+	mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/rpc/response/2" -u "nS83gBMMgHxwPq4yXVW9" -m "{"fan_state": 1}"
+\end{lstlisting}
+
+После этого можно проверить в облаке поступившую телеметрию и аргументы устройства,
+посланные в ответ на запрос. Результаты представлены на рисунках \ref{fig:tel} и \ref{fig:attr}.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/tel}
+	\caption{Телеметрия облачного устройства <<вентилятор>>}
+	\label{fig:tel}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/attr}
+	\caption{Атрибуты облачного устройства <<вентилятор>>}
+	\label{fig:attr}
+\end{figure}
+
+
+\subsubsection*{Реализация сценария управления лампами}
+
+
+На платформе \tb создадим виртуальное устройство, которое будет прообразом реальных блока светодиодных ламп (см. рисунок \ref{fig:dev-2}).
+
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/dev-2}
+	\caption{Виртуальный блок ламп}
+	\label{fig:dev-2}
+\end{figure}
+
+
+Создадим цепочку правил для контроля за состоянием блока ламп. Световые индикаторы должны сигнализировать о включении и выключении комбинированного датчика. При включении датчика следует включить зеленую лампу, а при выключении --- красную. 
+
+Приведенная на рисунке \ref{fig:chains-2} цепочка правил описывает данный сценарий управления устройством.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/chains-2}
+	\caption{Цепочка правил для управления блоком ламп}
+	\label{fig:chains-2}
+\end{figure}
+
+
+\textbf{Узел формирования параметров вентилятора}
+
+Полный код, описывающий поведение узла формирования параметров блока умных ламп приведен ниже.
+
+
+\lstinputlisting{\pathToScriptsFolder/light_chain.js}
+
+После реализации узла формирования параметров можно приступать к тестированию созданной цепочки. 
+
+Подпишемся на топик запросов (v1/devices/me/rpc/request/+) созданного для данного
+виртуального контроллера. Воспользуемся для этого следующую командой:
+
+\begin{lstlisting}
+mosquitto_sub -v -h "demo.thingsboard.io" -t "v1/devices/me/rpc/request/+" -u "RxcWZHP60DTvKzcgWB0T"
+\end{lstlisting}
+
+После чего опубликуем сообщение с телеметрией в топик устройства с параметрами
+\texttt{redButton} и \texttt{greenButton}:
+
+\begin{lstlisting}
+mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/telemetry" -u "RxcWZHP60DTvKzcgWB0T" -m "{"redButton": 1, "greenButton": 0}"
+\end{lstlisting}
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/t2-sender}
+	\caption{Публикация сообщения с телеметрией блока ламп}
+	\label{fig:t2-sender}
+\end{figure}
+
+Чтобы отправить ответ на опубликованный запрос на смену состояния, воспользуемся
+также утилитой \texttt{mosquito\_pub}.
+
+Для отправки ответа на созданный запрос необходимо послать сообщение в топик
+\textit{v1/devices/me/rpc/response/2}. Воспользуемся для этого следующей командой:
+
+\begin{lstlisting}
+mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/rpc/response/2" -u "RxcWZHP60DTvKzcgWB0T" -m "{"redLightState": 1, "greenLightState": 0}"
+\end{lstlisting}
+
+После этого можно проверить в облаке поступившую телеметрию и аргументы устройства,
+посланные в ответ на запрос. Результаты представлены на рисунках \ref{fig:tel-2} и \ref{fig:attr-2}.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/tel-2}
+	\caption{Телеметрия облачного устройства <<блок светодиодных ламп>>}
+	\label{fig:tel-2}
+\end{figure}
+
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/attr-2}
+	\caption{Атрибуты облачного устройства <<блок светодиодных ламп>>}
+	\label{fig:attr-2}
+\end{figure}
+
+
+
+
+\end{document}
+
+
+
+

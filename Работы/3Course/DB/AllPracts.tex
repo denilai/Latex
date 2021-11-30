@@ -20,7 +20,7 @@
 \newcommand{\studentfio}{К.~Ю.~Денисов}%\\Д.~Н.~Федосеев\\А.~М.~Сосунов}\\%К.~Ю.~Денисов\\%И.~А.~Кремнев
 % ФИО преподавателя в титуле
 \newcommand{\teacherfio}{Д.~С.~Киселев}
-\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+\newcommand{\signature}{\pathToCommonFolder/empty}
 
 
 \usepackage{tabularx}
@@ -44,10 +44,10 @@
 
 \renewcommand{\withouttheme}{1}
 
-\newcommand{\erassistant}{\texttt{ErAssistant}}
-\newcommand{\erdatamodaler}{\texttt{ERwin Data Modeler}}
-\newcommand{\methodsection}{Работа по методическим указаниям}
-\newcommand{\individual}{Индивидуальный вариант}
+\newcommand{\erassistant}{\textbf{ErAssistant~}}
+\newcommand{\erdatamodaler}{\textbf{ERwin Data Modeler~}}
+\newcommand{\methodsection}{Работа по методическим указаниям~}
+\newcommand{\individual}{Индивидуальный вариант~}
 
 %если нужна тема работы в отчете, то указать в скобках что-либо, иначе оаставить пустым
 %\renewcommand{\withouttheme}{}
@@ -196,7 +196,7 @@
 	\item Прогулочный.
 \end{itemize}
 
-Предприятие может предложить сконфигурировать сборку велосипеда, отдельно выбрав каждый из предложенных компонентов:
+Предприятие может предложить сконфигурировать велосипед, отдельно выбрав каждый из предложенных компонентов:
 \begin{itemize}
 	\item Рама;
 	\item Вилка;
@@ -206,7 +206,7 @@
 	\item Тормозная система.
 \end{itemize}
 
-Контроль над выполнением работ по сборке велосипеда проводится в виде учета всех операций по сборке, настройке и тестированию, проводимых на территории предприятия ее сотрудниками. При этом в каждой записи содержится следующая информация о проведенных работах:
+Контроль над выполнением работ по сборке велосипеда проводится в виде учета всех операций по сборке, настройке и тестированию, проводимых на территории предприятия ее сотрудниками. При этом каждая запись содержит следующую информацию о проведенных работах:
 \begin{enumerate}
 	\item Внутренний номер изделия;
 	\item Время;
@@ -217,13 +217,15 @@
 	\item Примечание.
 \end{enumerate}
 
+\newpage
 На предприятии ведется учет всех компонентов велосипедов.
-В базе данных предприятия хранится информация о каждом компоненте, приобретенном у партнеров или изготовленном самостоятельно. В независимости от типа компонента он обладает общей информацией о наименовании производителя, месте и времени изготовления, типе и рекомендованной розничной цене. 
+В базе данных предприятия хранится информация о каждом компоненте, приобретенном у партнеров или изготовленном самостоятельно.
 
+ В независимости от типа компонента он обладает общей информацией о наименовании производителя, месте и времени изготовления, типе и рекомендованной розничной цене. 
 Также каждый компонент имеет особые сведения, присущие данному типу детали.
 
 \subsubsection*{Построение модели}
-После приведения общих сведений о роде деятельности предприятия, факторизируем модель данных информационной системы предприятия в среде \erassistant. См. Рисунок \ref{fig:1-cycle}.
+После приведения общих сведений о роде деятельности предприятия, факторизируем модель данных информационной системы предприятия в среде \erassistant (cм рисунок \ref{fig:1-cycle}).
 % TODO: \usepackage{graphicx} required
 \begin{figure}[hpbt]
 	\centering
@@ -239,18 +241,12 @@
 \section{Создание логической\\и физической модели данных}
 \subsection{\methodsection}
 \subsection*{Теоретический материал}
-На этапе \texttt{инфологического} проектирования базы данных должна быть построена
+На этапе {инфологического} проектирования базы данных должна быть построена
 модель предметной области, не привязанная к конкретной СУБД, понятная не только
 разработчикам информационной системы, но и экономистам, менеджерам и другим
 специалистам. В то же время модель предметной области должна максимально точно
 отражать семантику предметной области и позволять легко перейти к модели данных
 конкретной СУБД.
-
-Такими моделями являются модели <<сущность-связь>>. Известно несколько
-методологий построения моделей <<сущность-связь>>. Наибольшее распространение
-получила методология IDEF1X. Рассмотрим построение моделей "сущность-связь",
-ориентируясь на продукт CA ERwin Data Modeler. ERwin имеет два уровня
-представления модели:
 
 \textbf{Логический уровень} --- это уровень, соответствующий \texttt{инфологическому} этапу проектирования
 и не привязанный к конкретной СУБД. Модели логического уровня оперируют с
@@ -263,14 +259,14 @@
 физических моделей. Причем, Erwin (как и другие CASE-системы проектирования баз
 данных) позволяет автоматизировать отображение логической модели на физическую.
 
-Модель <<сущность-связь>> строится в виде диаграммы <<сущность-связь>>,
-основными компонентами которой являются сущности (Entity) и связи\\(Relationship).
-Отсюда происходят часто используемые названия модели (ER-модель) и диаграммы
-(ER-диаграмма).
+%Модель <<сущность-связь>> строится в виде диаграммы <<сущность-связь>>,
+%основными компонентами которой являются сущности (Entity) и связи\\(Relationship).
+%Отсюда происходят часто используемые названия модели (ER-модель) и диаграммы
+%(ER-диаграмма).
 
 В ходе данной практической работы нами была описана и построена логическая и физическая модель данных средствами ПО \erdatamodaler.
 
-Порядок построения модели данных в среде ERwin рассмотрим на примере
+Порядок построения модели данных в среде \textbf{ERwin} рассмотрим на примере
 автоматизированной информационной системы "Реализация средств вычислительной
 техники", предназначенной для учета продаж настольных компьютеров по заказам
 клиентов.
@@ -327,8 +323,8 @@
 	\caption{Физическая модель данных системы <<Реализация средств вычислительной техники>>}
 	\label{fig:2-phisical-model}
 \end{figure}
-
-\section{\individual}
+\newpage
+\subsection{\individual}
 Приступим к построению логической модели данных системы <<Велосипедное предприятие>>. 
 В соответствии с моделью, реализованной в ходе первой практической работы, добавим в рабочую область следующие сущности:
 \begin{itemize}
@@ -357,7 +353,8 @@
 	\label{fig:2-cycle-logical}
 \end{figure}
 
-После уточнения типов данных, выбранных в соответствии с предметной областью и спецификой СУБД MySQL, построим физическую модель данных (см. рисунок \ref{fig:2-cycle-phisical}).
+После уточнения типов данных, выбранных в соответствии с предметной областью и спецификой СУБД MySQL.
+Физическая модель системы <<Велосипедное предприятие>> приведена на рисунке \ref{fig:2-cycle-phisical}.
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -368,18 +365,18 @@
 \end{figure}
 
 После реализации физической и логической модели можно приступать к реализации модели данной системы в СУБД MySQL.
-
-
+\hfill
+\newpage
 \section{Создание базы данных}
 \subsection{\methodsection}
-В ходе данной практической работы была создана база данных \texttt{forum}, которая хранит в себе сведения о пользователях форума и размещенных ими темах.
+Создадим базу данных \texttt{forum}, которая хранит в себе сведения о пользователях форумах и размещенных ими темах.
 
 Помимо суперпользователя root, был создан пользователь denilai, под которым производятся все манипуляции с данными.
 
-Создадим базу данных \texttt{forum} с помощью команды \texttt{create database forum;}
+Создадим базу данных \texttt{forum} с помощью команды \texttt{CREATE DATABASE forum;}
 
 
-Создадим таблицу \texttt{users} с помощью данных команд (см. рисунок \ref{fig:create-users}):
+Создадим таблицу \texttt{users} (см. рисунок \ref{fig:create-users}):
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -399,7 +396,7 @@
 %);
 %\end{lstlisting}
 
-Создадим таблицу \texttt{topics} с помощью данных команд (см. рисунок \ref{fig:create-topics}):
+Создадим таблицу \texttt{topics} (см. рисунок \ref{fig:create-topics}):
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -418,7 +415,7 @@
 %	FOREIGN KEY (id_author) REFERENCES users (id_user)
 %);
 %\end{lstlisting}
-Создадим таблицу \texttt{posts} с помощью данных команд (см. рисунок \ref{fig:create-posts}):
+Создадим таблицу \texttt{posts} (см. рисунок \ref{fig:create-posts}):
 
 \begin{figure}[h!]
 	\centering
@@ -426,6 +423,378 @@
 	\caption{}
 	\label{fig:create-posts}
 \end{figure}
+
+После создания таблиц, заполним их данными о пользователях форума, о темах и размещенных публикациях. Выполним операцию выборки данных без условия, чтобы увидеть все записи, занесенные в таблицы с помощью команды \texttt{SELECT * FROM <table-name>} (см. рисунок \ref{fig:select-from-all}). 
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/select-from-all}
+	\caption{Операция выборки из всех таблиц }
+	\label{fig:select-from-all}
+\end{figure}
+
+Выполним запрос \texttt{SELECT mesage, topic\_name FROM posts p JOIN topics t ON t.id\_author = p.id\_author; } для объединения данных из таблиц \texttt{topics} и \texttt{posts} по ключу id\_author и получения полной информации о сообщении и названию темы, в которой оно было размещено (см. рисунок \ref{fig:join-post-author}).
+	
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/join-post-author}
+		\caption{Запрос объединения}
+		\label{fig:join-post-author}
+	\end{figure}
+
+Выполним запрос выборки данных, явно указав поля отношения. Для этого перечислим имена полей через запятую после зарезервированного слова \texttt{SELECT} (см. рисунок \ref{fig:field-select}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/field-select}
+	\caption{Операция выборки с указанием полей}
+	\label{fig:field-select}
+\end{figure}
+
+
+Выполним более сложные запросы выборки, отсортировав записи в таблице \texttt{topics} по убыванию значения поля \texttt{topic\_name} и \texttt{id\_author}, а также опишем условие сравнения значения поля \texttt{id\_author} в сецкции \texttt{WHERE}(см. рисунок \ref{fig:order-where-forum}). 
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/order-where-forum}
+	\caption{Сложные запросы выборки с сортировкой и условием}
+	\label{fig:order-where-forum}
+\end{figure}
+
+Выполним операции по модификации таблицы --- добавим в таблицу \texttt{users} поле \texttt{country} типа \texttt{varchar (20)} со значением по умолчанию "Russia", а также добавим в эту же таблицу поле \texttt{age int(10)} со значением по умолчанию 19. 
+
+Выведем все записи из таблицы \texttt{users}, обнаружим, что столбцы были вставлены успешно (см. рисунок \ref{fig:alter-add-forum}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/alter-add-forum}
+	\caption{Добавление полей в таблицу \texttt{users}}
+	\label{fig:alter-add-forum}
+\end{figure}
+
+В ходе данной практической работы были рассмотрены операторы DDL и DML диалекта MySQL. С помощью данных операторов была создана база учебная база данных \texttt{forum}, содержащая о пользователях форумах и размещенных ими темах.
+
+\subsection{\individual}
+
+Продолжим работу над созданием модели данных велосипедного предприятия. Создадим базу данных \texttt{cycle}, сущностями (таблицами) которой будут таблицы, описания которых были проработаны в прошлых практических работах. 
+
+Описание проектируемых отношений базы данных \texttt{cycle} приведены в таблицах \ref{tab:bar}-\ref{tab:log}.
+
+%(\textbf{Bar})
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы Bar}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		Width & INTEGER NOT NULL \\ \hline
+		Diameter & INTEGER NOT NULL \\ \hline
+		BarID & INTEGER NOT NULL auto\_increment \\ \hline
+		Color & VARCHAR(20) NULL default 'black' \\ \hline
+	\end{tabular}
+	\label{tab:bar}
+\end{table}
+
+%(\textbf{Brake})
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы Brake}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		BrakeID &       int NOT NULL auto\_increment \\ \hline
+		ComponentID &   INTEGER NULL \\ \hline
+	\end{tabular}
+	\label{tab:brake}
+\end{table}
+
+
+%(\textbf{Component})
+
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы Component}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		ComponentID &   INTEGER NOT NULL auto\_increment \\ \hline
+		Brand & VARCHAR(20) NOT NULL \\ \hline
+		ManufacturerCountry &  VARCHAR(20) NOT NULL \\ \hline
+		PriceCent & INTEGER NOT NULL \\ \hline
+		Model & VARCHAR(20) NOT NULL \\ \hline
+		ComponentTypeID &  INTEGER NOT NULL \\ \hline
+		WeightGramm &   INTEGER NOT NULL \\ \hline
+	\end{tabular}
+	\label{tab:component}
+\end{table}
+
+%(\textbf{ComponentType}) 
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы ComponentType}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		ComponentTypeID &  INTEGER NOT NULL auto\_increment \\ \hline
+		Name & VARCHAR(20) \\ \hline
+	\end{tabular}
+	\label{tab:componenttype}
+\end{table}
+
+
+%(\textbf{CycleType})
+
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы CycleType}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		CycleTypeID &   INTEGER NOT NULL auto\_increment \\ \hline
+		Name &  VARCHAR(20) NOT NULL \\ \hline
+	\end{tabular}
+	\label{tab:cycletype}
+\end{table}
+
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы FctCycleBuild}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		SetupID &       INTEGER NOT NULL \\ \hline
+		Datetime &      DATE NOT NULL \\ \hline
+		Stage & INTEGER NOT NULL \\ \hline
+		Workshop &      varchar(20) NOT NULL default 'main' \\ \hline
+		Master &        VARCHAR(20) NOT NULL \\ \hline
+		Status &        VARCHAR(20) NOT NULL \\ \hline
+		Comment &       VARCHAR(20) NOT NULL \\ \hline
+	\end{tabular}
+	\label{}
+\end{table}
+
+%(\textbf{Fork})
+
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы Fork}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		ForkID &  INTEGER NOT NULL auto\_increment \\ \hline
+		Color & VARCHAR(20) NULL default 'black' \\ \hline
+		ComponentID &  INTEGER NULL \\ \hline
+	\end{tabular}
+	\label{ta:fork}
+\end{table}
+
+
+%(\textbf{Frame})
+
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы Frame}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		FrameID &  INTEGER NOT NULL auto\_increment \\ \hline
+		Color & VARCHAR(20) NULL default 'black' \\ \hline
+	\end{tabular}
+	\label{tab:frame}
+\end{table}
+
+
+%(\textbf{FrameInfo})
+
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы FrameInfo}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		FrameID &       INTEGER NOT NULL \\ \hline
+		Size & INTEGER NOT NULL \\ \hline
+		Stack & INTEGER NOT NULL \\ \hline
+		Reach & INTEGER NOT NULL \\ \hline
+	\end{tabular}
+	\label{tab:frameinfo}
+\end{table}
+
+
+%(\textbf{Frameset})
+
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы Frameset}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		FrameSizeID &   INTEGER NOT NULL auto\_increment \\ \hline
+		ForkID &        INTEGER NOT NULL \\ \hline
+		FramesetID &    INTEGER NOT NULL \\ \hline
+		ComponentID &   INTEGER NOT NULL \\ \hline
+	\end{tabular}
+	\label{tab:frameset}
+\end{table}
+
+
+%(\textbf{FrameSize})
+
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы FrameSize}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		FrameID &       INTEGER NOT NULL \\ \hline
+		Size &  INTEGER NOT NULL \\ \hline
+		FrameSizeID &   INTEGER NOT NULL auto\_increment \\ \hline
+		ComponentID &   INTEGER NOT NULL \\ \hline
+	\end{tabular}
+	\label{tab:framesize}
+\end{table}
+
+
+%(%(\textbf{Groupset}))
+
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы Groupset}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		Ratio & INTEGER NOT NULL \\ \hline
+		BrakeID &       CHAR(18) NOT NULL \\ \hline
+		GroupsetID &    INTEGER NOT NULL auto\_increment \\ \hline
+		Color & VARCHAR(20) NOT NULL \\ \hline
+		ComponentID &   INTEGER NOT NULL \\ \hline
+	\end{tabular}
+	\label{tab:groupset}
+\end{table}
+
+
+%(\textbf{Setup})
+
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы Setup}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		GroupsetID &    INTEGER NOT NULL \\ \hline
+		WheelsetID &    INTEGER NOT NULL \\ \hline
+		FramesetID &    INTEGER NOT NULL \\ \hline
+		BarID & INTEGER NOT NULL \\ \hline
+		CycleTypeID &   INTEGER NOT NULL \\ \hline
+		SetupID &       INTEGER NOT NULL auto\_increment \\ \hline
+	\end{tabular}
+	\label{tab:setup}
+\end{table}
+
+
+%(\textbf{Wheelset})
+
+\begin{table}[h!] 
+ \centering
+	\caption{Описание таблицы Wheelset}
+	\begin{tabular}{|l|l|}
+  \hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		DiametrInch &   INTEGER NOT NULL \\ \hline
+		Width & INTEGER NOT NULL \\ \hline
+		SpokesCount &   INTEGER NULL \\ \hline
+		WheelsetID &    INTEGER NOT NULL auto\_increment \\ \hline
+		Color & VARCHAR(20) NOT NULL \\ \hline
+		ComponentID &   INTEGER NOT NULL \\ \hline
+	\end{tabular}
+	\label{tab:wheelset}
+\end{table}
+
+\begin{table}[h!] 
+	\centering
+	\caption{Описание таблицы Log}
+	\begin{tabular}{|l|l|}
+		\hline \textbf{Имя} & \textbf{Тип} \\
+		\hline
+		ID &   INTEGER NOT NULL auto\_increment \\ \hline
+		msg & VARCHAR{100} NOT NULL \\ \hline
+		row\_id & INTEGER NOT NULL \\ \hline
+	\end{tabular}
+	\label{tab:log}
+\end{table}
+
+
+
+\newpage\hfill\newpage\hfill\newpage
+
+Создадим данные таблицы в СУБД MySQL, использовав ключевое слово \texttt{CREATE TABLE}. После создания таблиц выполним команду \texttt{SHOW TABLES}, выбрав базу данных \texttt{cycle} (см. рисунок \ref{fig:show-tables-cycle}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/show-tables-cycle}
+	\caption{Таблицы базы данных \texttt{cycle}}
+	\label{fig:show-tables-cycle}
+\end{figure}
+
+
+Выведем записи из таблицы \texttt{Component} (см. рисунок \ref{fig:select-components}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/select-components}
+	\caption{Вывод записей из таблицы Components}
+	\label{fig:select-components}
+\end{figure}
+
+
+Выполним более сложные запросы выборки --- объединим таблицы с помощью оператора \texttt{INNER JOIN} \texttt{Component} и \texttt{fork} по полю \linebreak \texttt{component\_id}, а также воспользуемся функцией \texttt{ROW\_NUMBER()} в сочетании с оконной функцией \texttt{OVER()}, пронумеровав компоненты из таблицы \texttt{Fork} одного цвета по возрастанию значения поля \texttt{color} (см. рисунок \ref{fig:join-window-cycle}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/join-window-cycle}
+	\caption{Сложные запросы выборки. База данных cycle}
+	\label{fig:join-window-cycle}
+\end{figure}
+
+
+Создадим триггеры \texttt{delete\_component} и  \texttt{add\_component} на добавление и удаление записи в таблице \texttt{Component}. При срабатываении данного триггера, будет добавляться запись в таблицу log, информирующая о совершении манипуляций с данными.
+\newpage\hfill\newpage
+Приведем объявление данного триггера на диалекте MySQL:
+\lstset{
+	language=sql
+}
+\begin{lstlisting}
+DELIMITER $$
+drop trigger delete_component; $$
+
+create trigger `delete_component` after delete on component
+for each row begin
+insert into log (msg, row_id) values (concat('delete component ',old.Brand,' ', old.Model), old.ComponentID);
+end; $$
+
+create trigger `add_component` after insert on component
+for each row begin
+insert into log (msg, row_id) values (concat('insert component ',new.Brand,' ', new.Model), new.ComponentID);
+end; $$
+DELIMITER $$
+\end{lstlisting}
+
+%Воспользуемся декартовым произведением таблиц 
+
+
+
+
+
+
+
 %\begin{lstlisting}
 %create table posts (
 %	id_post int (10) AUTO_INCREMENT,

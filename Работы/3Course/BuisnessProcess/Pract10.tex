@@ -17,6 +17,7 @@
 \newcommand{\studentfio}{К.~Ю.~Денисов}
 % ФИО преподавателя в титуле
 \newcommand{\teacherfio}{Х.~Г.~Ахмедова}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
 
 
 \usepackage{tabularx}
@@ -52,12 +53,12 @@
 \begin{document}
 	\thispagestyle{empty}
 	% Вставка первого титульного листа
-	\input{\pathToCommonFolder/titul-with-date}
+	\input{\pathToCommonFolder/titul-with-signature}
 	\newpage
 %	\tableofcontents
 	\newpage
 	%\listoftables
-\section{Ход работы}
+\section*{Ход работы}
 
 \subsection*{Цель работы}
 Знакомство с функциональными возможностями программного
@@ -92,12 +93,12 @@
 	\end{figure}
 
 % TODO: \usepackage{graphicx} required
-\begin{figure}
-	\centering
-	\includegraphics[width=0.7\linewidth]{../../../Common/signature}
-	\caption{}
-	\label{fig:signature}
-\end{figure}
+%\begin{figure}
+%	\centering
+%	\includegraphics[width=0.7\linewidth]{../../../Common/signature}
+%	\caption{}
+%	\label{fig:signature}
+%\end{figure}
 
 
 % TODO: \usepackage{graphicx} required
@@ -124,14 +125,14 @@
 % TODO: \usepackage{graphicx} required
 	\begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/pr10-emp1}
+	\includegraphics[width=0.5\linewidth]{images/pr-10/top}
 	\caption{Задание 2. Процесс “Нанять сотрудника”}
 	\label{fig:pr10-emp1}
 \end{figure}
 % TODO: \usepackage{graphicx} required
 	\begin{figure}[htb]
 	\centering
-	\includegraphics[width=0.55\linewidth]{images/pr10-emp2}
+	\includegraphics[width=0.55\linewidth]{images/pr-10/find-candidate}
 	\caption{Задание 2. Детализация подпроцесса “Найти кандидата на вакансию”}
 	\label{fig:pr10-emp2}
 \end{figure}
@@ -140,14 +141,14 @@
 % TODO: \usepackage{graphicx} required
 	\begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.6\linewidth]{images/pr10-emp3}
+	\includegraphics[width=0.6\linewidth]{images/pr-10/documents}
 	\caption{Задание 2. Детализация подпроцесса “Оформить документы”}
 	\label{fig:pr10-emp3}
 \end{figure}
 % TODO: \usepackage{graphicx} required
 	\begin{figure}[htpb]
 	\centering
-	\includegraphics[width=0.7\linewidth]{images/pr10-emp4}
+	\includegraphics[width=0.7\linewidth]{images/pr-10/education}
 	\caption{Задание 2. Детализация подпроцесса ”Обучить нового сотрудника”}
 	\label{fig:pr10-emp4}
 \end{figure}

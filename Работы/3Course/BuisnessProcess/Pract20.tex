@@ -1,0 +1,213 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №20}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Моделирование бизнес-процессов}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра практической и прикладной информатики (ППИ)}
+% Тема работы в титуле
+\newcommand{\theme}{}
+\newcommand{\dontneedtheme}{1}
+% Должность преподавателя в титуле
+\newcommand{\rang}{}
+% ФИО студента в титуле
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Х.~Г.~Ахмедова}
+\newcommand{\signature}{\pathToCommonFolder/empty}
+
+
+\usepackage{tabularx}
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов}
+\title{Практическая работа №4}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+\renewcommand{\withoutsubmission}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+	\thispagestyle{empty}
+	% Вставка первого титульного листа
+	\input{\pathToCommonFolder/titul-with-signature}
+	\newpage
+%	\tableofcontents
+	\newpage
+	%\listoftables
+\section*{Ход работы}
+
+\subsection*{Цель работы}
+Построение процессно-событийной модели на основе текстового описания
+
+
+\subsection*{Постановка задачи}
+Построить процессно-событийную модель.
+
+
+\subsection*{Результат работы}
+
+
+\begin{problem*}
+Построим процессно-событийную модель на основе текстового описания (см. рисунки \ref{fig:1.1}--\ref{fig:1.4}).
+
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/pr-20/1.1}
+	\caption{eEPC диаграмма работы УК “Наш дом”. Часть 1}
+	\label{fig:1.1}
+	\end{figure}
+	
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/pr-20/1.2}
+	\caption{eEPC диаграмма работы УК “Наш дом”. Часть 2}
+	\label{fig:1.2}
+	\end{figure}
+	
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/pr-20/1.3}
+	\caption{eEPC диаграмма работы УК “Наш дом”. Часть 3}
+	\label{fig:1.3}
+	\end{figure}
+	
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/pr-20/1.4}
+	\caption{eEPC диаграмма работы УК “Наш дом”. Часть 4}
+	\label{fig:1.4}
+	\end{figure}
+
+\end{problem*}
+\newpage\mbox{}\newpage
+\begin{problem*}
+	
+	Учитывая, что процессно-событийная модель должна быть
+	читаемой и помещаться на листе формата А4, а также содержать от 3 до 9
+	элементов (чередование событий и функций), осуществим свертывание части
+	функций в процесс (см. рисунки \ref{fig:2.1}--\ref{fig:2.4}).
+	
+		% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/pr-20/2.1}
+		\caption{Исправленная eEPC диаграмма
+ Часть 1}
+		\label{fig:2.1}
+	\end{figure}
+	
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/pr-20/2.2}
+		\caption{Исправленная eEPC диаграмма
+ Часть 2}
+		\label{fig:2.2}
+	\end{figure}
+	
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/pr-20/2.3}
+		\caption{Исправленная eEPC диаграмма
+ Часть 3}
+		\label{fig:2.3}
+	\end{figure}
+	
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/pr-20/2.4}
+		\caption{Исправленная eEPC диаграмма
+ Часть 4}
+		\label{fig:2.4}
+	\end{figure}
+\end{problem*}
+
+\newpage
+
+\begin{problem*}
+	Исправим ошибки, допущенные при построении
+	eEPC, приведенного в задании (см. рисунки \ref{fig:3.1}--\ref{fig:3.3})
+	
+	
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/pr-20/3.1}
+		\caption{Исправленная eEPC диаграмма.
+ Часть 1}
+		\label{fig:3.1}
+	\end{figure}
+	
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/pr-20/3.2}
+		\caption{Исправленная eEPC диаграмма.
+ Часть 2}
+		\label{fig:3.2}
+	\end{figure}
+	
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/pr-20/3.3}
+		\caption{Исправленная eEPC диаграмма.
+ Часть 3}
+		\label{fig:3.3}
+	\end{figure}
+	
+	
+	
+\end{problem*}
+
+
+
+\newpage\mbox{}\newpage
+\anonsection{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ\hfill}
+\begin{enumerate}
+	\item Информационные Технологии и вычислительные системы: Математическое
+	моделирование. Вычислительные системы. Нанотехнологии. Прикладные
+	аспекты информатики / Под ред. С.В. Емельянова. - М.: Ленанд, 2012 - 108 c.
+	\item  Моделирование экономических процессов: Учебник / Под ред. М.В.
+	Грачевой, Ю.Н. Черемных. - М.: Юнити, 2013 - 543 c.
+	\item  Экономическая политика и ее инструменты (системное моделирование и
+	информационные
+	технологии).
+	Российской академии наук (ИСА РАН) / Под ред. М.Г. Завельского. - М.:
+	КомКнига, 2006 - 152 c.
+\end{enumerate}
+
+
+\end{document}
+
+
+

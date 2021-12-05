@@ -1,0 +1,110 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №15}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Моделирование бизнес-процессов}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра практической и прикладной информатики (ППИ)}
+% Тема работы в титуле
+\newcommand{\theme}{}
+\newcommand{\dontneedtheme}{1}
+% Должность преподавателя в титуле
+\newcommand{\rang}{}
+% ФИО студента в титуле
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Х.~Г.~Ахмедова}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+
+
+\usepackage{tabularx}
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов}
+\title{Практическая работа №4}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+\renewcommand{\withoutsubmission}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+	\thispagestyle{empty}
+	% Вставка первого титульного листа
+	\input{\pathToCommonFolder/titul-with-signature}
+	\newpage
+%	\tableofcontents
+	\newpage
+	%\listoftables
+\section*{Ход работы}
+
+\subsection*{Цель работы}
+Отработка поиска ошибок в построенной модели бизнес-
+процесса с последующим перепроектированием модели процесса.
+
+\subsection*{Постановка задачи}
+Проанализировать представленную модель бизнес-
+процесса и смоделировать процесс заново.
+
+
+\subsection*{Результат работы}
+На рисунке A.\ref{fig:15} представлен процесс «Регистрировать багаж на рейс» с
+применением смарт-технологии SelfBagDrop (SBD) для самостоятельной регистрации
+и сдачи багажа в аэропорту. Использовав открытые источники информации
+мы ознакомились с данной технологией, проанализировали модель процесса, выявили ошибки.
+
+\newpage
+\anonsection{\hfillПРИЛОЖЕНИЕ\hspace{1ex}А\hfill}
+
+
+\captionsetup*[figure]{labelformat=gostfigureappendix, justification=centering}  % выравнивание по центру
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[angle=90,height=\linewidth]{images/pr-15/15}
+	\caption{Диаграмма модели процесса «Регистрация багажа на рейс»}
+	\label{fig:15}
+\end{figure}
+
+\newpage
+\anonsection{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ\hfill}
+\begin{enumerate}
+	\item Информационные Технологии и вычислительные системы: Математическое
+	моделирование. Вычислительные системы. Нанотехнологии. Прикладные
+	аспекты информатики / Под ред. С.В. Емельянова. - М.: Ленанд, 2012 - 108 c.
+	\item  Моделирование экономических процессов: Учебник / Под ред. М.В.
+	Грачевой, Ю.Н. Черемных. - М.: Юнити, 2013 - 543 c.
+	\item  Экономическая политика и ее инструменты (системное моделирование и
+	информационные
+	технологии).
+	Российской академии наук (ИСА РАН) / Под ред. М.Г. Завельского. - М.:
+	КомКнига, 2006 - 152 c.
+\end{enumerate}
+
+
+\end{document}
+
+
+

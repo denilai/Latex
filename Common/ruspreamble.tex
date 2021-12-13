@@ -11,6 +11,8 @@
 \newcommand{\q}{\textbf{Вопрос: }}
 \newcommand{\ans}{\textbf{Ответ: }}
 
+\usepackage{etoc}
+
 \newcommand{\pathToScriptsFolder}{/home/denilai/Documents/repos/latex/scripts}
 
 
@@ -40,6 +42,10 @@
 
 \usepackage{titlesec}
 
+\usepackage{titletoc}
+
+\dottedcontents{chapter}[1.6em]{}{1.6em}{1pc}
+
 \titleformat{\chapter}[block]
 {\filcenter}
 {\thechapter}
@@ -48,6 +54,13 @@
 %{1ex}{}
 
 %\titleformat*{\section}{\sloppy\righthyphenmin62}
+%\titlespacing*{\section}{\parindent}{*4}{*1}
+
+%\titleformat{\section}
+%{}
+%{\thesection}
+%{1ex}{}
+
 \titlespacing*{\section}{\parindent}{*4}{*1}
 
 	
@@ -80,7 +93,7 @@
 
 % сначала ставить \usepackage{extsizes} % Возможность сделать 14-й шрифт
 % для корректной установки полей вставлять преамбулу следует в последнюю очередь (но перед дерективой замены \rmdefault)
-\usepackage[top=20mm,bottom=20mm,left=30mm,right=15mm]{geometry} % Простой способ задавать поля
+\usepackage[top=20mm,bottom=20mm,left=30mm,right=10mm]{geometry} % Простой способ задавать поля
 
 \hypersetup{				% Гиперссылки
 	unicode=true,           % русские буквы в раздела PDF
@@ -109,6 +122,7 @@
 \usepackage[utf8]{inputenc}			% кодировка исходного текста
 \usepackage[english,russian]{babel}	% локализация и переносы
 \usepackage{indentfirst}
+\setlength\parindent{5ex}
 \frenchspacing
 \usepackage{multirow}    % улучшенное форматирование таблиц
 
@@ -127,7 +141,13 @@
 \captionsetup*[ContinuedFloat]{labelformat=continued}
 \captionsetup{labelsep=gost}
 \captionsetup*[figure]{labelformat=gostfigure, justification=centering}  % выравнивание по центру
-\captionsetup*[table]{labelformat=gosttable,justification=raggedright}
+\captionsetup*[table]{labelformat=gosttable,justification=raggedright,font=it}
+% \DeclareCaptionFont{blue}{\color{blue}} 
+
+% \captionsetup[lstlisting]{singlelinecheck=false, labelfont={blue}, textfont={blue}}
+\DeclareCaptionFont{white}{\color{black}\textit}
+\DeclareCaptionFormat{listing}{{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={footnotesize}}
 
 \renewcommand{\thesubfigure}{\asbuk{subfigure}}
 
@@ -313,6 +333,18 @@
 
 %%% Страница
 
+\usepackage{fancyhdr}
+
+
+% нумерация страниц справа вверху
+%\pagestyle{fancy}
+%\fancyhf{}
+%\rhead{\thepage}
+%\renewcommand{\headrulewidth}{0pt}
+
+
+
+
 %	\usepackage{fancyhdr} % Колонтитулы
 % 	\pagestyle{fancy}
 %   \renewcommand{\headrulewidth}{0pt}  % Толщина линейки, отчеркивающей верхний колонтитул
@@ -386,33 +418,52 @@
 
 
 \lstset{ 
+	basicstyle=\footnotesize\ttfamily, % Default font
 	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
-	basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+	%basicstyle=\footnotesize,        % the size of the fonts that are used for the code
 	breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
 	breaklines=true,                 % sets automatic line breaking
 	captionpos=t,                    % sets the caption-position to bottom
-	commentstyle=\color{mygreen},    % comment style
+	%commentstyle=\color{mygreen},    % comment style
 	deletekeywords={...},            % if you want to delete keywords from the given language
 	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
 	extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
 	firstnumber=1,                % start line enumeration with line 1000
 	frame=single,	                   % adds a frame around the code
 	keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
-	keywordstyle=\color{blue},       % keyword style
+	%keywordstyle=\color{blue},       % keyword style
 	language=Java,                 % the language of the code
 	morekeywords={*,...},            % if you want to add more keywords to the set
 	numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
 	numbersep=5pt,                   % how far the line-numbers are from the code
-	numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+	numberstyle=\tiny, % the style that is used for the line-numbers
 	rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
 	showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
 	showstringspaces=false,          % underline spaces within strings only
 	showtabs=false,                  % show tabs within strings adding particular underscores
 	stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
-	stringstyle=\color{mymauve},     % string literal style
+	%stringstyle=\color{mymauve},     % string literal style
 	tabsize=2,	                   % sets default tabsize to 2 spaces
 	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 
 \usepackage{tabularx}
+
+
+
+\usepackage{tocloft}
+\addto\captionsenglish{\renewcommand{\contentsname}{Table of Contents}}
+\renewcommand{\cfttoctitlefont}{\hfill\normalsize}
+\renewcommand{\cftaftertoctitle}{\hfill}
+
+\usepackage{ragged2e}
+\usepackage{microtype}
+
+
+\justifying
+\sloppy
+\tolerance=500
+\hyphenpenalty=10000
+\emergencystretch=3em
+
 

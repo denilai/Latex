@@ -70,8 +70,7 @@
 
 \normalsize
 
-\section{Практическая работа №9.\\Знакомство с облачными платформами IoT}
-\subsection{Регистрация на платформе \tb}
+\section{Практическая работа №9}
 
 \tb имеет тестовый сервер в сборке Community Edition для проверки доступных
 функций платформы и тестирования своих приложений. Для регистрации на платформе
@@ -91,7 +90,7 @@
 \end{enumerate}
 
 Создадим для каждого устройства свой профиль (виртуальное устройство), соответствующий передаваемым на
-устройство данным. В качестве протокола для профилей устройств используем \textbf{MQTT} (см. рисунок \ref{fig:task9-create},\ref{fig:task9-create2}).
+устройство данным. В качестве протокола для профилей устройств используем \textbf{MQTT} (см. Рисунок \ref{fig:task9-create},\ref{fig:task9-create2}).
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
 	\centering
@@ -109,7 +108,7 @@
 
 \subsection{Отправка данных в облако}
 
-Выполним передачу тестовых данных в каждое из созданных устройств, список которых приведен на рисунке \ref{fig:devices}.
+Выполним передачу тестовых данных в каждое из созданных устройств, список которых приведен на Рисунке \ref{fig:devices}.
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -119,7 +118,7 @@
 	\label{fig:devices}
 \end{figure}
 
-Приведем команду, с помощью которой осуществляется процесс ответа на сообщение с телеметрией в топик устройства с параметром "motion" (см. рисунок (см. рисунок \ref{fig:send}).
+Приведем команду, с помощью которой осуществляется процесс ответа на сообщение с телеметрией в топик устройства с параметром "motion" (см. Рисунок (см. Рисунок \ref{fig:send}).
 
 \begin{figure}[h!]
 	\centering
@@ -128,7 +127,7 @@
 	\label{fig:send}
 \end{figure}
 
-После отправки, тестовые данные отображаются в веб-интерфейсе платформы \tb в виде представленном на рисунках \ref{fig:voltagedata}--\ref{fig:airqualitydata}. 
+После отправки, тестовые данные отображаются в веб-интерфейсе платформы \tb в виде представленном на Рисунках \mbox{\ref{fig:voltagedata}--\ref{fig:airqualitydata}}. 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
 	\centering
@@ -154,9 +153,9 @@
 
 Данные соответствуют типу устройства и передаются при помощи утилиты \texttt{mosquito\_pub}.
 
-\newpage
+%\newpage
 
-\section{Дополнительное задание практической работы №9}
+\section{Дополнительное задание №9}
 \subsection{Выбор облачного решения}
 
 В качестве облачного решения была выбрана платформа ThingsBoard. Данный выбор был сделан по следующим причинам:
@@ -169,11 +168,11 @@
 
 \subsection{Реализация отправки данных}
 
-Реализуем отправку данных с программного эмулятора реального физического устройства в облачную платформу ThingsBoard. Приведем листинг скрипта на языке программирования Python:
+Реализуем отправку данных с программного эмулятора реального физического устройства в облачную платформу ThingsBoard. Приведем листинг скрипта на языке программирования Python (см. Листинг \ref{send-to-cloud}):
 
-\lstinputlisting{\pathToScriptsFolder/dop9-publish.py}
+\lstinputlisting[caption=Отправка данных в облачную платформу, label=send-to-cloud]{\pathToScriptsFolder/dop9-publish.py}
 
-В результате запуска данного скрипта происходит соединение с MQTT-брокером, создание экземпляра класса Client для MQTT-брокера, с последнующей передачей данных в облако (см. рисунки \ref{fig:dop9-send},  \ref{fig:dop9-recieve}).
+В результате запуска данного скрипта происходит соединение с MQTT-брокером, создание экземпляра класса Client для MQTT-брокера, с последнующей передачей данных в облако (см. Рисунки \ref{fig:dop9-send},  \ref{fig:dop9-recieve}).
 
 
 % TODO: \usepackage{graphicx} required
@@ -192,9 +191,9 @@
 	\caption{Прием телеметрических данных облачной платформой}
 	\label{fig:dop9-recieve}
 \end{figure}
-\hfill\newpage\hfill\newpage
+%\hfill\newpage\hfill\newpage
 
-\section{Практическая работа №10. \\Управление устройствами при помощи \\платформ Интернета вещей}
+\section{Практическая работа №10}
 
 Реализуем следующие сценарии из практической работы №3 при помощи цепочек правил ThingsBoard.
 
@@ -203,18 +202,18 @@
 	\item Включение и выключения индикации зеленым и красным светом комбинированного датчика по кнопкам.
 \end{enumerate}
 
-\subsubsection*{Реализация сценария управления вентилятором}
-На платформе \tb создадим виртуальное устройство, которое будет прообразом реального вентилятора (см. рисунок \ref{fig:dev}).
+\subsection{Реализация сценария управления вентилятором}
+На платформе \tb создадим виртуальное устройство, которое будет прообразом реального вентилятора (см. Рисунок \ref{fig:dev}).
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.5\linewidth]{images/dev}
+	\includegraphics[width=0.6\linewidth]{images/dev}
 	\caption{Виртуальный вентилятор}
 	\label{fig:dev}
 \end{figure}
 
-Создадим цепочку правил для контроля за состоянием вентилятора. Когда значения, передаваемые датчиком движения превышают 700 условных единиц, вентилятор должен включаться. При уменьшении значения ниже 700, вентилятор должен выключаться. Приведенная на рисунке \ref{fig:chains} цепочка правил описывает данный сценарий управления устройством.
+Создадим цепочку правил для контроля за состоянием вентилятора. Когда значения, передаваемые датчиком движения превышают 700 условных единиц, вентилятор должен включаться. При уменьшении значения ниже 700, вентилятор должен выключаться. Приведенная на Рисунке \ref{fig:chains} цепочка правил описывает данный сценарий управления устройством.
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -244,16 +243,16 @@
 В дальнейшем этот объект будет отправлен на конечное
 устройство для смены его состояния. Изменим тип события на событие загрузки
 атрибутов устройства --- POST\_ATTRUBUTE\_REQUEST. Узел возвращает объект, содержащий в себе основное
-сообщение, метаданные, а также тип сообщения. Полный код приведен ниже.
+сообщение, метаданные, а также тип сообщения. Полный код приведен в Листинге \ref{send-to-object}.
 
 
-\lstinputlisting{\pathToScriptsFolder/fan_chain.js}
+\lstinputlisting[caption=Отправка объекта на устройство, label=send-to-object]{\pathToScriptsFolder/fan_chain.js}
 
 После реализации узла формирования параметров можно приступать к тестированию созданной цепочки. 
 
 Подпишемся на топик запросов (v1/devices/me/rpc/request/+) созданного для данного
 виртуального вентилятора. Воспользуемся для этого следующую командой:
-\newpage
+%\newpage
 \begin{lstlisting}
 	mosquitto_sub -v -h "demo.thingsboard.io" -t "v1/devices/me/rpc/request/+" -u "nS83gBMMgHxwPq4yXVW9"
 \end{lstlisting}
@@ -284,7 +283,7 @@ mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/telemetry" -u "
 \end{lstlisting}
 
 После этого можно проверить в облаке поступившую телеметрию и аргументы устройства,
-посланные в ответ на запрос. Результаты представлены на рисунках \ref{fig:tel} и \ref{fig:attr}.
+посланные в ответ на запрос. Результаты представлены на Рисунках \ref{fig:tel} и \ref{fig:attr}.
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -303,10 +302,10 @@ mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/telemetry" -u "
 \end{figure}
 
 
-\subsubsection*{Реализация сценария управления лампами}
+\subsection{Реализация сценария управления лампами}
 
 
-На платформе \tb создадим виртуальное устройство, которое будет прообразом реальных блока светодиодных ламп (см. рисунок \ref{fig:dev-2}).
+На платформе \tb создадим виртуальное устройство, которое будет прообразом реальных блока светодиодных ламп (см. Рисунок \ref{fig:dev-2}).
 
 
 % TODO: \usepackage{graphicx} required
@@ -320,7 +319,7 @@ mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/telemetry" -u "
 
 Создадим цепочку правил для контроля за состоянием блока ламп. Световые индикаторы должны сигнализировать о включении и выключении комбинированного датчика. При включении датчика следует включить зеленую лампу, а при выключении --- красную. 
 
-Приведенная на рисунке \ref{fig:chains-2} цепочка правил описывает данный сценарий управления устройством.
+Приведенная на Рисунке \ref{fig:chains-2} цепочка правил описывает данный сценарий управления устройством.
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
 	\centering
@@ -332,10 +331,10 @@ mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/telemetry" -u "
 
 \textbf{Узел формирования параметров вентилятора}
 
-Полный код, описывающий поведение узла формирования параметров блока умных ламп приведен ниже.
+Полный код, описывающий поведение узла формирования параметров блока умных ламп приведен в Листинге \ref{lamp}.
 
 
-\lstinputlisting{\pathToScriptsFolder/light_chain.js}
+\lstinputlisting[caption=Блок умных ламп, label=lamp]{\pathToScriptsFolder/light_chain.js}
 
 После реализации узла формирования параметров можно приступать к тестированию созданной цепочки. 
 
@@ -372,7 +371,7 @@ mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/rpc/response/2"
 \end{lstlisting}
 
 После этого можно проверить в облаке поступившую телеметрию и аргументы устройства,
-посланные в ответ на запрос. Результаты представлены на рисунках \ref{fig:tel-2} и \ref{fig:attr-2}.
+посланные в ответ на запрос. Результаты представлены на Рисунках \ref{fig:tel-2} и \ref{fig:attr-2}.
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -391,6 +390,583 @@ mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/rpc/response/2"
 \end{figure}
 
 
+\section{Дополнительное задание № 10}
+
+\subsection*{Описание взаимодействия пользователя с интерфейсом}
+Опишем взаимодействие пользователя с интерфейсом реализуемой системы при помощи диаграммы Use-case в нотации UML (см. Рисунок \ref{fig:usecase-10}). 
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{images/usecase-10}
+	\caption{Взаимодействие пользователя с системой}
+	\label{fig:usecase-10}
+\end{figure}
+
+
+\subsection{Требования к интерфейсу пользователя}
+
+Для разрабатываемого нами программного решения был выбран интерфейс \mbox{telegram--бота}. Взаимодействие с данным интерфейсом состоит в отправке текстовых сообщений в мессенджере и основано на принципе <<запрос-ответ>> --- данные предоставляются пользователю по требованию.
+
+Для удобного взаимодействия с информационной системой данные должны предоставляться пользователю в графическом, табличном и текстовом виде. Это упросит взаимодействие с программным инструментом.
+
+
+Следует реализовать возможность выбора отслеживаемого на данный момент датчика, регистрации нового датчика (прибора), получения сведений о состоянии измерительного прибора, получении текущей телеметрии и статистических данных.
+
+Сведения о передаваемой датчиками телеметрии следует представлять в виде таблиц, графиков или структурированного текста. Также нужно предоставить пользователю возможность получать сведения о данных за определенный временной промежуток, проводить их агрегирование.
+
+
+
+\subsection{Макеты интерфейса приложения}
+
+После проведения анализа существующих решений было сформировано представление о том, как следует выстроить взаимодействие с пользователем. 
+
+Пользователю предлагается набор команд, которые понимает \mbox{telegram--бот}, их список приведен над полем ввода. На каждую команду бот отвечает установленным образом, предоставляя пользователю информацию о состоянии элементов системы. 
+
+Решения использующие аналогичный интерфейс взаимодействия приведены на Рисунках \mbox{\ref{fig:drewb}--\ref{fig:wash}}.
+
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/mokups/drewb}
+	\caption{Макет 1}
+	\label{fig:drewb}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/mokups/saver}
+	\caption{Макет 2}
+	\label{fig:saver}
+\end{figure}
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.4\linewidth]{images/mokups/wash}
+	\caption{Макет 3}
+	\label{fig:wash}
+\end{figure}
+% TODO: \usepackage{graphicx} required
+\clearpage
+
+\section{Практическая работа № 11}
+
+%\subsection{Добавление обработчиков тревожных сигналов}
+\subsection{Обработка тревожных сигналов вентилятора}
+
+Добавим в цепочки правил управления вентилятором тревогу при выходе приходящего параметра за допустимые границы, а также тревогу при поступлении неверного ответа от физического устройства.
+
+Для реализации механизма тревог внесем изменения в цепочку правил для управления умным вентилятором~---~добавим узел сохранения атрибутов запроса \textit{(Save request atributes)} перед узлом отправки запроса и узел получения атрибутов запроса \textit{(Get request atributes)} вместо последнего узла сохранения атрибутов ответа.
+
+Также добавим два узла проверки атрибутов и статуса возвращаемого от устройства ответа \textit{(Check request answer)}. Осуществим проверку при помощи двух скриптов из раздела фильтрующих блоков.
+Приведем скрипты проверки параметров (см. Листинги \ref{filter-1.1}, \ref{filter-1.2}):
+
+\lstinputlisting[caption=Проверка абсолютных значений приходящего параметра, label=filter-1.1]{\pathToScriptsFolder/rule-chain-filter-1.js}
+
+
+\lstinputlisting[caption=Проверка корректности значений приходящего параметра, label=filter-1.2]{\pathToScriptsFolder/rule-chain-filter-2.js}
+
+
+Поскольку параметры для запроса были записаны в JSON формате необходимо распарсить JSON строку в объект JS для извлечения параметров при помощи функции JSON.parse. 
+Подключим получившийся узел к узлу получения атрибутов запроса.
+
+Далее создадим два узла активации тревоги в случае, если проверка не будет пройдена. Создадим узел \textit{Create alarm}, отвечающий за проверку соответствия параметров заданному диапазону и зададим ему следующий скрипт в качестве обработчика (см. Листинг \ref{alarm-1.3}).
+
+\newpage
+
+\lstinputlisting[caption=Формирование тревоги в случае выхода значений параметра за установленные границы, label=alarm-1.3]{\pathToScriptsFolder/rule-chain-alarm-1.js}
+
+Создадим узел \textit{Create alarm}, отвечающий за проверку корректности параметров и зададим ему следующий скрипт в качестве обработчика (см. Листинг \ref{alarm-1.4}).
+
+\lstinputlisting[caption=Формирование тревоги по случаю некорректности приходящих параметров, label=alarm-1.4]{\pathToScriptsFolder/rule-chain-alarm-2.js}
+
+
+Приведем измененную цепочку правил (см. Рисунок \ref{fig:chain-fan}).
+\begin{figure}[h!]
+	\begin{minipage}[h!]{\linewidth}
+		\center{\includegraphics[width=\linewidth]{rule-chain-1}\\ а)}
+	\end{minipage}
+
+	\begin{minipage}[h!]{\linewidth}
+		\center{\includegraphics[width=\linewidth]{rule-chain-2}\\ б)}
+	\end{minipage}
+	\captionof{figure}{Измененная цепочка управления умным вентилятором}
+	\label{fig:chain-fan}
+\end{figure}
+\newpage
+\subsection*{Тестирование цепочки правил}
+\label{sec:fan-test}
+Проведем тестирование созданной цепочки при помощи утилит mosquitto.
+
+Подпишемся на топики виртуального устройства (см Рисунок \ref{fig:t1-sub}).
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/t1-sub}
+	\caption{Подписка на топик умного вентилятора}
+	\label{fig:t1-sub}
+\end{figure}
+
+Протестируем цепочку при отправке параметром, выходящих за границы определенного диапазона (см. Рисунок \ref{fig:t1-pub-range}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/t1-pub-range}
+	\caption{Отправка некорректной телеметрии}
+	\label{fig:t1-pub-range}
+\end{figure}
+
+Вслед за эти ThingsBoard отправит оповещение уровня \textit{Critital} (см. Рисунок \ref{fig:alarm-input-value}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/alarm-input-value}
+	\caption{Тревога. Данные выходят за границы заданного диапазона}
+	\label{fig:alarm-input-value}
+\end{figure}
+
+Приведем подробные сведения о тревоге (см. Рисунок \ref{fig:alarm-input-value-detail}).
+
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/alarm-input-value-detail}
+	\caption{Подробные сведения о тревоге}
+	\label{fig:alarm-input-value-detail}
+\end{figure}
+
+\newpage
+Протестируем цепочку при получении неверного ответа от устройства. Отправим данные об уровне движения в диапазоне, в котором должно происходить включение вентилятора. Вместе с этим отправим сообщение о выключении вентилятора, что противоречит ожидаемому поведению прибора (см. Рисунок \ref{fig:listen-p2}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/listen-p2}
+	\caption{Подробные сведения о тревоге}
+	\label{fig:listen-p2}
+\end{figure}
+
+Платформа ThingsBoard уведомит о некорректности отправленного сообщения, сравнив его с ожидаемым результатом и генерирует соответствующий тревожный сигнал (см. Рисунок \ref{fig:alarm-wrong-response}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/alarm-wrong-response}
+	\caption{Тревога. Некорректные данные}
+	\label{fig:alarm-wrong-response}
+\end{figure}
+\newpage
+Приведем подробности тревоги (см. Рисунок \ref{fig:alarm-wrong-response-detail}).
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/alarm-wrong-response-detail}
+	\caption{Подробные сведения о тревоге}
+	\label{fig:alarm-wrong-response-detail}
+\end{figure}
+
+Сымитировав оба сценария, мы убедились в том, что цепочка правил управления умным вентилятором отработала корректно. Тревоги сработали в соответствии с установленными правилами.
+%\newpage
+
+\subsection{Обработка тревожных сигналов блока ламп}
+
+Для цепочки управления блоком ламп добавим тревогу при отсутствии ожидаемого параметра в приходящем сообщении, а также тревогу при поступлении неверного ответа от физического устройства.
+
+Проделаем аналогичные шаги. Создадим узел проверки атрибутов и статуса возвращаемого от устройства ответа \textit{(Check request answer)}, отвечающий за проверку наличия необходимых параметров (см. Листинг \ref{filter-2.1}).
+
+\lstinputlisting[caption=Проверка наличия требуемых параметров, label=filter-2.1]{\pathToScriptsFolder/t2-rule-chain-filter-1.js}
+
+Создадим узел проверки атрибутов и статуса возвращаемого от устройства ответа \textit{(Check request answer)}, отвечающий за проверку корректности приходящих параметров (см. Листинг \ref{filter-2.2}).
+%\newpage
+
+\lstinputlisting[caption=Проверка корректности значений приходящего параметра, label=filter-2.2]{\pathToScriptsFolder/t2-rule-chain-filter-2.js}
+
+
+
+Поскольку параметры для запроса были записаны в JSON формате необходимо распарсить JSON строку в объект JS для извлечения параметров при помощи функции JSON.parse. 
+Подключим получившийся узел к узлу получения атрибутов запроса.
+
+Далее создадим узел активации тревоги в случае, если проверка не будет пройдена. Создадим узел \textit{Create alarm}, инициирующий тревогу в случае отсутствия необходимых параметров и зададим ему следующий скрипт в качестве обработчика (см. Листинг \ref{alarm-2.3}).
+
+\lstinputlisting[caption=Формирование тревоги в случае отсутствия необходимых, label=alarm-2.3]{\pathToScriptsFolder/t2-rule-chain-alarm-1.js}
+
+Создадим узел \textit{Create alarm}, отвечающий за проверку корректности параметров и зададим ему следующий скрипт в качестве обработчика (см. Листинг \ref{alarm-2.4}).
+
+\lstinputlisting[caption=Формирование тревоги по случаю некорректности приходящих параметров, label=alarm-2.4]{\pathToScriptsFolder/t2-rule-chain-alarm-2.js}
+
+
+Приведем измененную цепочку правил (см. Рисунок \ref{fig:chain-lamp}).
+\begin{figure}[h!]
+	\begin{minipage}[h!]{\linewidth}
+		\center{\includegraphics[width=\linewidth]{t2-rule-chain-1}\\ а)}
+	\end{minipage}
+	
+	\begin{minipage}[h!]{\linewidth}
+		\center{\includegraphics[width=\linewidth]{t2-rule-chain-2}\\ б)}
+	\end{minipage}
+	\captionof{figure}{Измененная цепочка управления блоком умных ламп}
+	\label{fig:chain-lamp}
+\end{figure}
+
+\subsection*{Тестирование цепочки правил}
+\label{sec:lamp-test}
+
+Проведем тестирование созданной цепочки при помощи утилит mosquitto.
+
+Подпишемся на топики виртуального устройства (см Рисунок \ref{fig:t2-listen-p2}).
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/t2-listen-p2}
+	\caption{Подписка на топик блока умных ламп}
+	\label{fig:t2-listen-p2}
+\end{figure}
+
+Протестируем цепочку при отправке сообщения с неверным количеством параметров (см. Рисунок \ref{fig:t2-send}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/t2-send}
+	\caption{Отправка телеметрии с отсутствующими параметрами}
+	\label{fig:t2-send}
+\end{figure}
+
+Вслед за эти ThingsBoard отправит оповещение уровня \textit{Critital} (см. Рисунок \ref{fig:t2-alarm-missing-params}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/t2-alarm-missing-params}
+	\caption{Тревога. Необходимый параметр отсутствует}
+	\label{fig:t2-alarm-missing-params}
+\end{figure}
+
+Приведем подробные сведения о тревоге (см. Рисунок \ref{fig:t2-alarm-missing-params-detail}).
+
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/t2-alarm-missing-params-detail}
+	\caption{Подробные сведения о тревоге}
+	\label{fig:t2-alarm-missing-params-detail}
+\end{figure}
+
+Протестируем цепочку при получении неверного ответа от устройства. Отправим данные об уровне движения в диапазоне, в котором должно происходить включение вентилятора. Вместе с этим отправим сообщение о выключении вентилятора, что противоречит ожидаемому поведению прибора. (см. Рисунок \ref{fig:t2-send-p2}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/t2-send-p2}
+	\caption{Подробные сведения о тревоге}
+	\label{fig:t2-send-p2}
+\end{figure}
+
+Платформа ThingsBoard уведомит о некорректности отправленного сообщения, сравнив его с ожидаемым результатом и cгенерирует соответствующий тревожный сигнал (см. Рисунок \ref{fig:t2-alarm-wrong-response}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/t2-alarm-wrong-response}
+	\caption{Тревога. Некорректные данные}
+	\label{fig:t2-alarm-wrong-response}
+\end{figure}
+
+Приведем подробности тревоги (см. Рисунок \ref{fig:t2-alarm-wrong-response-detail}).
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/t2-alarm-wrong-response-detail}
+	\caption{Подробные сведения о тревоге}
+	\label{fig:t2-alarm-wrong-response-detail}
+\end{figure}
+
+Сымитировав оба сценария, мы убедились в том, что цепочка правил управления умным вентилятором отработала корректно. Тревоги сработали в соответствии с установленными правилами.
+
+\section{Дополнительное задание № 11}
+
+\subsection{Описание технологического стека проекта}
+
+Пользовательский интерфейс системы реализован в виде диалога с Telegram-ботом, поведение которого определяет скрипт написанный на языке программирования Python и программный интерфейс Telegram. 
+
+На языке Python также написаны скрипы, осуществляющие соединение с \mbox{MQTT--брокером}, эмуляцию физических устройств, а также реализующие процесс авторизации и соединения с локальной базой данных. Данный язык программирования был выбран с оглядкой на его широкую распространенность, наличие полной документации и универсальность.
+
+Данные о зарегистрированных пользователях и привязанных к ним виртуальных и физических устройствах хранятся локально в базе данных под управлением СУБД SQLite. 
+Выбор в пользу данного решения сделан \mbox{из--за} простоты в обращении с ним, распространенности решения и его компактности.
+
+В качестве облачного сервиса выбрана платформа ThingsBoard. 
+Данная платформа имеет дружелюбный пользовательский интерфейс. Использование сервиса возможно на бесплатной основе, что также является весомым плюсом данной платформы.
+
+Также в проекте используется язык программирования JavaScript. 
+Это универсальный язык для веб приложений, который отлично подходит для реализации нашего проекта.
+
+\subsection{Реализация пользовательского интерфейса}
+
+Реализуем пользовательский интерфейс на основании макетов интерфейса приложения, разработанных в десятой практической работе. 
+
+Пользователь начинает взаимодействие с интерфейсом с авторизации в системе, затем ему следует произвести привязку приборов, указав их \mbox{secret--key} и имя прибора. 
+После привязки устройств, пользователь может вывести их список, получить текущую телеметрию, изменить параметры устройств. Приведем полный список команд, распознаваемых системой (см. Таблицу \ref{tab:commands} и Рисунок \ref{fig:cmds-1}):
+\begin{table}[h!]
+	\caption{Список команд}
+	\begin{tabular}{|l|l|l|}
+		\hline
+		\textbf{Команда} & \textbf{Параметры} & \textbf{Назначение}\\ \hline\hline
+		/login & <login> <password> & Авторизация \\ \hline
+		/claim & <secret key> & Привязка нового устройства к аккаунту \\ \hline
+		/devices & -- & Отобразить список устройств \\ \hline
+		/telemetry & -- & Вывод телеметрии \\ \hline
+		/set\_light & <on|off> & Включение/выключение света \\ \hline
+		/set\_color & <html-color-code> & Установить цвет свечения лампы \\ \hline
+		/start\_timer & <hh> <mm> & Установить таймер на включение света \\ \hline
+	\end{tabular}
+	\label{tab:commands}
+\end{table}
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../../../../../Москва/IoT/IoT/11-доп/cmds/cmds-1}
+	\caption{Команды Telegram--бота}
+	\label{fig:cmds-1}
+\end{figure}
+
+Процесс авторизации отображен на Рисунке \ref{fig:cmds-2}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../../../../../Москва/IoT/IoT/11-доп/cmds/cmds-2}
+	\caption{Процесс авторизации}
+	\label{fig:cmds-2}
+\end{figure}
+
+Процесс привязки устройства отображен на Рисунке \ref{fig:cmds-3}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../../../../../Москва/IoT/IoT/11-доп/cmds/cmds-3}
+	\caption{Процесс привязки устройства}
+	\label{fig:cmds-3}
+\end{figure}
+
+После привязки устройства, оно отобразится при выполнении команды \texttt{/devices} (см. Рисунок \ref{fig:cmds-4}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../../../../../Москва/IoT/IoT/11-доп/cmds/cmds-4}
+	\caption{Список устройств}
+	\label{fig:cmds-4}
+\end{figure}
+
+Получить телеметрию устройства можно отправив боту команду \texttt{/telemetry} (см. Рисунок \ref{fig:cmds-5}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../../../../../Москва/IoT/IoT/11-доп/cmds/cmds-5}
+	\caption{Получение телеметрии устройства}
+	\label{fig:cmds-5}
+\end{figure}
+
+
+Включение устройства производится выполнением команды \texttt{/set\_on} с указанием \mbox{secret--key} устройства. Резутат выполнения команды можно видеть на Рисунке \ref{fig:cmds-6}.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../../../../../Москва/IoT/IoT/11-доп/cmds/cmds-6}
+	\caption{Включение устройства}
+	\label{fig:cmds-6}
+\end{figure}
+
+Если устройство предоставляет возможность смены параметра <<цвет>>, изменить его можно выполнив команду \texttt{/set\_color}, указав в качестве параметра HTML код цвета (см. Рисунок \ref{fig:cmds-7}). 
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../../../../../Москва/IoT/IoT/11-доп/cmds/cmds-7}
+	\caption{Процедура смена цвета}
+	\label{fig:cmds-7}
+\end{figure}
+
+
+Платформа предоставляет возможность отключения и включения устройства с задержкой. Данный функционал реализует команда \texttt{/start\_timer}, где качестве параметров выступают часы и минуты (см. Рисунок \ref{fig:cmds-8}). 
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{../../../../../Москва/IoT/IoT/11-доп/cmds/cmds-8}
+	\caption{Установка таймера}
+	\label{fig:cmds-8}
+\end{figure}
+\newpage
+%\clearpage
+Данные команды позволяют пользователю управлять устройствами умного дома, подключенными к облачной платформе Интернета вещей, объединять их в группы, путем создания ролей и пользователей. Также возможно создание гостевой роли, предоставляющей ограниченный доступ к функционалу системы.
+
+
+\section{Практическая работа №12}
+Реализуем отправку Email сообщений из облачной платформы при возникновении тревог на узлах, созданных в практической работе №11.
+В качестве SMTP сервера для пересылки
+сообщений предлагается будем использовать сервера Yandex и Google.
+
+\subsection{Отправка Email сообщений о работе \\умного вентилятора}
+
+Дополним цепочку управления работой умного вентилятора таким образом, чтобы после возникновения тревог критического уровня на электронный ящик администратора платформы поступало письмо с описанием проблемы.
+\subsubsection*{Узел формирования Email сообщения}
+\label{sec:to-email}
+Для реализации возможности отправки сообщений добавим узел формирования Email сообщений To email. Установим необходимые параметры~---~адрес отправителя, адрес получателя, заголовок письма, а также тело письма (см. Рисунок \ref{fig:to-email-params}).
+
+
+ 
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{images/to-email-params}
+	\caption{Узел формирования Email сообщения}
+	\label{fig:to-email-params}
+\end{figure}
+
+Добавим узлы в цепочку. Необходимо создать два идентичных узла формирования Email сообщения, которые следует соединить с узлами генерации тревог критического уровня.
+
+
+
+\subsubsection*{Узел отправки Email сообщения}
+\label{sec:send-email}
+После формирования сообщения можно приступать к настройке узла отправки сообщения. В качестве протокола передачи данных выберем протокол SMTPS, поскольку
+современные почтовые сервисы передают данные только по шифрованным протоколам.
+В качестве STMP сервера укажем сервер Yandex c доменным именем smtp.yandex.ru. Порт 465. Таймаут установим равным 20 секундам.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.83\linewidth]{images/send-email-params}
+	\caption{Узел отправки Email сообщения}
+	\label{fig:send-email-params}
+\end{figure}
+Два узла отправки сообщений соединим с уже добавленными узлами формирования Email сообщений.
+
+Приведем измененную цепочку (см. Рисунок \ref{fig:chain-fan-mail}).
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}[h!]{0.8\linewidth}
+		\center{\includegraphics[width=\linewidth]{{images/t1-p1-chain}}\\ а)}
+	\end{minipage}
+	
+	\begin{minipage}[h!]{0.8\linewidth}
+		\center{\includegraphics[width=\linewidth]{images/t1-p2-chain}\\ б)}
+	\end{minipage}
+	\captionof{figure}{Измененная цепочка управления вентилятором}
+	\label{fig:chain-fan-mail}
+\end{figure}
+
+\subsubsection*{Тестирование созданной цепочки}
+
+Проведем тестирование созданной цепочки при помощи утилит mosquitto.
+
+Воспроизведем действия, описанные в разделе \ref{sec:fan-test}. Впоследствии мы должны обнаружить на почте, указанной в параметрах узла отправки Email сообщения письма, содержащие информацию о возникновении тревожных ситуаций (см. Рисунки \ref{fig:t1-p1-alarm-email}, \ref{fig:t1-p2-alarm-email}).
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/t1-p1-alarm-email}
+	\caption{Сообщение о несоответствии параметра заданному диапазону}
+	\label{fig:t1-p1-alarm-email}
+\end{figure}
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.76\linewidth]{images/t1-p2-alarm-email}
+	\caption{Сообщение о некорректности отправленных параметров}
+	\label{fig:t1-p2-alarm-email}
+\end{figure}
+%\newpage
+Сымитировав аварийные случаи, мы убедились в работоспособности цепочки правил, корректности работы механизма \mbox{email--оповещений}.  
+
+\subsection{Отправка Email сообщений о работе блока умных ламп}
+
+Дополним цепочку управления работой блока умных ламп таким образом, чтобы после возникновения тревог критического уровня на электронный ящик администратора платформы поступало письмо с описанием проблемы.
+\subsubsection*{Узел формирования Email сообщения}
+Конфигурация узлов формирования Email сообщений аналогична рассмотренной в пункте \ref{sec:to-email}.
+
+Добавим узлы в цепочку. Необходимо создать два идентичных узла формирования Email сообщения, которые следует соединить с узлами генерации тревог критического уровня.
+
+\subsubsection*{Узел отправки Email сообщения}
+Конфигурация узлов формирования Email сообщений аналогична рассмотренной в пункте \ref{sec:send-email}.
+
+Два узла отправки сообщений соединим с уже добавленными узлами формирования Email сообщений.
+
+Приведем измененную цепочку (см. Рисунок \ref{fig:chain-lamp-mail}).
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}[h!]{0.8\linewidth}
+		\center{\includegraphics[width=\linewidth]{{images/t2-p1-chain}}\\ а)}
+	\end{minipage}
+	
+	\begin{minipage}[h!]{0.8\linewidth}
+		\center{\includegraphics[width=\linewidth]{images/t2-p2-chain}\\ б)}
+	\end{minipage}
+	\captionof{figure}{Измененная цепочка управления блоком умных ламп}
+	\label{fig:chain-lamp-mail}
+\end{figure}
+
+\subsubsection*{Тестирование созданной цепочки}
+
+Проведем тестирование созданной цепочки при помощи утилит mosquitto.
+
+Воспроизведем действия, описанные в разделе \ref{sec:lamp-test}. Впоследствии мы должны обнаружить на почте, указанной в параметрах узла отправки Email сообщения письма, содержащие информацию о возникновении тревожных ситуаций (см. Рисунки \ref{fig:t2-p1-alarm-email}, \ref{fig:t1-p2-alarm-email}).
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/t2-p1-alarm-email}
+	\caption{Сообщение об отсутствии необходимых параметров}
+	\label{fig:t2-p1-alarm-email}
+\end{figure}
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.76\linewidth]{images/t2-p2-alarm-email}
+	\caption{Сообщение о некорректности отправленных параметров}
+	\label{fig:t2-p2-alarm-email}
+\end{figure}
+\newpage
+Сымитировав аварийные случаи, мы убедились в работоспособности цепочки правил, корректности работы механизма \mbox{email--оповещений}.  
+
+\section{Дополнительное задание № 12}
+
+\subsection{Тестирование разрабатываемого приложения}
+С целью проверки работоспособности элементов разрабатываемого приложения было проведено тестирование скриптов, написанных на языке программирования Python. Для автоматизированного тестирования использовалась библиотека \texttt{pytest}. Также было проведено ручное тестирование для проверки корректности процедуры подписки на топики, регистрации пользователей и устройств. 
+
+Тестирование пользовательского интерфейса осуществлялось путем проверки реакции приложения на нелогичную последовательность команд и их некорректный ввод, а также на допущение ошибок в именах устройств и пользователей. 
+
+Было проведено тестирование подключения к системе с различных устройств, что позволило проверить компонент приложения, отвечающий за сетевое взаимодействие.
+
+\subsection{Описание процесса развертывания приложения}
+
+Для того, чтобы использовать приложение, которое было разработано нами в ходе выполнения практических работ, необходимо зарегистрироваться на  облачной платформе ThingsBoard, затем использовать эту учетную запись для авторизации в системе умного дома с помощью \mbox{Telegram--бота} IoT SmartLight. 
+
+Для включения умных устройств в инфраструктуру Умного дома, необходимо, чтобы они были имели виртуальные \mbox{устройства--клоны} на облачной платформе ThingsBoard, а также были подключены к \mbox{MQTT--брокеру} для отправки и чтения сообщений из топиков.
+
+Для удобства пользования код, описывающий логику работы \mbox{Telegram--бота} можно разместить в облачном окружении Yandex Cloud Solution. Данный сервис реализует подход serverless computing и позволяет запускать пользовательский код в виде функции в безопасном, отказоустойчивом и автоматически масштабируемом окружении без создания и обслуживания виртуальных машин.
+
+Плюсами такого решения является возможность гибкого масштабирования, высокая доступность, возможность использовать различные языки программирования. Данное решение позволяет свести к минимуму объем ПО, которое должно присутствовать у пользователя локально.
+
+База данных под управлением СУБД SQLite также может быть развернута на удаленной виртуальной машине с применением облачных решений. 
+
+Минусом данного решения является поминутная тарификация, зависимость стоимости аренды от требуемых вычислительных мощностей, отсутствие физического доступа к машинам, на которых развернуто программное обеспечение, а также риск того, что злоумышленники могут получить доступ к вашей конфиденциальной информации.  
+
+\newpage
+\anonsection{Выводы о проделанной работе}
+
+В результате выполнения данных практических работ нами были получены новые навыки работы с утилитами mosquitto, облачной платформой Интернета вещей ThingsBoard, программным интерфейсом Telegram API. Были получены знания, которые позволили разработать, смоделировать и создать приложение, реализующее пользовательский интерфейс для приложения, входящего в инфраструктуру Умного дома, разрабатываемого в рамках данного курса.
+Все полученные знания и навыки были отработаны и использованы на практике.
 
 
 \end{document}

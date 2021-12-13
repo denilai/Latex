@@ -1,0 +1,87 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+\newcommand{\stend}{\textbf{Wb-demo-kit v.2}}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+
+% Название работы в титуле
+\newcommand{\workname}{ОТЧЕТ ПО ПРАКТИЧЕСКИМ РАБОТАМ}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Разработка баз данных}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра промышленной информатики (ПИ)}
+% Тема работы в титуле
+\newcommand{\theme}{Знакомство с оборудованием}
+% Должность преподавателя в титуле
+\newcommand{\rang}{Инженер, ассистент}
+
+% ФИО студента в титуле
+\newcommand{\studentfio}{Денисов~К.~Ю.}%\\Д.~Н.~Федосеев\\А.~М.~Сосунов}\\%К.~Ю.~Денисов\\%И.~А.~Кремнев
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Киселев~Д.~С.}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+
+
+\usepackage{tabularx}
+
+
+\usepackage{booktabs}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+
+
+\author{Кирилл Денисов}
+\title{Лабораторная работа №1}
+\date{\today}
+
+
+
+%\input{/home/denilai/Documents/repos/latex-gost/gost732/inputs/preamble}
+\input{\pathToCommonFolder/ruspreamble}
+
+\renewcommand{\withouttheme}{1}
+
+\newcommand{\erassistant}{\textbf{ErAssistant~}}
+\newcommand{\erdatamodaler}{\textbf{ERwin Data Modeler~}}
+\newcommand{\methodsection}{Работа по методическим указаниям~}
+\newcommand{\individual}{Индивидуальный вариант~}
+
+%если нужна тема работы в отчете, то указать в скобках что-либо, иначе оаставить пустым
+%\renewcommand{\withouttheme}{}
+%если нужна дата представления отчета, то указать в скобках что-либо
+%\renewcommand{\withoutsubmissiondate}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+	
+	\gdef\capnames{
+		\gdef\figurename{Рисунок}
+		\gdef\chaptername{ГЛАВА}
+		\gdef\appendixname{ПРИЛОЖЕНИЕ}
+		\gdef\bibname{СПИСОК ЛИТЕРАТУРЫ}
+		\gdef\contentsname{СОДЕРЖАНИЕ}
+		\bibliographystyle{gost71s}
+	}
+	
+	
+	\thispagestyle{empty}
+	% Вставка первого титульного листа
+	% Есть две версии титульного листа - одиночный (titul) и групповой (titulAll)
+	\input{\pathToCommonFolder/titul-with-signature}
+	\newpage
+	%\renewcommand*\contentsname{\hfill Содержание \hfill}
+	
+\end{document}

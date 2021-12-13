@@ -14,21 +14,19 @@
 % Тема работы в титуле
 \newcommand{\theme}{Знакомство с оборудованием}
 % Должность преподавателя в титуле
-\newcommand{\rang}{инженер, ассистент}
+\newcommand{\rang}{Инженер, ассистент}
 
 % ФИО студента в титуле
-\newcommand{\studentfio}{К.~Ю.~Денисов}%\\Д.~Н.~Федосеев\\А.~М.~Сосунов}\\%К.~Ю.~Денисов\\%И.~А.~Кремнев
+\newcommand{\studentfio}{Денисов~К.~Ю.}%\\Д.~Н.~Федосеев\\А.~М.~Сосунов}\\%К.~Ю.~Денисов\\%И.~А.~Кремнев
 % ФИО преподавателя в титуле
-\newcommand{\teacherfio}{Д.~С.~Киселев}
-\newcommand{\signature}{\pathToCommonFolder/empty}
+\newcommand{\teacherfio}{Киселев~Д.~С.}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
 
 
 \usepackage{tabularx}
 
 
 \usepackage{booktabs}
-\newcolumntype{b}{X}
-\newcolumntype{s}{>{\hsize=.5\hsize}X}
 \newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
 
 % установка размера шрифта для всего документа
@@ -36,11 +34,16 @@
 \usepackage{extsizes} % Возможность сделать 14-й шрифт
 
 % Вставка заготовки преамбулы
-\input{\pathToCommonFolder/ruspreamble}
+
 
 \author{Кирилл Денисов}
 \title{Лабораторная работа №1}
 \date{\today}
+
+
+
+%\input{/home/denilai/Documents/repos/latex-gost/gost732/inputs/preamble}
+\input{\pathToCommonFolder/ruspreamble}
 
 \renewcommand{\withouttheme}{1}
 
@@ -79,10 +82,11 @@
 	% Есть две версии титульного листа - одиночный (titul) и групповой (titulAll)
 	\input{\pathToCommonFolder/titul-with-signature}
 	\newpage
-	\tableofcontents
-	\newpage
-	%\listoftables
+	%\renewcommand*\contentsname{\hfill Содержание \hfill}
+	
+\tableofcontents
 
+\newpage
 \normalsize
 
 \section{Построение модели данных}
@@ -162,7 +166,7 @@
 	\caption{Модель данных Производства со связями}
 	\label{fig:1-metod}
 \end{figure}
-%Сформируем отчет по данной модели средствами \erassistant. Перед формированием отчета убедимся в отсутствии ошибок в построенной модели. Проверка наличия ошибок осуществляется нажатием кнопки "Check~Diagram" на панели инструментов в верхней части экрана (см. рисунки \ref{fig:1-report}, \ref{fig:1-report2}).
+%Сформируем отчет по данной модели средствами \erassistant. Перед формированием отчета убедимся в отсутствии ошибок в построенной модели. Проверка наличия ошибок осуществляется нажатием кнопки "Check~Diagram" на панели инструментов в верхней части экрана (см. Рисунки \ref{fig:1-report}, \ref{fig:1-report2}).
 
 
 %% TODO: \usepackage{graphicx} required
@@ -225,7 +229,7 @@
 Также каждый компонент имеет особые сведения, присущие данному типу детали.
 
 \subsubsection*{Построение модели}
-После приведения общих сведений о роде деятельности предприятия, факторизируем модель данных информационной системы предприятия в среде \erassistant (cм рисунок \ref{fig:1-cycle}).
+После приведения общих сведений о роде деятельности предприятия, факторизируем модель данных информационной системы предприятия в среде \erassistant (cм Рисунок \ref{fig:1-cycle}).
 % TODO: \usepackage{graphicx} required
 \begin{figure}[hpbt]
 	\centering
@@ -248,7 +252,7 @@
 отражать семантику предметной области и позволять легко перейти к модели данных
 конкретной СУБД.
 
-\textbf{Логический уровень} --- это уровень, соответствующий \texttt{инфологическому} этапу проектирования
+\textbf{Логический уровень} --- это уровень, соответствующий \\инфологическому этапу проектирования
 и не привязанный к конкретной СУБД. Модели логического уровня оперируют с
 понятиями сущностей, атрибутов и связей, которые на этом уровне именуются на
 естественном языке (в нашем случае – на русском) так, как они называются в
@@ -314,7 +318,7 @@
 
 В данной практической работе в качестве СУБД выбрана MySQL.
 
-Приступим к построению физической модели данных системы <<Реализация средств вычислительной техники>>. Результат работы можно видеть на рисунке \ref{fig:2-phisical-model}.
+Приступим к построению физической модели данных системы <<Реализация средств вычислительной техники>>. Результат работы можно видеть на Рисунке \ref{fig:2-phisical-model}.
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -343,7 +347,7 @@
 	\item Bar;
 	\item Setup.
 \end{itemize}
-Добавим связи между сущностями в соответствии с ранее построенной моделью. Логическая модель системы <<Велосипедное предприятие>> приведена на рисунке \ref{fig:2-cycle-logical}.
+Добавим связи между сущностями в соответствии с ранее построенной моделью. Логическая модель системы <<Велосипедное предприятие>> приведена на Рисунке \ref{fig:2-cycle-logical}.
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -354,7 +358,7 @@
 \end{figure}
 
 После уточнения типов данных, выбранных в соответствии с предметной областью и спецификой СУБД MySQL.
-Физическая модель системы <<Велосипедное предприятие>> приведена на рисунке \ref{fig:2-cycle-phisical}.
+Физическая модель системы <<Велосипедное предприятие>> приведена на Рисунке \ref{fig:2-cycle-phisical}.
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -376,7 +380,7 @@
 Создадим базу данных \texttt{forum} с помощью команды \texttt{CREATE DATABASE forum;}
 
 
-Создадим таблицу \texttt{users} (см. рисунок \ref{fig:create-users}):
+Создадим таблицу \texttt{users} (см. Рисунок \ref{fig:create-users}):
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -396,7 +400,7 @@
 %);
 %\end{lstlisting}
 
-Создадим таблицу \texttt{topics} (см. рисунок \ref{fig:create-topics}):
+Создадим таблицу \texttt{topics} (см. Рисунок \ref{fig:create-topics}):
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -415,7 +419,7 @@
 %	FOREIGN KEY (id_author) REFERENCES users (id_user)
 %);
 %\end{lstlisting}
-Создадим таблицу \texttt{posts} (см. рисунок \ref{fig:create-posts}):
+Создадим таблицу \texttt{posts} (см. Рисунок \ref{fig:create-posts}):
 
 \begin{figure}[h!]
 	\centering
@@ -424,7 +428,7 @@
 	\label{fig:create-posts}
 \end{figure}
 
-После создания таблиц, заполним их данными о пользователях форума, о темах и размещенных публикациях. Выполним операцию выборки данных без условия, чтобы увидеть все записи, занесенные в таблицы с помощью команды \texttt{SELECT * FROM <table-name>} (см. рисунок \ref{fig:select-from-all}). 
+После создания таблиц, заполним их данными о пользователях форума, о темах и размещенных публикациях. Выполним операцию выборки данных без условия, чтобы увидеть все записи, занесенные в таблицы с помощью команды \texttt{SELECT * FROM <table-name>} (см. Рисунок \ref{fig:select-from-all}). 
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -434,7 +438,7 @@
 	\label{fig:select-from-all}
 \end{figure}
 
-Выполним запрос \texttt{SELECT mesage, topic\_name FROM posts p JOIN topics t ON t.id\_author = p.id\_author; } для объединения данных из таблиц \texttt{topics} и \texttt{posts} по ключу id\_author и получения полной информации о сообщении и названию темы, в которой оно было размещено (см. рисунок \ref{fig:join-post-author}).
+Выполним запрос \texttt{SELECT mesage, topic\_name FROM posts p JOIN topics t ON t.id\_author = p.id\_author; } для объединения данных из таблиц \texttt{topics} и \texttt{posts} по ключу id\_author и получения полной информации о сообщении и названию темы, в которой оно было размещено (см. Рисунок \ref{fig:join-post-author}).
 	
 	% TODO: \usepackage{graphicx} required
 	\begin{figure}
@@ -444,7 +448,7 @@
 		\label{fig:join-post-author}
 	\end{figure}
 
-Выполним запрос выборки данных, явно указав поля отношения. Для этого перечислим имена полей через запятую после зарезервированного слова \texttt{SELECT} (см. рисунок \ref{fig:field-select}).
+Выполним запрос выборки данных, явно указав поля отношения. Для этого перечислим имена полей через запятую после зарезервированного слова \texttt{SELECT} (см. Рисунок \ref{fig:field-select}).
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -455,7 +459,7 @@
 \end{figure}
 
 
-Выполним более сложные запросы выборки, отсортировав записи в таблице \texttt{topics} по убыванию значения поля \texttt{topic\_name} и \texttt{id\_author}, а также опишем условие сравнения значения поля \texttt{id\_author} в сецкции \texttt{WHERE}(см. рисунок \ref{fig:order-where-forum}). 
+Выполним более сложные запросы выборки, отсортировав записи в таблице \texttt{topics} по убыванию значения поля \texttt{topic\_name} и \texttt{id\_author}, а также опишем условие сравнения значения поля \texttt{id\_author} в сецкции \texttt{WHERE}(см. Рисунок \ref{fig:order-where-forum}). 
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -467,7 +471,7 @@
 
 Выполним операции по модификации таблицы --- добавим в таблицу \texttt{users} поле \texttt{country} типа \texttt{varchar (20)} со значением по умолчанию "Russia", а также добавим в эту же таблицу поле \texttt{age int(10)} со значением по умолчанию 19. 
 
-Выведем все записи из таблицы \texttt{users}, обнаружим, что столбцы были вставлены успешно (см. рисунок \ref{fig:alter-add-forum}).
+Выведем все записи из таблицы \texttt{users}, обнаружим, что столбцы были вставлены успешно (см. Рисунок \ref{fig:alter-add-forum}).
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -481,7 +485,7 @@
 
 \subsection{\individual}
 
-Продолжим работу над созданием модели данных велосипедного предприятия. Создадим базу данных \texttt{cycle}, сущностями (таблицами) которой будут таблицы, описания которых были проработаны в прошлых практических работах. 
+Продолжим работу над созданием модели данных велосипедного предприятия. Создадим базу данных \texttt{cycle}, сущностями  которой будут таблицы, описания которых были проработаны в прошлых практических работах. 
 
 Описание проектируемых отношений базы данных \texttt{cycle} приведены в таблицах \ref{tab:bar}-\ref{tab:log}.
 
@@ -732,18 +736,18 @@
 
 \newpage\hfill\newpage\hfill\newpage
 
-Создадим данные таблицы в СУБД MySQL, использовав ключевое слово \texttt{CREATE TABLE}. После создания таблиц выполним команду \texttt{SHOW TABLES}, выбрав базу данных \texttt{cycle} (см. рисунок \ref{fig:show-tables-cycle}).
+Создадим данные таблицы в СУБД MySQL, использовав ключевое слово \texttt{CREATE TABLE}. После создания таблиц выполним команду \texttt{SHOW TABLES}, выбрав базу данных \texttt{cycle} (см. Рисунок \ref{fig:show-tables-cycle}).
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/show-tables-cycle}
-	\caption{Таблицы базы данных \texttt{cycle}}
+	\caption{таблицы базы данных \texttt{cycle}}
 	\label{fig:show-tables-cycle}
 \end{figure}
 
 
-Выведем записи из таблицы \texttt{Component} (см. рисунок \ref{fig:select-components}).
+Выведем записи из таблицы \texttt{Component} (см. Рисунок \ref{fig:select-components}).
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -754,7 +758,7 @@
 \end{figure}
 
 
-Выполним более сложные запросы выборки --- объединим таблицы с помощью оператора \texttt{INNER JOIN} \texttt{Component} и \texttt{fork} по полю \linebreak \texttt{component\_id}, а также воспользуемся функцией \texttt{ROW\_NUMBER()} в сочетании с оконной функцией \texttt{OVER()}, пронумеровав компоненты из таблицы \texttt{Fork} одного цвета по возрастанию значения поля \texttt{color} (см. рисунок \ref{fig:join-window-cycle}).
+Выполним более сложные запросы выборки --- объединим таблицы с помощью оператора \texttt{INNER JOIN} \texttt{Component} и \texttt{fork} по полю \linebreak \texttt{component\_id}, а также воспользуемся функцией \texttt{ROW\_NUMBER()} в сочетании с оконной функцией \texttt{OVER()}, пронумеровав компоненты из таблицы \texttt{Fork} одного цвета по возрастанию значения поля \texttt{color} (см. Рисунок \ref{fig:join-window-cycle}).
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -766,12 +770,12 @@
 
 
 Создадим триггеры \texttt{delete\_component} и  \texttt{add\_component} на добавление и удаление записи в таблице \texttt{Component}. При срабатываении данного триггера, будет добавляться запись в таблицу log, информирующая о совершении манипуляций с данными.
-\newpage\hfill\newpage
+\newpage
 Приведем объявление данного триггера на диалекте MySQL:
 \lstset{
 	language=sql
 }
-\begin{lstlisting}
+\begin{lstlisting}[caption=Триггер]
 DELIMITER $$
 drop trigger delete_component; $$
 
@@ -867,7 +871,7 @@ DELIMITER $$
 При первом входе на сайт пользователю необходимо авторизоваться --- выбрать пользователя СУБД MySQL, который имеет права на изменение и просмотр данных в выбранной базе данных. В данном примере будет выбран пользователь \texttt{denilai}, который имеет привилегии супер-пользователя в данной базе данных --- может вносить изменения в базу даннных, просматривать все записи в ней, создавать новые постоянные и временные таблицы, процедуры и макросы.
 
 \paragraph{Отображение записей таблиц}
-После успешной авторизации пользователю будет предложено выбрать таблицу в базе данных, записи в которой будут отображены на экране. Поля таблиц могут содержать кириллические символы --- они будут корректно отображаться веб-приложением (см. рисунки \ref{fig:select-1}, \ref{fig:select-log}).
+После успешной авторизации пользователю будет предложено выбрать таблицу в базе данных, записи в которой будут отображены на экране. Поля таблиц могут содержать кириллические символы --- они будут корректно отображаться веб-приложением (см. Рисунки \ref{fig:select-1}, \ref{fig:select-log}).
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -888,7 +892,7 @@ DELIMITER $$
 
 
 \paragraph{Добавление записей в в таблицы}
-Ниже, под выведенными записями таблицы расположены поля для добавления значений в выбранную базу данных. В случае ввода корректных данных, после нажатия кнопки <<OK>>, поля будут немедленно добавлены в таблицу и отобразятся на экране (см. рисунок \ref{fig:insert-1}).
+Ниже, под выведенными записями таблицы расположены поля для добавления значений в выбранную базу данных. В случае ввода корректных данных, после нажатия кнопки <<OK>>, поля будут немедленно добавлены в таблицу и отобразятся на экране (см. Рисунок \ref{fig:insert-1}).
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -904,7 +908,7 @@ DELIMITER $$
 
 Текст, введенный пользователем, передается в виде строки на исполнение MySQL серверу. В случае ввода корректного запроса, он будет выполнен, о чем будет сообщено пользователю. 
 
-С помощью данного поля также можно производить операции по удалению и вставке записей в таблицы, отображаемые на экране (см. рисунок \ref{fig:request}).
+С помощью данного поля также можно производить операции по удалению и вставке записей в таблицы, отображаемые на экране (см. Рисунок \ref{fig:request}).
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]

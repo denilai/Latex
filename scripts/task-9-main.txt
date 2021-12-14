@@ -1,0 +1,3 @@
+mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/telemetry" -u "1BFRoUBL8SW1zdJVFyX9" -m "{"airQuality": 20}"
+mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/telemetry" -u "Mbz0a8FuxpltVTFVlDiU" -m "{"illumination": 400}"
+mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/telemetry" -u "VDIcYxx5eh2wVC2TXHsT" -m "{"voltage": 12.1}"

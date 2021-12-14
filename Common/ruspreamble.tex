@@ -7,11 +7,25 @@
 % https://www.writelatex.com/coursera/latex/5.3
 
 % В этом документе преамбула
+%
+%%%==========================================%%
+%%% Для избежания переносов слов
+%\usepackage{ragged2e}
+%\usepackage{microtype}
+%
+%\justifying
+%\sloppy
+%\tolerance=500
+%\hyphenpenalty=10000
+%\emergencystretch=3em
+%%%==========================================%%
 
 \newcommand{\q}{\textbf{Вопрос: }}
 \newcommand{\ans}{\textbf{Ответ: }}
 
 \usepackage{etoc}
+
+
 
 \newcommand{\pathToScriptsFolder}{/home/denilai/Documents/repos/latex/scripts}
 
@@ -418,6 +432,7 @@
 
 
 \lstset{ 
+	inputencoding=utf8,
 	basicstyle=\footnotesize\ttfamily, % Default font
 	backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
 	%basicstyle=\footnotesize,        % the size of the fonts that are used for the code

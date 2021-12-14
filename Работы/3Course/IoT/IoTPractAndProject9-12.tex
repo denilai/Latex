@@ -553,6 +553,15 @@ mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/rpc/response/2"
 	\label{fig:listen-p2}
 \end{figure}
 
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{../../../../../Москва/IoT/11-osn/send-p2}
+	\caption{Подписка на топик умного вентилятора}
+	\label{fig:send-p2}
+\end{figure}
+
+
 Платформа ThingsBoard уведомит о некорректности отправленного сообщения, сравнив его с ожидаемым результатом и сгенерирует соответствующий тревожный сигнал (см. Рисунок \ref{fig:alarm-wrong-response}).
 
 % TODO: \usepackage{graphicx} required
@@ -669,6 +678,13 @@ mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/rpc/response/2"
 	\caption{Отправка некорректных данных}
 	\label{fig:t2-send-p2}
 \end{figure}
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=1\linewidth]{../../../../../Москва/IoT/11-osn/t2-listen-p2}
+	\caption{Подписка на топик блока умных ламп}
+	\label{fig:t2-listen-p2w}
+\end{figure}
 
 Платформа ThingsBoard уведомит о некорректности отправленного сообщения, сравнив его с ожидаемым результатом и cгенерирует соответствующий тревожный сигнал (см. Рисунок \ref{fig:t2-alarm-wrong-response}).
 
@@ -777,7 +793,7 @@ mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/rpc/response/2"
 \end{figure}
 
 
-Включение устройства производится выполнением команды \texttt{/set\_on} с указанием \mbox{id} устройства. Результат выполнения команды можно видеть на Рисунке \ref{fig:cmds-6}.
+Включение устройства производится выполнением команды \texttt{/set\_light} с указанием \mbox{id} устройства. Результат выполнения команды можно видеть на Рисунке \ref{fig:cmds-6}.
 
 % TODO: \usepackage{graphicx} required
 \begin{figure}[h!]
@@ -963,6 +979,8 @@ mosquitto_pub -d -q 1 -h "demo.thingsboard.io" -t "v1/devices/me/rpc/response/2"
 База данных под управлением СУБД SQLite также может быть развернута на удаленной виртуальной машине с применением облачных решений. 
 
 Минусом данного решения является поминутная тарификация, зависимость стоимости аренды от требуемых вычислительных мощностей, отсутствие физического доступа к машинам, на которых развернуто программное обеспечение, а также риск того, что злоумышленники могут получить доступ к вашей конфиденциальной информации.  
+
+На заводе производителе используется скрипт \texttt{provsion.py} для автоматизации регистрации устройств в системе ThingsBoard. При созданий каждое устройство получает уникальный секрет. Данный секрет печатается на крышке каждого устройства в виде QR кода. После покупке прибора пользователю достаточно включить устройство и подключить его к сети Интернет, чтобы начать работу с ним. После этого пользователь регистрируется на платформе Thingsboard и привязывает приобретенное устройство к своему аккаунту, чтобы начать отправлять команды устройству.
 
 \newpage
 \anonsection{Выводы о проделанной работе}

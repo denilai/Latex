@@ -1,0 +1,298 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №1}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Основы сетевых технологий}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра вычислительной техники}
+% Тема работы в титуле
+\newcommand{\theme}{Базовая настройка коммутатора}
+% Должность преподавателя в титуле
+\newcommand{\rang}{cтарший преподаватель кафедры ВТ}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Ю.~М.Скрябин}
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+
+\newcommand{\pt}{PacketTracer\copyright}
+
+\usepackage{tabularx}
+
+\newcommand{\router}{R1\_DENISOV~}
+\newcommand{\switch}{S1~}
+
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{|c|}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов ИВБО-02-19}
+\title{Практическая работа №1\\Вариант 6}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+	%\thispagestyle{empty}
+	% Вставка первого титульного листа
+	%\input{\pathToCommonFolder/titul-with-signature}
+	\newpage
+	%\tableofcontents
+	\newpage
+	%\listoftables
+\maketitle
+
+
+\begin{table}[htbp]
+	\begin{center}
+		\caption{Таблица адресации}
+		\begin{tabular}{|l|l|l|}
+			\hline\
+			\textbf{Устройство}  & \textbf{Интерфейс} & \textbf{IP-адрес} \\ \hline
+			\multirow{3}{*}{\router} & \multirow{3}{*}{VLAN 6}    & 192.168.1.8 /24 \\\cline{3-3}
+			& & 2001:db8:acad::2 /64 \\\cline{3-3}
+			& & fe80::2 \\\hline
+			\multirow{3}{*}{PC-A}   & 	\multirow{3}{*}{NIC}    & 192.168.1.16 /24  \\\cline{3-3}
+			                        &                           & 2001:db8:acad::3 /64\\\cline{3-3}
+			                        &  &fe80::3\\\hline
+		\end{tabular}
+		\label{tab:adress}
+	\end{center}
+\end{table}
+
+\mypart{Создание сети и проверка настроек коммутатора по умолчанию}
+
+\step{Создайте сеть согласно топологии}
+Соединили устройства согласно предложенной топологии. Установили консольное подключение к коммутатору, необходимое для первичной настройки устройства, когда конфигурация соединений по SSH и Telnet не настроена (см. рисунок \ref{fig:topology}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/topology}
+	\caption{Топология сети}
+	\label{fig:topology}
+\end{figure}
+
+\step{Проверьте настройки коммутатора по умолчанию}{
+Проверим, что коммутатор не имеет файла конфигурации, сохраненного в энергонезависимой
+памяти (NVRAM).
+На коммутаторе присутствуют 24 интерфейса FastEthernet, 2 интерфейса GigabyteEthernet, 16 линий vty. В исходном состоянии VLAN 1 не настроен, адреса не заданы.
+
+Изучим сведения о OS коммутатора с помощью команды \textit{\# show version}.
+Чтобы включить интерфейс необходимо ввести команду \textit{no shutdown}, находясь в режиме конфигурации данного интерфейса.
+
+По умолчанию имя vlan 1 --- Vlan 1.
+
+Изучив флеш-память, видим, что образу Cisco OS присвоено имя c3560-advipservicesk9-mz.122-37.SE1.}
+
+\mypart{Настройка базовых параметров сетевых устройств}
+
+\step{Настройте базовые параметры коммутатора}
+{
+Введем следующие команды в консоль коммутатора, находясь в режиме конфигурации. 
+
+\begin{lstlisting}
+	no ip domain-lookup
+	hostname S1_DENISOV
+	service password-encryption
+	enable secret class
+	banner motd #
+	Unauthorized access is strictly prohibited. #
+\end{lstlisting}
+}
+
+Назначим адреса IPV4 и IPV6 VLAN 6 коммутатора согласно заданию. Чтобы включить поддержку IP6 на коммутаторе 3560, необходимо выполнить следующие действия. 
+
+\begin{lstlisting}
+	conf t
+	sdm prefer dual-ipv4-and-ipv6 default
+	wr
+	reload
+	conf t
+	ipv6 unicast-routing
+\end{lstlisting}
+
+Ассоциируем все порты коммутатора с данным виртуальным интерфейсом, использовав команды \textit{switchport mode access} и \textit{switchport access vlan6}? находясь в режиме конфигурации выбранных интерфейсов, активируем интерфейс (см. рисунки \ref{fig:vlan-brief} и \ref{fig:run-conf-vlan}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/vlan-brief}
+	\caption{Сведения о vlan 6 }
+	\label{fig:vlan-brief}
+\end{figure}
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/run-conf-vlan}
+	\caption{Запись о vlan 6 в текущем файле конфигурации}
+	\label{fig:run-conf-vlan}
+\end{figure}
+
+
+Ограничим доступ к коммутатору по линиям консоли и vty, установив пароль cisco. Настроем локальную авторизацию на данных линиях командой \textit{login}, находясь в режиме конфигурации данных линий. 
+
+Установим возможность удаленного соединения к коммутатору по протоколу Telnet, выполним команды \textit{transport input telnet}, находясь в режиме конфигурации линий vty.
+
+\step{Настройте IP-адрес на компьютере PC-A}
+{
+Проведем аналогичные действия с PC-A. Настроим IPv4 и IPv6, шлюз по умолчанию 192.168.1.1, имитировав маршрутизатор (см. рисунок \ref{fig:pc-a-ip-settings}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/pc-a-ip-settings}
+	\caption{Сетевые настройки PC-A}
+	\label{fig:pc-a-ip-settings}
+\end{figure}
+}
+
+\mypart{Проверка сетевых подключений}
+{
+	
+\step{Протестируйте сквозное соединение, отправив эхо-запрос}
+Проверим сетевое соединение между устройствами (см. рисунок \ref{fig:switch-to-pc1}), отправив эхо-запрос на PC-A по адресу 192.168.1.16.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/switch-to-pc1}
+	\caption{Эхо запрос к PC-A}
+	\label{fig:switch-to-pc1}
+\end{figure}
+
+
+
+
+
+Проверим конфигурацию виртуального интерфейса vlan 6 с помощью команды \textit{show interface vlan6} (см. рисунок \ref{fig:show-interface-vlan6}).
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/show-interface-vlan6}
+	\caption{Результат работы команды show interface vlan6}
+	\label{fig:show-interface-vlan6}
+\end{figure}
+
+Полоса пропускания интерфейса Vlan 6 = 100 Mib/s. Vlan 6 находится во включенном состоянии.
+
+
+
+}
+\step{Проверьте удаленное управление коммутатором}
+
+{
+	Проверим удаленное подключение к коммутатору по протоколу Telnet, выполнив команду \textit{telnet 192.168.1.8} из терминала PC-A. В качестве пароля линии введем \textbf{cisco}. Для входа в привилегированный режим будем использовать пароль \textbf{class}. Результаты подключения приведены на рисунке \ref{fig:pc-to-swith}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/pc-to-swith}
+	\caption{Telnet подключение к коммутатору}
+	\label{fig:pc-to-swith}
+\end{figure}
+}
+
+\mypart{Управление таблицей MAC-адресов}
+{
+{
+\step{Запишите MAC-адрес узла}{
+
+Воспользуемся командой \textit{ipconfig /all}, чтобы узнать физический адрес сетевой интерфейсной платы PC-A. 	
+Physical Address................: 000D.BDAA.C015
+}
+\step{Определите МАС-адреса, полученные коммутатором}
+{
+Воспользуемся командой \textit{show mac address-table} на коммутаторе, чтобы вывести таблицу известных MAC-адресов (см. рисунок \ref{fig:show-mac-address}). Как видим, это адрес узла PC-A.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/show-mac-address}
+	\caption{Таблица MAC-адресов на коммутаторе}
+	\label{fig:show-mac-address}
+\end{figure}
+
+\step{Перечислите параметры команды show mac address-table}
+
+Выведем параметры команды \textit{show mac address-table} (см. рисунок \ref)
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{images/show-mac-address-params}
+	\caption{Параметры команды show mac address-table}
+	\label{fig:show-mac-address-params}
+\end{figure}
+
+В данной таблице при использовании параметра dynamic мы видим только один адрес. 
+
+\step{Назначьте статический MAC-адрес}
+
+Назначим статический MAC-адрес предварительно очистив таблицу MAC-адресов командой \textit{clear mac address-table dynamic} (см. рисунок \ref{fig:clear-mac-table}).
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/clear-mac-table}
+	\caption{Очистка таблицы MAC-адресов}
+	\label{fig:clear-mac-table}
+\end{figure}
+
+Отравив эхо-запрос с узла PC-A обнаружим, что в таблицу снова попал физический адрес PC-A --- это говорит о работе протокола ARP.
+
+
+Назначим статический адрес PC-A для интерфейса vlan 6 с помощью команды
+\textit{\# mac address-table static 000D.BDAA.C015 vlan 6 interface fastethernet 0/6}. После этого в таблице MAC-адресов появится запись о том, что статический адрес добавлен (см. рисунок \ref{fig:static-mac}).
+
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/static-mac}
+	\caption{Добавление статического адреса}
+	\label{fig:static-mac}
+\end{figure}
+
+}
+
+
+
+}
+}
+
+\subsection*{Ответы на вопросы}
+\begin{enumerate}
+	\item Auto-MDIX
+	Ethernet интерфейс Auto-MDIX способен автоматически определять какой вид порта требуется, при использовании Auto-MDIX тип используемого кабеля не имеет значения. Можно использовать как прямой, так и перекрестный кабель.
+	
+	\item SSH обеспечивает шифрование передаваемых и отправляемых данных, защищая данные от перехвата. Telnet не обеспечивает шифрование данных. При использовании данных подключений используется протокол TCP транспортного уровня. Порт SSH -- 22, Telnet -- 23.
+	\item Данный интерфейс нужен для проверки отправки пакетов от устройства самому себе. Также данный интерфейс может быть зарезервирован для дальнейшего расширения сети. С помощью истории команд можно более быстро и продуктивно выполнять однотипные команды, а также позволяет увидеть, какие команды были запущены ранее. 
+	\item В таблице содержится информация об известных сетевых и физических адресах устройств сети, которые были получены в результате работы протокола ARP. Также имеется информация о типе данных записей --- статическая или динамическая. Данные попадают в таблицу, после того, как устройства отзываются на ARP запрос от коммутатора, который посылается им периодически всем устройствам в сети.
+	\item 
+\end{enumerate}
+
+\end{document}
+
+
+

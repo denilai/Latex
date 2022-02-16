@@ -1,0 +1,180 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №1}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Разработка и программирование микропроцессорных систем}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра вычислительной техники}
+% Тема работы в титуле
+\newcommand{\theme}{Изучение системы команд микроконтроллера семейства MCS-51}
+% Должность преподавателя в титуле
+\newcommand{\rang}{ассистент кафедры ВТ}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Р.~Э.~Семенов}
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+%\usepackage[tableposition=top,singlelinecheck=false]{caption}
+%\captionsetup*[lstlisting]{font={small, it}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Денисов Кирилл ИВБО-02-19}
+\title{Практическая работа №2}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+\maketitle
+\section{Определение метрик производительности системы}
+
+Приведем характеристики виртуальной машины, к которой мы подключились в ходе данной практической работы (см. таблицу \ref{tab:metrics}). Данные были получены с помощью программ <<Perfomance test>> и <<CrystalDiskMark>>.
+
+\begin{table}[htbp]
+	\small
+	\caption{Метрики производительности системы}
+	\begin{tabular}{|p{0.8\linewidth}|c|}
+		\hline
+		Вычислительная производительность в целочисленных операциях & {6095 IOPS} \\ \hline
+		Вычислительная производительность в вещественных операциях & {3911 FLOPS} \\ \hline
+		Пропускная способность оперативной памяти на чтение & {5210 MB/s} \\ \hline
+		Пропускная способность оперативной памяти на запись & {4217 MB/s} \\ \hline
+		Задержка отклика при работе с оперативной памятью & {64 ns} \\ \hline
+		Производительность системы хранения в режиме последовательного чтения &  1099 MB/s \\ \hline
+		Производительность системы хранения в режиме последовательной записи &  633 MB/s \\ \hline
+		Производительность системы хранения в режиме случайного чтения & 31.28 MB/s \\ \hline
+		Производительность системы хранения в режиме случайной записи & 64.89 MB/s \\ \hline
+		Пропускная полоса сети на загрузку & 131.85 Mbit/s \\ \hline
+		Пропускная полоса сети на отдачу & 91.8 Mbit/s \\ \hline
+		Емкость устройств хранения данных & 55 GB \\ \hline
+	\end{tabular}
+	\label{tab:metrics}
+\end{table}
+\normalsize
+Приведем снимки экрана результатов измерений, проведенной на выделенной виртуальной машине (см. рисунки \ref{fig:2d-stat}-\ref{fig:total}).
+
+\clearpage
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}[h]{0.48\linewidth}
+		\includegraphics[width=1\linewidth]{images/2d-stat}
+		\caption{Статистика 2D графики}
+		\label{fig:2d-stat}
+	\end{minipage}
+\hfill
+\begin{minipage}[h]{0.48\linewidth}
+	\includegraphics[width=1\linewidth]{images/3d-stat}
+	\caption{Статистика 3D графики}
+	\label{fig:3d-stat}
+\end{minipage}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}[h]{0.48\linewidth}
+		\includegraphics[width=1\linewidth]{images/cpu-stat}
+		\caption{Статистика CPU}
+		\label{fig:cpu-stat}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.48\linewidth}
+		\includegraphics[width=1\linewidth]{images/crystal-mark}
+		\caption{CrystalDiskMark. Статистика памяти}
+		\label{fig:crystal-mark}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\begin{minipage}[h]{0.48\linewidth}
+		\includegraphics[width=1\linewidth]{images/disc-stat}
+		\caption{Статистика диска}
+		\label{fig:disc-stat}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.48\linewidth}
+	\includegraphics[width=1\linewidth]{images/memory-stat}
+	\caption{Статистика памяти}
+	\label{fig:memory-stat}
+	\end{minipage}
+\end{figure}
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{images/total}
+\caption{Общая статистика}
+\label{fig:total}
+\end{figure}
+%\clearpage
+\newpage
+\section{Создание томов в управлении дисками }
+Создадим на носителях виртуальной машины зеркальные (RAID1), чередующиеся(RAID0) и составные (JBOD) тома по следующей схеме (см. рисунки \ref{ris:mirror2}-\ref{ris:jbod}).
+\begin{enumerate}
+
+\item 1 зеркальный том.
+\item 1 чередующийся том на 2 диска.
+\item  1 чередующийся том на 3 диска.
+\item 2 тома: 1 составной на 2.5 диска, другой простой на 0.5 диска.
+\end{enumerate}
+
+
+\begin{figure}[h]
+	\begin{center}
+		\begin{minipage}[h]{0.42\linewidth}
+			\includegraphics[width=1\linewidth]{images/mirror2}
+			\caption{Зеркальный том} %% подпись к рисунку
+			\label{ris:mirror2} %% метка рисунка для ссылки на него
+		\end{minipage}
+		\hfill
+		\begin{minipage}[h]{0.42\linewidth}
+			\includegraphics[width=1\linewidth]{images/chain2}
+			\caption{Чередующийся том на два диска}
+			\label{ris:chain2}
+		\end{minipage}
+	\end{center}
+\end{figure}
+
+
+
+\begin{figure}[h]
+	\begin{center}
+		\begin{minipage}[h]{0.48\linewidth}
+			\includegraphics[width=1\linewidth]{images/chain3}
+			\caption{Чередующийся том на три диска} %% подпись к рисунку
+			\label{ris:chain3} %% метка рисунка для ссылки на него
+		\end{minipage}
+		\hfill
+		\begin{minipage}[h]{0.48\linewidth}
+			\includegraphics[width=1\linewidth]{images/gforg}
+			\caption{Составной диск}
+			\label{ris:jbod}
+		\end{minipage}
+	\end{center}
+\end{figure}
+
+%\clearpage
+
+\textbf{Вывод:} в ходе выполнения данной практической работы, мы научились измерять метрики производительности компьютера под управлением операционной системы Windows с помощью программ <<Perfomance test>> и <<CrystalDiskMark>>, научились создавать тома с помощью утилиты <<Управление дисками>>.
+
+\end{document}
+
+

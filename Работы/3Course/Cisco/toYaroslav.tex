@@ -1,0 +1,101 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №4}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Архитектура процессоров и микропроцессоров}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра вычислительной техники}
+% Тема работы в титуле
+\newcommand{\theme}{Стадии выполнения команд процессором КР580ВМ80}
+% Должность преподавателя в титуле
+\newcommand{\rang}{cтарший преподаватель кафедры ВТ}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Ю.~М.Скрябин}
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+
+\newcommand{\pt}{PacketTracer\copyright}
+
+\usepackage{tabularx}
+
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{|c|}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов ИВБО-02-19}
+\title{Практическая работа №2\\Вариант 6}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\begin{document}
+	\thispagestyle{empty}
+
+\begin{flushright}
+	Захарову Ярославу Сергеевичу\\
+	от Денисова Кирилла Юрьевича
+\end{flushright}
+\vspace{4em}
+
+Уважаемый Ярослав Сергеевич!
+
+Будем рады Вас видеть на праздновании моего двадцатидвухлетия, которое состоится 21 января 2022 года по адресу улица Абрамцевская 12, подьезд № 7. Код домофона --- 350 (схема проезда приложена к письму, также с ней можно ознакомиться, перейдя по сслыке \href{https://yandex.ru/maps/-/CCUyjJrwSB}{{https://yandex.ru/maps/-/CCUyjJrwSB}}).
+
+
+
+В случае принятия приглашения вам посчастливится встретиться с такими замечательными людьми, как:
+\begin{itemize}
+	\item Айдин Георгий Алексеевич;
+	\item Ерхова Наталья Андреевна;
+	\item Семёнова Екатерина Геннадьевна.
+\end{itemize}
+
+О времени проведения будет сообщено дополнительно, но сейчас мы ориентируемся на 19:00.
+
+Надеюсь, посещение данного мероприятия укладывается в рабочий график и Вы сможете порадовать нас своей компанией. 
+
+С нетерпением ждем Вас, дорогой гость!
+
+
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{screenshot001}
+
+\end{figure}
+
+
+\begin{flushright}
+	\begin{tabular}{cr}
+			\multirow{2}{*}{\includegraphics[width=0.14\linewidth]{../../../Common/denisov-signature}}&  С уважением,\\
+	&
+		К.~Ю.~Денисов\\
+		& 14.01.2022\\
+	\end{tabular}
+	
+	
+	
+\end{flushright}
+\end{document}

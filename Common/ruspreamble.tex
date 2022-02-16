@@ -23,6 +23,12 @@
 \newcommand{\q}{\textbf{Вопрос: }}
 \newcommand{\ans}{\textbf{Ответ: }}
 
+
+\makeatletter
+\renewcommand{\@oddfoot}{\hfil \small \arabic{page}\hfil}
+\renewcommand{\@evenfoot}{\hfil \small \arabic{page}\hfil}
+\makeatother
+
 \usepackage{etoc}
 
 
@@ -161,7 +167,7 @@
 % \captionsetup[lstlisting]{singlelinecheck=false, labelfont={blue}, textfont={blue}}
 \DeclareCaptionFont{white}{\color{black}\textit}
 \DeclareCaptionFormat{listing}{{\parbox{\textwidth}{\hspace{15pt}#1#2#3}}}
-\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={footnotesize}}
+\captionsetup*[lstlisting]{font={small, it}}
 
 \renewcommand{\thesubfigure}{\asbuk{subfigure}}
 
@@ -459,7 +465,7 @@
 	stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
 	%stringstyle=\color{mymauve},     % string literal style
 	tabsize=2,	                   % sets default tabsize to 2 spaces
-	title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+	%title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 
 \usepackage{tabularx}
@@ -480,5 +486,11 @@
 \tolerance=500
 \hyphenpenalty=10000
 \emergencystretch=3em
+
+\makeatletter
+\renewcommand{\@oddfoot}{\hfil \small \arabic{page}\hfil}
+\renewcommand{\@evenfoot}{\hfil \small \arabic{page}\hfil}
+\makeatother
+
 
 

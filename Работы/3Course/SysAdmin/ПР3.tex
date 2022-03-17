@@ -1,0 +1,222 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №1}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Разработка и программирование микропроцессорных систем}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра вычислительной техники}
+% Тема работы в титуле
+\newcommand{\theme}{Изучение системы команд микроконтроллера семейства MCS-51}
+% Должность преподавателя в титуле
+\newcommand{\rang}{ассистент кафедры ВТ}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Р.~Э.~Семенов}
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+%\usepackage[tableposition=top,singlelinecheck=false]{caption}
+%\captionsetup*[lstlisting]{font={small, it}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Денисов Кирилл ИВБО-02-19}
+\title{Практическая работа №3}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+\begin{document}
+	\maketitle
+	
+	\begin{enumerate}
+		\item Создать чередующийся том через диспетчер дисков, проверить на
+		отказ
+		
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{last}
+			\caption{}
+			\label{fig:last}
+		\end{figure}
+		
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{last1}
+			\caption{}
+			\label{fig:last1}
+		\end{figure}
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{last2}
+			\caption{}
+			\label{fig:last2}
+		\end{figure}
+		
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{screenshot001}
+			\caption{}
+			\label{fig:screenshot001}
+		\end{figure}
+	
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{screenshot003}
+			\caption{}
+			\label{fig:screenshot003}
+		\end{figure}
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{screenshot004}
+			\caption{}
+			\label{fig:screenshot004}
+		\end{figure}
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{screenshot005}
+			\caption{}
+			\label{fig:screenshot005}
+		\end{figure}
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{screenshot006}
+			\caption{}
+			\label{fig:screenshot006}
+		\end{figure}
+		
+		Создание диска:
+		\begin{center}
+			\includegraphics[width=\textwidth]{1}
+		\end{center}
+	
+		\newpage
+		Диск сломан:
+		
+		
+			% TODO: \usepackage{graphicx} required
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.7\linewidth]{screenshot002}
+			\caption{Выполнили "Починить раз"}
+			\label{fig:screenshot002}
+		\end{figure}
+		
+		\begin{center}
+			\includegraphics[width=\textwidth]{3}
+		\end{center}
+	
+		\item Удалить чередующийся том
+		\item Создать зеркальный том через диспетчер дисков, проверить на
+		отказ
+		
+		Создание диска:
+		\begin{center}
+			\includegraphics[width=\textwidth]{5}
+		\end{center}
+	
+		Диск сломан, но картинка не удалилась:
+		\begin{center}
+			\includegraphics[width=\textwidth]{6}
+		\end{center}
+		
+		\item Удалить отказавшее зеркало, добавить свободный диск в качестве
+		зеркала к оставшемуся
+		
+		\begin{center}
+			\includegraphics[width=\textwidth]{7}
+		\end{center}
+	
+		\item Проверить на отказ второго диска после ресинхронизации зеркала
+		
+		Диск сломан, но картинка не удалилась:
+		\begin{center}
+			\includegraphics[width=\textwidth]{8}
+		\end{center}
+		
+		\newpage
+		\item Удалить все тома, преобразовать диски из динамических в
+		обычные
+		\item Создать простое пространство через «Дисковые пространства»,
+		проверить на отказ 1 и 2 дисков
+		
+		Создание дискового пространства:
+		\begin{center}
+			\includegraphics[width=\textwidth]{9}
+		\end{center}
+		
+		\newpage
+		Диск сломан, но картинка не удалилась:
+		\begin{center}
+			\includegraphics[width=\textwidth]{10}
+		\end{center}
+	
+		Второй диск сломан, дисковое пространство не работает:
+		\begin{center}
+			\includegraphics[width=\textwidth]{11}
+		\end{center}
+		
+		\item Удалить простое пространство
+		\item Создать двустороннее зеркало через «Дисковые пространства»,
+		проверить на отказ 1 и 2 дисков
+		
+		Создание дискового пространства:
+		\begin{center}
+			\includegraphics[width=\textwidth]{12}
+		\end{center}
+		
+		\newpage
+		Диск сломан, но картинка не удалилась:
+		\begin{center}
+			\includegraphics[width=\textwidth]{13}
+		\end{center}
+		
+		Второй диск сломан, дисковое пространство не работает:
+		\begin{center}
+			\includegraphics[width=\textwidth]{14}
+		\end{center}
+		
+		\item Удалить двустороннее зеркало
+		\item Создать пространство с четностью через «Дисковые
+		пространства», проверить на отказ 1 и 2 дисков
+		
+		Создание дискового пространства:
+		\begin{center}
+			\includegraphics[width=\textwidth]{15}
+		\end{center}
+		
+		\newpage
+		Диск сломан, но картинка не удалилась:
+		\begin{center}
+			\includegraphics[width=\textwidth]{16}
+		\end{center}
+		
+		Второй диск сломан, дисковое пространство не работает:
+		\begin{center}
+			\includegraphics[width=\textwidth]{17}
+		\end{center}
+	\end{enumerate}
+\end{document}}

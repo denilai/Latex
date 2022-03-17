@@ -1,0 +1,115 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage{cmap}					% поиск в PDF
+\usepackage[T2A]{fontenc}			% кодировка
+\usepackage[utf8]{inputenc}			% кодировка исходного текста
+\usepackage[english,russian]{babel}	% локализация и переносы
+
+\usepackage{graphicx}
+\graphicspath{ {./}{./1}{./2}{./3} }
+
+\usepackage{caption}
+\captionsetup{labelsep=period}
+\captionsetup[table]{labelsep=endash,justification=justified,singlelinecheck=false,font=normalsize}
+
+\usepackage{indentfirst}
+
+\usepackage{listings}
+
+\lstdefinestyle{listing_style}{
+	extendedchars = \true,
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+
+\lstset{style=listing_style}
+
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\date{}\usepackage{graphicx}
+\graphicspath{ {./}}
+
+\usepackage{caption}
+\captionsetup{labelsep=period}
+
+\usepackage{listings}
+
+\lstdefinestyle{listing_style}{
+	extendedchars = \true,
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=listing_style}
+
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\usepackage{array}
+
+\title{Практическая работа 3}
+\author{Сосунов А.М., группа ИВБО-02-19}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\begin{enumerate}
+		\item Создать чередующийся том через диспетчер дисков, проверить на
+		отказ
+		
+		\item Удалить чередующийся том
+		\item Создать зеркальный том через диспетчер дисков, проверить на
+		отказ
+		\item Удалить отказавшее зеркало, добавить свободный диск в качестве
+		зеркала к оставшемуся
+		\item Проверить на отказ второго диска после ресинхронизации зеркала
+		\item Удалить все тома, преобразовать диски из динамических в
+		обычные
+		\item Создать простое пространство через «Дисковые пространства»,
+		проверить на отказ 1 и 2 дисков
+		\item Удалить простое пространство
+		\item Создать двустороннее зеркало через «Дисковые пространства»,
+		проверить на отказ 1 и 2 дисков
+		\item Удалить двустороннее зеркало
+		\item Создать пространство с четностью через «Дисковые
+		пространства», проверить на отказ 1 и 2 дисков1) Создать чередующийся том через диспетчер дисков, проверить на
+		отказ
+	\end{enumerate}
+\end{document}}

@@ -20,6 +20,36 @@
 %\emergencystretch=3em
 %%%==========================================%%
 
+
+\usepackage{lastpage}
+
+\usepackage{etoolbox}
+
+
+%подсчет сущностей
+\newcounter{totfigures}
+\newcounter{tottables}
+\newcounter{totreferences}
+\newcounter{totappendix}
+\pretocmd{\bibitem}{\addtocounter{totreferences}{1}}{}{}
+\pretocmd{\chapter}{\addtocounter{totfigures}{\value{figure}}}{}{}
+\pretocmd{\chapter}{\addtocounter{tottables}{\value{table}}}{}{}
+
+\makeatletter
+\AtEndDocument{%
+	\addtocounter{totfigures}{\value{figure}}%
+	\addtocounter{tottables}{\value{table}}%
+	\immediate\write\@mainaux{%
+		\string\gdef\string\totfig{\number\value{totfigures}}%
+		\string\gdef\string\tottab{\number\value{tottables}}% 
+		\string\gdef\string\totref{\number\value{totreferences}}%   
+	}%
+}
+\makeatother
+
+
+
+
 \newcommand{\q}{\textbf{Вопрос: }}
 \newcommand{\ans}{\textbf{Ответ: }}
 
@@ -113,7 +143,7 @@
 
 % сначала ставить \usepackage{extsizes} % Возможность сделать 14-й шрифт
 % для корректной установки полей вставлять преамбулу следует в последнюю очередь (но перед дерективой замены \rmdefault)
-\usepackage[top=20mm,bottom=20mm,left=30mm,right=10mm]{geometry} % Простой способ задавать поля
+\usepackage[top=20mm,bottom=20mm,left=30mm,right=15mm]{geometry} % Простой способ задавать поля
 
 \hypersetup{				% Гиперссылки
 	unicode=true,           % русские буквы в раздела PDF

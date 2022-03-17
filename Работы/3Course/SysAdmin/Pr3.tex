@@ -1,0 +1,215 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №1}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Разработка и программирование микропроцессорных систем}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра вычислительной техники}
+% Тема работы в титуле
+\newcommand{\theme}{Изучение системы команд микроконтроллера семейства MCS-51}
+% Должность преподавателя в титуле
+\newcommand{\rang}{ассистент кафедры ВТ}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Р.~Э.~Семенов}
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+%\usepackage[tableposition=top,singlelinecheck=false]{caption}
+%\captionsetup*[lstlisting]{font={small, it}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Денисов Кирилл ИВБО-02-19}
+\title{Практическая работа №3}
+\date{\today}
+
+\renewcommand{\withouttheme}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+\begin{document}
+	\maketitle
+	
+	\begin{enumerate}
+		\item Создадим чередующийся том через диспетчер дисков. См. рисунок \ref{fig:1}.
+	
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.6\linewidth]{1}
+		\caption{Создание чередующегося диска}
+		\label{fig:1}
+	\end{figure}
+\newpage
+
+ \item Проверим его на отказ, выполнив .bat файл "Сломать раз". См. рисунок \ref{fig:3}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{3}
+	\caption{Чередующийся диск сломан}
+	\label{fig:3}
+\end{figure}
+
+		\item Удалим чередующийся том
+		\item Создадим зеркальный том, используя Диск 1 и Диск 2 через диспетчер дисков. См. рисунок \ref{fig:5}.
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.5\linewidth]{5}
+			\caption{Создание зеркального диска}
+			\label{fig:5}
+		\end{figure}
+	\newpage
+\item Сломаем массив RAID1, выполнив .bat файл "Сломать раз". Как мы видим, структура зеркал повреждена, но данные на уцелевшем зеркале остались.	См. рисунок \ref{fig:last2}.
+
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{last2}
+	\caption{Проверка целостности файлов. Зеркальный диск}
+	\label{fig:last2}
+\end{figure}
+
+		\item Удалим отказавшее зеркало и добавим свободный диск в качестве зеркала к оставшемуся. Восстановим массив. См. рисунок \ref{fig:7}.
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.7\linewidth]{7}
+			\caption{Восстановление зеркала}
+			\label{fig:7}
+		\end{figure}
+
+	\newpage
+		\item Проверим на отказ второго диска после ресинхронизации зеркала
+		
+		Диск сломан, но сохраненные файлы не удалились. См. рисунок \ref{fig:8}.
+		
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.6\linewidth]{8}
+			\caption{Проверка целостности дисков. Запуск второго скрипта}
+			\label{fig:8}
+		\end{figure}
+
+
+		\item Удалим все тома, преобразуем диски из динамических в
+		обычные
+		%\clearpage
+		\item Создадим новое простое пространство, используя утилиту «Дисковые пространства»,
+		проверить на отказ 1 и 2 дисков. См. рисунок \ref{fig:9}.
+		
+		
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.7\linewidth]{9}
+			\caption{Создание дискового пространства}
+			\label{fig:9}
+		\end{figure}
+\newpage
+		После выполнения .bat файла "Сломать раз", диск сломан, но сохраненные данные все так же доступны. См. рисунок \ref{fig:10}.
+		% TODO: \usepackage{graphicx} required
+				\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.7\linewidth]{10}
+			\caption{Дисковое пространство. Сломан первый диск}
+			\label{fig:10}
+		\end{figure}
+		
+	
+		Второй диск сломан, дисковое пространство не работает. Все сохраненные файлы не доступны. Восстановление данных не возможно. См. рисунок \ref{fig:11}.
+		
+		% TODO: \usepackage{graphicx} required
+			\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.7\linewidth]{11}
+			\caption{Дисковое пространство. Сломан второй диск}
+			\label{fig:11}
+		\end{figure}
+
+		
+		\item Удалим простое пространство
+		\item Создадим двустороннее зеркало с помощью утилиты «Дисковые пространства»,проверим на отказ 1 и 2 дисков. . См. рисунок \ref{fig:12}.
+	
+
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.7\linewidth]{12}
+			\caption{Создание дискового пространства}
+			\label{fig:12}
+		\end{figure}
+	
+		
+		\newpage
+			После выполнения .bat файла "Сломать раз", диск сломан, но картинка не удалилась. Файлы удалось сохранить. См. рисунок \ref{fig:13}.
+
+		
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.7\linewidth]{13}
+			\caption{Дисковое пространство. Отключение первого диска}
+			\label{fig:13}
+		\end{figure}
+	
+		
+			После выполнения .bat файла "Сломать два", второй диск сломан, дисковое пространство не работает. См. рисунок \ref{fig:14}.
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.7\linewidth]{14}
+			\caption{Дисковое пространство. Отключение второго диска}
+			\label{fig:14}
+		\end{figure}
+		
+		
+		\item Удалим двустороннее зеркало
+		
+	\newpage
+		\item Создадим пространство с четностью через утилиту «Дисковые пространства» и проверим на отказ 1 и 2 дисков. См. рисунок \ref{fig:15}.
+
+		
+		% TODO: \usepackage{graphicx} required
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.7\linewidth]{15}
+			\caption{Создание дискового пространства с четностью}
+			\label{fig:15}
+		\end{figure}
+
+		\newpage
+			После выполнения .bat файла "Сломать раз", диск сломан, но картинка не удалилась. См. рисунок \ref{fig:16}.
+		% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\linewidth]{16}
+		\caption{Дисковое пространство с четностью. Отключение первого диска}
+		\label{fig:16}
+	\end{figure}
+		
+			После выполнения .bat файла "Сломать раз", второй диск сломан, дисковое пространство не работает. См. рисунок \ref{fig:17}.
+				\begin{figure}[h!]
+				\centering
+				\includegraphics[width=0.7\linewidth]{17}
+				\caption{Дисковое пространство с четностью. Отключение второго диска}
+				\label{fig:17}
+			\end{figure}
+			
+	\end{enumerate}
+\end{document}}

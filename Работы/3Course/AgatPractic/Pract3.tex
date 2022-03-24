@@ -1,0 +1,154 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+\newcommand{\stend}{\textbf{Wb-demo-kit v.2}}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+
+% Название работы в титуле
+\newcommand{\workname}{Отчет по лабораторной работе № 3}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Инструментальные средства разработки
+	вычислительных систем}
+% Название кафедры в титуле
+\newcommand{\kafedra}{\textit{уточнить}}
+% Тема работы в титуле
+\newcommand{\theme}{Создание Shell скрипта}
+% Должность преподавателя в титуле
+\newcommand{\rang}{ассистент}
+
+% ФИО студента в титуле
+\newcommand{\studentfio}{К.~Ю.~Денисов}%\\Д.~Н.~Федосеев\\А.~М.~Сосунов}\\%К.~Ю.~Денисов\\%И.~А.~Кремнев
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{}
+
+
+\usepackage{tabularx}
+\usepackage{lastpage}
+
+
+\usepackage{booktabs}
+\newcolumntype{b}{X}
+\newcolumntype{s}{>{\hsize=.5\hsize}X}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Кирилл Денисов}
+\title{Лабораторная работа №2}
+\date{\today}
+
+\setcounter{withouttheme}{0}
+\setcounter{withoutsubmissiondate}{1}
+
+
+%если нужна тема работы в отчете, то указать в скобках 0, иначе 1
+%\setcounter{withouttheme}{0}
+%если нужна дата представления отчета, то указать в скобках 0, иначе 1
+%\setcounter{\withoutsubmissiondate}{0}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+
+
+\newcommand{\tb}{ThingsBoard~}
+
+\begin{document}
+	\thispagestyle{empty}
+	% Вставка первого титульного листа
+	% Есть две версии титульного листа - одиночный (titul) и групповой (titulAll)
+	\input{\pathToCommonFolder/titul}
+	\newpage
+%	\tableofcontents
+%	\newpage
+	%\listoftables
+	
+\normalsize
+
+\section*{Цель работы}
+Изучить функциональные возможности оболочки и языка программирования bash, расширить знания команд и утилит. 
+
+\section*{Задание}
+В ходе данной лабораторной работы было решено написать скрипт, который будет использован для обработки и фильтрации данных из .csv файла.
+
+
+\section*{Ход работы}
+
+Для выполнения лабораторной работы был выбран дистрибутив Альт Рабочая станция, установленный в ходе выполнения лабораторной работы №1. 
+
+В качестве входного файла для скрипта shell будем использовать .csv файл, содержащий следующие поля:
+\begin{itemize}
+	\item ip;
+	\item filename;
+	\item url;
+	\item email.
+\end{itemize}
+
+Отфильтруем с помощью shell-скрипта все url, в составе которых есть домен <<edu>>.
+
+\begin{lstlisting}[language=Bash, caption={Вывод всех url, содержащих домен <<edu>>}]
+	#!/bin/bash
+	#Find all rows with 'edu' domain name in csv file
+	
+	regex="[.(//)]edu[./]|[.//]edu$"
+	OLDIFS=$IFS
+	IFS=","
+	n=1
+	while read ip name url email
+	do
+	if [[ $url =~ $regex ]]; then
+	echo "$n $url"
+	fi
+	n=$(($n+1))
+	done < $1 |\
+	awk 'BEGIN {print "NN URL";} \
+	{print $0}' |\
+	column -t |\
+	awk 'BEGIN {print "\tThe url contains the 'edu' in the domain\n"}\
+	{print $0}'
+	IFS=$OLDIFS
+\end{lstlisting}
+
+В данном скрипте производится построчное чтение файла, переданного в качестве аргумента, и вывод строк, удовлетворяющих регулярной строке. Затем данные строки передаются через конвейер утилите awk, которая форматирует вывод. 
+
+В данном скрипте используются значения переменных, доступ к которым получают с помощью символа \$. 
+
+Продемонстрируем работу данного скрипта. 
+
+
+
+
+\begin{table}[h!]
+	\small
+	\centering
+	\label{tab:commands}
+	\caption{Используемые команды}
+	\begin{tabular}{|p{0.16\linewidth}|p{0.7\linewidth}|}
+		\hline
+		\textbf{Команда} & \textbf{Назначение} \\\hline
+		pwd & Выводит путь до текущей директории \\\hline
+		ls & Выводит список файлов в директории \\\hline
+		cat & Выводит содержание файла \\\hline
+		wc & Выводит количество строк,  слов и символов в файле \\\hline
+		head & Выводит первые строки в файле \\\hline
+		awk & Утилита для обработки и форматирования данными \\\hline
+		date & Выводит системное время \\\hline
+		chmod & Изменяет параметры доступа файла \\\hline
+		sleep & Приостанавливает выполнение на заданное количество секунд \\\hline 
+		journalctl & Утилита для просмотра журнала и управления демоном journald \\\hline
+	\end{tabular}
+\end{table}
+\clearpage
+
+
+\end{document}
+

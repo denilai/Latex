@@ -1,10 +1,12 @@
-%\newcommand{\withouttheme}{} добавить эту переменную для определения, нужна ли тема
-%     {} - нужна
+%\newcounter{withouttheme}
+
+%\setcounter{withouttheme}{<n>} установить значение счетчика  withouttheme для определения, нужна ли тема
+%    {0} - нужна
 %    {1} - не нужна
 
-%\newcommand{\withoutsubmissiondate}{} добавить эту переменную для определения, нужен ли срок предоставления отчета
-%     {} - нужен
-%    {1} - не нужен
+%\setcounter{withoutsubmissiondate}{<n>} установить значение счетчика  withoutsubmissiondate для определения, нужна ли дата представления к защите
+%     {0} - нужна
+%     {1} - не нужена
 \begin{center}
 	\begin{figure}[h!]
 		\begin{center}
@@ -28,8 +30,10 @@
 		%\vspace{1ex}
 						по дисциплине\\ «\discipline» \\
 		\vspace{3ex}
-		\if \withouttheme
+		\ifnum \value{withouttheme}=0 {
 			\textbf{Тема работы:}\\ <<\theme>>
+		}
+		\else {}
 		\fi
 \vspace{10ex}
 \small
@@ -42,6 +46,12 @@
 \end{tabular}
 \end{table}
 \end{center}
+\ifnum \value{withoutsubmissiondate}=0 {
+	\begin{flushleft}
+		Работа представлена к защите <<\rule{3ex}{1pt}>>\rule{10ex}{1pt} 202\rule{1ex}{1pt} г.\hfill
+	\end{flushleft}
+\else {}
+\fi
 
 \normalsize
 \begin{center}	

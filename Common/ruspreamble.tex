@@ -31,6 +31,17 @@
 \newcounter{tottables}
 \newcounter{totreferences}
 \newcounter{totappendix}
+
+
+
+%если нужна тема работы в отчете, то указать в скобках 0, иначе 1
+\newcounter{withouttheme}
+\setcounter{withouttheme}{0}
+%если нужна дата представления отчета, то указать в скобках 0, иначе 1
+\newcounter{withoutsubmissiondate}
+\setcounter{withoutsubmissiondate}{0}
+
+
 \pretocmd{\bibitem}{\addtocounter{totreferences}{1}}{}{}
 \pretocmd{\chapter}{\addtocounter{totfigures}{\value{figure}}}{}{}
 \pretocmd{\chapter}{\addtocounter{tottables}{\value{table}}}{}{}
@@ -127,17 +138,14 @@
 \newcommand{\anonsection}[1]{\section*{#1}\addcontentsline{toc}{section}{#1}}
 \newcommand{\anonsubsection}[1]{\subsection*{#1}\addcontentsline{toc}{subsection}{#1}}
 \newcommand{\sectionunderl}[1]{\section*{\underline{#1}}}
-%если нужна тема работы в отчете, то указать в скобках что-либо, иначе оаставить пустым
-\newcommand{\withouttheme}{}
-%если нужна дата представления отчета, то указать в скобках что-либо
-\newcommand{\withoutsubmission}{1}
+
 \newcommand{\centerboldcell}[1]{\multicolumn{1}{|c|}{\textbf{#1}}}
 
 
 % настройка окружения enumerate
 \usepackage{enumitem}
 \setlist{noitemsep}
-\setlist[enumerate]{labelsep=*, leftmargin=1.5pc}
+\setlist[enumerate]{labelindent=\parindent, labelsep=*, leftmargin=*}
 
 \usepackage{hyperref}
 

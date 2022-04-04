@@ -1,0 +1,252 @@
+\documentclass[a4paper,14pt]{extarticle}
+
+% Путь до папки с общими шаблонами
+\newcommand{\pathToCommonFolder}{/home/denilai/Documents/repos/latex/Common}
+% Название работы в титуле
+\newcommand{\workname}{Отчет по практической работе №7}
+% Название дисциплины в титуле
+\newcommand{\discipline}{Разработка и программирование микропроцессорных систем}
+% Название кафедры в титуле
+\newcommand{\kafedra}{Кафедра вычислительной техники}
+% Тема работы в титуле
+\newcommand{\theme}{Изучение системы команд микроконтроллера семейства MCS-51}
+% Должность преподавателя в титуле
+\newcommand{\rang}{ассистент кафедры ВТ}
+% ФИО преподавателя в титуле
+\newcommand{\teacherfio}{Р.~Э.~Семенов}
+\newcommand{\studentfio}{К.~Ю.~Денисов}
+\newcommand{\signature}{\pathToCommonFolder/denisov-signature}
+\newcommand{\heading}[1]{\multicolumn{1}{c}{#1}}
+
+%\usepackage[tableposition=top,singlelinecheck=false]{caption}
+%\captionsetup*[lstlisting]{font={small, it}}
+
+% установка размера шрифта для всего документа
+%\fontsize{20pt}{18pt}\selectfont
+
+
+% Вставка заготовки преамбулы
+\input{\pathToCommonFolder/ruspreamble}
+
+\author{Денисов Кирилл ИВБО-02-19}
+\title{Практическая работа №7}
+\date{\today}
+
+\setcounter{withouttheme}{1}
+
+% установка полуторного интервала
+% \usepackage{setspace}  
+% \onehalfspacing
+
+% использовать Times New Roman
+\renewcommand{\rmdefault}{ftm}
+\begin{document}
+	\maketitle
+	
+\begin{enumerate}
+	\item Включим пересылку IPv4 трафика на виртуальной машине под управлением Astra Linux, дописав ее в конец файла /etc/sysctl.conf с помощью команды 
+	
+	\begin{lstlisting}
+	# echo "net.ipv4.ip\_forward=1" >> /etc/sysctl.conf \end{lstlisting}
+	
+	Результат приведен на рисунке \ref{fig:---2022-03-30-16-54-58}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{"images/Снимок экрана от 2022-03-30 16-54-58"}
+	\caption{}
+	\label{fig:---2022-03-30-16-54-58}
+\end{figure}
+	
+	Применим изменения с помощью команды
+	
+	\begin{lstlisting}
+	# sysctl -p \end{lstlisting}
+	
+	Результат приведен на рисунке \ref{fig:---2022-03-30-16-56-42}.
+	
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{"images/Снимок экрана от 2022-03-30 16-56-42"}
+	\caption{}
+	\label{fig:---2022-03-30-16-56-42}
+\end{figure}
+
+	\item Для включения маскарадинга на выходном интерфейсе eth1 следует выполнить команду 
+	
+	\begin{lstlisting}
+	# iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE\end{lstlisting}
+	
+	\item Включим файервол ufw с помощью команды 
+	
+	\begin{lstlisting}
+	# ufw enable\end{lstlisting}
+	
+	Проверим работу файервола ufw выполнив команду
+		\begin{lstlisting}
+		# ufw status\end{lstlisting}
+
+	\item Теперь необходимо разрешить транзитные соединения командой 
+	
+	\begin{lstlisting}
+	# ufw default allow routed\end{lstlisting}
+	
+	Результат приведен на рисунке \ref{fig:---2022-03-30-17-15-09}.
+	
+	% TODO: \usepackage{graphicx} required
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.5\linewidth]{"images/Снимок экрана от 2022-03-30 17-15-09"}
+		\caption{}
+		\label{fig:---2022-03-30-17-15-09}
+	\end{figure}
+	\newpage
+	\item Дополним файл /etc/ufw/before.rules следующим правилом.
+	
+	
+	
+	\begin{lstlisting}[caption=/etc/ufw/before.rules, label=sdfsdf]
+		*nat
+		:POSTROUTING ACCEPT [0:0]
+		#Forwardtraffic from eth1 through eth0.
+		-A POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE
+		COMMIT	\end{lstlisting}
+	
+	\item После этого перезагрузим ufw командами 
+	\begin{lstlisting}
+	# ufw disable
+	# ufw enable\end{lstlisting}
+	
+	\item Проверим наличие нашего правила командой
+	
+	\begin{lstlisting}
+	# iptables -t nat -L
+	# iptables-save \end{lstlisting}
+	
+	Результат приведен на рисунке \ref{fig:---2022-03-30-17-15-28}.
+	
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{"images/Снимок экрана от 2022-03-30 17-15-28"}
+	\caption{}
+	\label{fig:---2022-03-30-17-15-28}
+\end{figure}
+	
+	\item Произведем настройку интерфейса eth1, путем внесения изменений в файл /etc/network/intefaces.
+	
+	\item Перезапустим службу networking командой
+	
+	\begin{lstlisting}
+	# systemctl restart networking\end{lstlisting}
+	
+	
+	Результат приведен на рисунке \ref{fig:---2022-03-30-17-22-22}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{"images/Снимок экрана от 2022-03-30 17-22-22"}
+	\caption{}
+	\label{fig:---2022-03-30-17-22-22}
+\end{figure}
+
+	\item Установим dhcp сервер с помощью пакетного менеджера 
+	\begin{lstlisting}
+	# apt install isc-dhcp-server\end{lstlisting}
+	
+	
+	Результат приведен на рисунке \ref{fig:---2022-03-30-17-49-27}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{"images/Снимок экрана от 2022-03-30 17-49-27"}
+	\caption{}
+	\label{fig:---2022-03-30-17-49-27}
+\end{figure}
+
+	Настроим его, отредактировав файл /etc/dhcp/dhcpd.conf 	
+	
+	
+	\begin{lstlisting}[caption=/etc/dhcp/dhcpd.conf, label=sdfsdf]
+	subnet 192.168.1.0 netmask 255.255.255.0 {
+	range 192.168.1.50 192.168.1.240;
+	option routers 192.168.1.1;
+	option broadcast-address 192.168.1.255;
+	option domain-name-servers 192.168.1.1;
+	authoritative;
+	}\end{lstlisting}
+	
+	\item Запустим dhcpd командой
+	\begin{lstlisting}
+	# systemctl enable --now isc-dhcp-server\end{lstlisting}
+	
+	
+	После перезапуска сервер удачно сконфигурирован. На изображение попали результаты предыдущих перезапусков сервиса.
+	
+	
+	Результат приведен на рисунке \ref{fig:2022-03-3017-44-04}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/Lesha/2022-03-30_17-44-04}
+	\caption{}
+	\label{fig:2022-03-3017-44-04}
+\end{figure}
+\newpage
+
+	\item После этого узел с ОС Windows автоматически получит сетевой адрес из
+	заданного диапазона. Проверим работоспособность сети, выполнив в ОС Windows команду
+	ping –n 10 8.8.8.8
+	
+	
+	Результат приведен на рисунке \ref{fig:2022-03-3018-01-20}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/Lesha/2022-03-30_18-01-20}
+	\caption{}
+	\label{fig:2022-03-3018-01-20}
+\end{figure}
+
+	\item Установим ISC BIND командой
+	
+	\begin{lstlisting}
+	# apt install bind9\end{lstlisting}
+	
+	
+	\item Запустим службу bind9 с помощью команды	
+	\begin{lstlisting}
+	# systemctl enable --now bind9\end{lstlisting}
+	
+	\item Для работы сетевых сервисов необходимо разрешить
+	их порты (или профили) в файерволе, для ufw это делается командой
+	\begin{lstlisting}
+	# ufw allow Bind9\end{lstlisting}
+	
+	
+		Результат приведен на рисунке \ref{fig:2022-03-3018-02-41}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.5\linewidth]{images/Lesha/2022-03-30_18-02-41}
+	\caption{}
+	\label{fig:2022-03-3018-02-41}
+\end{figure}
+
+После произведения всех перечисленных действия на ВМ с ОС Windows появился доступ в
+глобальную сеть без какой-либо дополнительной настройки.
+
+	Результат приведен на рисунке \ref{fig:2022-03-3018-04-09}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/Lesha/2022-03-30_18-04-09}
+	\caption{}
+	\label{fig:2022-03-3018-04-09}
+\end{figure}
+	
+	
+	
+\end{enumerate}
+\end{document}}

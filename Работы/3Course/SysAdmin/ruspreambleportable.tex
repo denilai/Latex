@@ -142,10 +142,7 @@
 \newcommand{\centerboldcell}[1]{\multicolumn{1}{|c|}{\textbf{#1}}}
 
 
-% настройка окружения enumerate
-\usepackage{enumitem}
-\setlist{noitemsep}
-\setlist[enumerate]{leftmargin=0.5cm,itemindent=2.1cm,labelwidth=\itemindent,labelsep=-1.25cm,align=left,label={\arabic*)}}
+
 
 %{labelindent=\parindent, labelsep=*, leftmargin=*}
 
@@ -218,11 +215,6 @@
 
 %Опция leftmargin устанавливает левую границу текста списка равной отступу в начале абзаца.
 
-\usepackage{enumitem}
-\makeatletter
-\AddEnumerateCounter{\asbuk}{\@asbuk}{ю)}
-\makeatother
-\setlist{nosep, leftmargin=\parindent}
 
 
 % Кроме того, мне не нравится использование дефисов в качестве маркеров, и я заменяю их на "минус":
@@ -526,6 +518,27 @@
 \tolerance=500
 \hyphenpenalty=10000
 \emergencystretch=3em
+
+
+
+
+
+
+% настройка окружения enumerate
+\usepackage{enumitem}
+
+
+\makeatletter
+\AddEnumerateCounter{\asbuk}{\@asbuk}{ю)}
+\makeatother
+\setlist{nosep, leftmargin=\parindent}
+
+
+\setlist{noitemsep}
+\setlist[enumerate]{leftmargin=0.5cm,itemindent=2.1cm,labelwidth=\itemindent,labelsep=-1.25cm,align=left,label={\arabic*)}}
+\setlist[itemize]{leftmargin=0.5cm,itemindent=2.1cm,labelwidth=\itemindent,labelsep=-1.25cm,align=left,label={\arabic*)}}
+
+
 
 \makeatletter
 \renewcommand{\@oddfoot}{\hfil \small \arabic{page}\hfil}

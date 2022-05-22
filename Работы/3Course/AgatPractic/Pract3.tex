@@ -11,16 +11,16 @@
 \newcommand{\discipline}{Инструментальные средства разработки
 	вычислительных систем}
 % Название кафедры в титуле
-\newcommand{\kafedra}{\textit{уточнить}}
+\newcommand{\kafedra}{Кафедра вычислительной техники}
 % Тема работы в титуле
-\newcommand{\theme}{Создание Shell скрипта}
+\newcommand{\theme}{Создание Bash скрипта}
 % Должность преподавателя в титуле
-\newcommand{\rang}{ассистент}
+\newcommand{\rang}{}
 
 % ФИО студента в титуле
 \newcommand{\studentfio}{К.~Ю.~Денисов}%\\Д.~Н.~Федосеев\\А.~М.~Сосунов}\\%К.~Ю.~Денисов\\%И.~А.~Кремнев
 % ФИО преподавателя в титуле
-\newcommand{\teacherfio}{}
+\newcommand{\teacherfio}{И.~Р.~Сон}
 
 
 \usepackage{tabularx}
@@ -122,9 +122,40 @@
 
 В данном скрипте используются значения переменных, доступ к которым получают с помощью символа \$. 
 
-Продемонстрируем работу данного скрипта. 
+Данные во входном файле имеют следующую структуру: IP,filename,url.
+
+Приведем часть данного файла в листинге \ref{lst:source}.
+
+\begin{lstlisting}[caption={Содержание входного файла}, label={lst:soruce}]
+32.64.235.3,SitAmetEros.ppt,https://youku.com/primis.xml,qkynmann9@google.cn
+92.112.38.60,DonecSemperSapien.xls,https://ask.com/orci/luctus/et/ultrices.html,dmickleburghna@google.com
+204.1.103.59,Ultrices.tiff,http://psu.edu/vestibulum/ac/est/lacinia/nisi/venenatis/tristique.jsp,rlarkkemnb@twitpic.com
+90.28.12.57,NislNunc.ppt,https://usda.gov/nibh/quisque/id/justo/sit/amet.jpg,mtattersdillnc@amazonaws.com
+220.233.11.37,SuspendissePotenti.gif,http://skype.com/ipsum.aspx,pclaveynd@phpbb.com
+219.64.6.10,BibendumImperdiet.png,http://dailymotion.com/morbi/non/quam.jpg,vpietaschne@senate.gov
+57.148.231.249,Ultrices.xls,http://nbcnews.com/nunc/donec/quis/orci/eget/orci/vehicula.png,hcarluccinf@nymag.com
+43.102.65.158,QuisAugue.jpeg,http://washingtonpost.com/porta.html,mblakemoreng@mapquest.com
+57.5.207.100,Habitasse.xls,https://flickr.com/est/lacinia/nisi/venenatis/tristique/fusce.xml,mconrenh@last.fm
+98.16.105.254,SapienDignissimVestibulum.tiff,http://toplist.cz/rhoncus/dui.xml,areynerni@omniture.com
+79.95.101.52,Vivamus.avi,https://imageshack.us/sit/amet/eros/suspendisse.jsp,kzimeknj@vk.com
+7.202.67.112,Ut.mp3,http://github.com/consectetuer/eget/rutrum/at/lorem/integer.aspx,dhumbertnk@flickr.com
+187.37.35.77,PulvinarNullaPede.jpeg,https://blogs.com/rhoncus/aliquet.js,rblamphinnl@51.la
+188.150.158.99,DictumstMaecenasUt.ppt,http://drupal.org/nunc/viverra/dapibus.json,ppurshousenm@fastcompany.com
+41.38.89.112,Pellentesque.tiff,http://paypal.com/vulputate/ut/ultrices/vel/augue.json,estanistreetnn@nymag.com
+26.82.133.180,CondimentumCurabiturIn.xls,https://nba.com/a/odio/in/hac/habitasse/platea/dictumst.json,ehalwillno@youtube.com
 
 
+\end{lstlisting}
+
+
+Результат работы скрипта приведен на рисунке \ref{fig:demo4}.
+% TODO: \usepackage{graphicx} required
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.8\linewidth]{images/3/demo4}
+	\caption{Результат работы скрипта}
+	\label{fig:demo4}
+\end{figure}
 
 
 \begin{table}[h!]
@@ -141,14 +172,17 @@
 		wc & Выводит количество строк,  слов и символов в файле \\\hline
 		head & Выводит первые строки в файле \\\hline
 		awk & Утилита для обработки и форматирования данными \\\hline
-		date & Выводит системное время \\\hline
+		date & Выводит системное время \\\hline$  $
 		chmod & Изменяет параметры доступа файла \\\hline
 		sleep & Приостанавливает выполнение на заданное количество секунд \\\hline 
 		journalctl & Утилита для просмотра журнала и управления демоном journald \\\hline
 	\end{tabular}
 \end{table}
-\clearpage
 
 
+\newpage
+
+\section*{Вывод}
+В ходе выполнения данной лабораторной работы был создан bash скрипт, который производил фильтрацию входных данных по указанному предикату. В данном скрипте были использованы команды языка Bash, организующие работу циклов и условных операторов, а также утилиты обработки текста.
 \end{document}
 
